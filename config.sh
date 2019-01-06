@@ -30,3 +30,9 @@ ln -sf $folder/termite ~/.config/
 ln -sf $folder/dunst ~/.config/
 ln -sf $folder/ranger ~/.config/
 ln -sf $folder/i3status ~/.config/
+
+# vimrc
+ln -sf $folder/vimrc ~/.vimrc
+
+# vim plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
