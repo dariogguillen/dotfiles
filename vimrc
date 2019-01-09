@@ -1,89 +1,153 @@
+set nocompatible
+filetype off
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""" Plugins"""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 " Plugins here
 " Make sure you use single quotes
+" Themes
+Plug 'kaicataldo/material.vim'
 
-" comments
-Plug 'tomtom/tcomment_vim'
+" airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'vim-syntastic/syntastic'
+Plug 'ctrlpvim/ctrlp.vim'
+
+" git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+" ----- Other text editing features -----------------------------------
+Plug 'Raimondi/delimitMate'
+
+" javascript
+Plug 'pangloss/vim-javascript'
+
+" react
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'w0rp/ale'
+Plug 'skywind3000/asyncrun.vim'
+
+"emmet
+Plug 'mattn/emmet-vim'
 
 " Initialize plugin system
 call plug#end()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on
 
-" Set compatibility to Vim only.
-set nocompatible
+" General
+set number	" Show line numbers
+set relativenumber
+set linebreak	" Break lines at word (requires Wrap lines)
+set showbreak=+++	" Wrap-broken line prefix
+set textwidth=100	" Line wrap (number of cols)
+set showmatch	" Highlight matching brace
+set background=dark
+" for vim 8
+ if (has("termguicolors"))
+  set termguicolors
+ endif
+ let g:airline_powerline_fonts = 1
 
-" Helps force plug-ins to load correctly when it is turned back on below.
-filetype off
+colorscheme material
+let g:material_theme_style = 'dark' "| 'palenight' | 'default'
+let g:material_terminal_italics = 1
 
-" Turn on syntax highlighting.
-syntax on
-
-" Turn off modelines
-set modelines=0
-
-" Automatically wrap text that extends beyond the screen length.
+set hlsearch	" Highlight all search results
+set smartcase	" Enable smart-case search
+set ignorecase	" Always case-insensitive
+set incsearch	" Searches for strings incrementally
 set wrap
-" Vim's auto indentation feature does not work properly with text copied from outisde of Vim. Press the <F2> key to toggle paste mode on/off.
-nnoremap <F2> :set invpaste paste?<CR>
-imap <F2> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F2>
-
-" Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen.
-" set textwidth=79
-set formatoptions=tcqrn1
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set noshiftround
-
-" Display 5 lines above/below the cursor when scrolling with a mouse.
 set scrolloff=5
-" Fixes common backspace problems
-set backspace=indent,eol,start
+set mouse=a
 
-" Speed up scrolling in Vim
-set ttyfast
+set autoindent	" Auto-indent new lines
+set expandtab	" Use spaces instead of tabs
+set shiftwidth=2	" Number of auto-indent spaces
+set smartindent	" Enable smart-indent
+set smarttab	" Enable smart-tabs
+set softtabstop=2	" Number of spaces per Tab
+syntax enable " Turn on syntax highlighting
+set hidden " Leave hidden buffers open
+set history=100 "by default Vim saves your last 8 commands.  We can handle more
 
-" Status bar
-set laststatus=2
+"" Advanced
+set ruler	" Show row and column ruler information
+set autoread
+" Make sure you use single quotes
+set noswapfile
+set undolevels=1000	" Number of undo levels
+set backspace=indent,eol,start	" Backspace behaviour
 
-" Display options
-set showmode
-set showcmd
+" Open new splits to right and bottom
+set splitbelow
+set splitright
 
-" Highlight matching pairs of brackets. Use the '%' character to jump between them.
-set matchpairs+=<:>
+" Navegación entre ventanas
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-" Display different types of white spaces.
-set list
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+" Aireline theme
+let g:airline_theme='minimalist'
+let g:powerline_pycmd="py3"
 
-" Show line numbers
-set number
+" Show PASTE if in paste mode
+let g:airline_detect_paste=1
 
-" Set status line display
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+ " Show airline for tabs too
+let g:airline#extensions#tabline#enabled = 1
 
-" Encoding
-set encoding=utf-8
+" We need this for plugins like Syntastic and vim-gitgutter which put symbols
+" in the sign column.
+hi clear SignColumn
 
-" Highlight matching search patterns
-set hlsearch
-" Enable incremental search
-set incsearch
-" Include matching uppercase words with lowercase search term
-set ignorecase
-" Include only uppercase words with uppercase search term
-set smartcase
+" ----- scrooloose/syntastic settings -----
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
+augroup mySyntastic
+  au!
+  au FileType tex let b:syntastic_mode = "passive"
+augroup END
 
-" Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
-set viminfo='100,<9999,s100
+" ----- airblade/vim-gitgutter settings -----
+" In vim-airline, only display "hunks" if the diff is non-zero
+let g:airline#extensions#hunks#non_zero_only = 1
 
-" Map the <Space> key to toggle a selected fold opened/closed.
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-vnoremap <Space> zf
+" ----- Raimondi/delimitMate settings -----
+let delimitMate_expand_cr = 1
+augroup mydelimitMate
+  au!
+  au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
+  au FileType tex let b:delimitMate_quotes = ""
+  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
+  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+augroup END
 
-" Automatically save and load folds
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview"
+" emmet
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
+" w0rp/ale
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+
+" javascript
+let g:javascript_plugin_jsdoc = 1
+
