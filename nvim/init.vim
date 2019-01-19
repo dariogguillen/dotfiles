@@ -1,61 +1,61 @@
-set nocompatible
-filetype off
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""" Plugins"""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Specify a directory for plugins
-call plug#begin('~/.vim/plugged')
-" Plugins here
-" Make sure you use single quotes
+scriptencoding utf-8
+" .........................................................
+" # Plugins
+" .........................................................
+" Plugins folder
+call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'kaicataldo/material.vim'
-
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
 Plug 'vim-syntastic/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
-
 " git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-
-" ----- Other text editing features -----------------------------------
-Plug 'Raimondi/delimitMate'
-
-" javascript
-Plug 'pangloss/vim-javascript'
-
-" react
-Plug 'mxw/vim-jsx'
+"Javascript Plugins
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
-
 "emmet
 Plug 'mattn/emmet-vim'
-
-" Initialize plugin system
+" nerdtree
+Plug 'scrooloose/nerdtree'
+Plug 'xuyuanp/nerdtree-git-plugin'
+" identacion
+Plug 'Yggdroot/indentLine'
+" resaltado de sintaxis
+Plug 'sheerun/vim-polyglot'
+" comentarios
+Plug 'scrooloose/nerdcommenter'
+" auto pairs
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'ludovicchabant/vim-gutentags'
+" autocompletion
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" end plugins
+
+set nocompatible
 filetype plugin indent on
 
 " General
 set number	" Show line numbers
+set title
 set relativenumber
 set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++	" Wrap-broken line prefix
 set textwidth=100	" Line wrap (number of cols)
 set showmatch	" Highlight matching brace
+set spelllang=en,es
 set background=dark
-" for vim 8
- if (has("termguicolors"))
-  set termguicolors
- endif
- let g:airline_powerline_fonts = 1
-
+set termguicolors
+set colorcolumn=100  " Set & show limit column
+set scrolloff=3  " Display at least 3 lines around you cursor
+set diffopt+=vertical  " Always use vertical diffs
 colorscheme material
 let g:material_theme_style = 'dark' "| 'palenight' | 'default'
 let g:material_terminal_italics = 1
@@ -67,7 +67,7 @@ set incsearch	" Searches for strings incrementally
 set wrap
 set scrolloff=5
 set mouse=a
-
+set cursorline
 set autoindent	" Auto-indent new lines
 set expandtab	" Use spaces instead of tabs
 set shiftwidth=2	" Number of auto-indent spaces
@@ -89,6 +89,36 @@ set backspace=indent,eol,start	" Backspace behaviour
 " Open new splits to right and bottom
 set splitbelow
 set splitright
+" mappings """"""""""""""""""""""""""
+nnoremap <C-s> :w <CR>
+let g:mapleader = ' '  " Definir espacio como la tecla líder
+
+nnoremap <leader>s :w<CR>  " Guardar con <líder> + s
+
+nnoremap <leader>e :e $MYVIMRC<CR>  " Abrir el archivo init.vim con <líder> + e
+
+" Usar <líder> + y para copiar al portapapeles
+vnoremap <leader>y "+y
+nnoremap <leader>y "+y
+
+" Usar <líder> + d para cortar al portapapeles
+vnoremap <leader>d "+d
+nnoremap <leader>d "+d
+
+" Usar <líder> + p para pegar desde el portapapeles
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>P "+P
+
+" Moverse al buffer siguiente con <líder> + l
+nnoremap <leader>l :bnext<CR>
+
+" Moverse al buffer anterior con <líder> + j
+nnoremap <leader>j :bprevious<CR>
+
+" Cerrar el buffer actual con <líder> + q
+nnoremap <leader>q :bdelete<CR>
 
 " Navegación entre ventanas
 nnoremap <C-h> <C-w>h
@@ -100,11 +130,16 @@ nnoremap <C-l> <C-w>l
 let g:airline_theme='minimalist'
 let g:powerline_pycmd="py3"
 
+let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
+let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
+
+" Cargar fuente Powerline y símbolos (ver nota)
+let g:airline_powerline_fonts = 1
+
+set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)
+
 " Show PASTE if in paste mode
 let g:airline_detect_paste=1
-
- " Show airline for tabs too
-let g:airline#extensions#tabline#enabled = 1
 
 " We need this for plugins like Syntastic and vim-gitgutter which put symbols
 " in the sign column.
@@ -143,11 +178,25 @@ let g:user_emmet_settings = {
 " w0rp/ale
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '.'
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_lint_on_enter = 1 " Less distracting when opening a new file
 let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_text_changed = 1
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+" Mostrar mejor mensajes de error
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " javascript
 let g:javascript_plugin_jsdoc = 1
+
+" nerdtree
+let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
+
+" Abrir/cerrar NERDTree con F2
+map <C-b> :NERDTreeToggle<CR>
+
+" No mostrar en ciertos tipos de buffers y archivos
+let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
+let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
 

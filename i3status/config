@@ -32,7 +32,7 @@ volume master {
 }
 
 battery all {
-        format = "%status %percentage %remaining"
+        format = "%percentage %remaining"
         status_bat = ":"
         status_chr = ":"
         status_full = ":"
