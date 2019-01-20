@@ -6,6 +6,10 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'kaicataldo/material.vim'
+Plug 'dikiaap/minimalist'
+Plug 'tyrannicaltoucan/vim-quantum' 
+" colors
+Plug 'lilydjwg/colorizer'
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -18,9 +22,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'w0rp/ale'
+Plug 'prettier/vim-prettier'
 Plug 'skywind3000/asyncrun.vim'
 "emmet
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim' 
 " nerdtree
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
@@ -57,6 +62,9 @@ set colorcolumn=100  " Set & show limit column
 set scrolloff=3  " Display at least 3 lines around you cursor
 set diffopt+=vertical  " Always use vertical diffs
 colorscheme material
+""colorscheme minimalist
+""colorscheme quantum
+""let g:quantum_italics=1
 let g:material_theme_style = 'dark' "| 'palenight' | 'default'
 let g:material_terminal_italics = 1
 
@@ -89,6 +97,19 @@ set backspace=indent,eol,start	" Backspace behaviour
 " Open new splits to right and bottom
 set splitbelow
 set splitright
+
+"" navergar entre paneles
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+""avoid vim backups
+set nowritebackup
+set noswapfile
+set nobackup
+
+
 " mappings """"""""""""""""""""""""""
 nnoremap <C-s> :w <CR>
 let g:mapleader = ' '  " Definir espacio como la tecla líder
@@ -96,6 +117,7 @@ let g:mapleader = ' '  " Definir espacio como la tecla líder
 nnoremap <leader>s :w<CR>  " Guardar con <líder> + s
 
 nnoremap <leader>e :e $MYVIMRC<CR>  " Abrir el archivo init.vim con <líder> + e
+nnoremap <CR> :noh<CR><CR> " tourn searh highlighting off
 
 " Usar <líder> + y para copiar al portapapeles
 vnoremap <leader>y "+y
@@ -145,7 +167,12 @@ let g:airline_detect_paste=1
 " in the sign column.
 hi clear SignColumn
 
-" ----- scrooloose/syntastic settings -----
+
+" prettier
+let g:prettier#autoformat = 1
+autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
+
+" ""'' ----- scrooloose/syntastic settings -----
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
 augroup mySyntastic
@@ -176,11 +203,15 @@ let g:user_emmet_settings = {
   \}
 
 " w0rp/ale
+nmap <leader>d <Plug>(ale_fix)
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 1 " Less distracting when opening a new file
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 1
+let g:ale_fixer = {
+  \ 'javascript': ['eslint']
+  \ }
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 " Mostrar mejor mensajes de error
 let g:ale_echo_msg_error_str = 'E'
@@ -192,6 +223,7 @@ let g:javascript_plugin_jsdoc = 1
 
 " nerdtree
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
+let NERDTreeShowHidden=1
 
 " Abrir/cerrar NERDTree con F2
 map <C-b> :NERDTreeToggle<CR>
@@ -200,3 +232,6 @@ map <C-b> :NERDTreeToggle<CR>
 let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
 
+"ctrlp"
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "exclude folders in gitIgnore
+let g:ctrlp_show_hidden = 1 
