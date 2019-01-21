@@ -12,8 +12,8 @@ cd ~/.nvm
 git checkout v0.33.11
 
 # install spaceship for zsh
-git clone https://github.com/denysdovhan/spaceship-prompt.git "~/.oh-my-zsh/custom/themes/spaceship-prompt"
-ln -sf "~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme" "~/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+git clone https://github.com/denysdovhan/spaceship-prompt.git ~/.oh-my-zsh/custom/themes/spaceship-prompt
+ln -sf ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
 
 # zsh plugins
 git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/custom/plugins/zsh-completions
@@ -31,8 +31,10 @@ ln -sf $folder/dunst ~/.config/
 ln -sf $folder/ranger ~/.config/
 ln -sf $folder/i3status ~/.config/
 
-# vimrc
-ln -sf $folder/vimrc ~/.vimrc
+# neovim
+ln -sf $folder/nvim ~/.config/
 
 # vim plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
