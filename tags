@@ -5,29 +5,33 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	0.0.0	/45968eff/
+$NVIM_TUI_ENABLE_CURSOR_SHAPE	nvim/init.vim	/^let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1$/;"	v
 <C-H>	nvim/init.vim	/^nnoremap <C-H> <C-W><C-H>$/;"	m
 <C-J>	nvim/init.vim	/^nnoremap <C-J> <C-W><C-J>$/;"	m
 <C-K>	nvim/init.vim	/^nnoremap <C-K> <C-W><C-K>$/;"	m
 <C-L>	nvim/init.vim	/^nnoremap <C-L> <C-W><C-L>$/;"	m
-<C-b>	nvim/init.vim	/^map <C-b> :NERDTreeToggle<CR>$/;"	m
 <C-h>	nvim/init.vim	/^nnoremap <C-h> <C-w>h$/;"	m
 <C-j>	nvim/init.vim	/^nnoremap <C-j> <C-w>j$/;"	m
 <C-k>	nvim/init.vim	/^nnoremap <C-k> <C-w>k$/;"	m
 <C-l>	nvim/init.vim	/^nnoremap <C-l> <C-w>l$/;"	m
-<C-s>	nvim/init.vim	/^nnoremap <C-s> :w <CR>$/;"	m
+<C-s>	nvim/init.vim	/^nnoremap <C-s> :w<CR>$/;"	m
 <CR>	nvim/init.vim	/^nnoremap <CR> :noh<CR><CR> " tourn searh highlighting off$/;"	m
+<Down>	nvim/init.vim	/^nnoremap <Down> :resize +1<CR>$/;"	m
+<Left>	nvim/init.vim	/^nnoremap <Left> :vertical resize -1<CR>$/;"	m
+<Right>	nvim/init.vim	/^nnoremap <Right> :vertical resize +1<CR>$/;"	m
+<S-Tab>	nvim/init.vim	/^nnoremap <S-Tab> :bprevious<CR>$/;"	m
+<Tab>	nvim/init.vim	/^nnoremap <Tab> :bnext<CR>$/;"	m
+<Up>	nvim/init.vim	/^nnoremap <Up> :resize -1<CR>$/;"	m
+<leader><leader>	nvim/init.vim	/^nmap <leader><leader> <c-^>$/;"	m
 <leader>P	nvim/init.vim	/^nnoremap <leader>P "+P$/;"	m
 <leader>P	nvim/init.vim	/^vnoremap <leader>P "+P$/;"	m
 <leader>d	nvim/init.vim	/^nmap <leader>d <Plug>(ale_fix)$/;"	m
 <leader>d	nvim/init.vim	/^nnoremap <leader>d "+d$/;"	m
 <leader>d	nvim/init.vim	/^vnoremap <leader>d "+d$/;"	m
 <leader>e	nvim/init.vim	/^nnoremap <leader>e :e $MYVIMRC<CR>  " Abrir el archivo init.vim con <líder> + e$/;"	m
-<leader>j	nvim/init.vim	/^nnoremap <leader>j :bprevious<CR>$/;"	m
-<leader>l	nvim/init.vim	/^nnoremap <leader>l :bnext<CR>$/;"	m
 <leader>p	nvim/init.vim	/^nnoremap <leader>p "+p$/;"	m
 <leader>p	nvim/init.vim	/^vnoremap <leader>p "+p$/;"	m
 <leader>q	nvim/init.vim	/^nnoremap <leader>q :bdelete<CR>$/;"	m
-<leader>s	nvim/init.vim	/^nnoremap <leader>s :w<CR>  " Guardar con <líder> + s$/;"	m
 <leader>y	nvim/init.vim	/^nnoremap <leader>y "+y$/;"	m
 <leader>y	nvim/init.vim	/^vnoremap <leader>y "+y$/;"	m
 AS_YOU_TYPE	ranger/commands_full.py	/^    AS_YOU_TYPE   = 't'$/;"	v	class:scout
@@ -37,7 +41,6 @@ IGNORE_CASE	ranger/commands_full.py	/^    IGNORE_CASE   = 'i'$/;"	v	class:scout
 INVERT	ranger/commands_full.py	/^    INVERT        = 'v'$/;"	v	class:scout
 KEEP_OPEN	ranger/commands_full.py	/^    KEEP_OPEN     = 'k'$/;"	v	class:scout
 MARK	ranger/commands_full.py	/^    MARK          = 'm'$/;"	v	class:scout
-NERDTreeShowHidden	nvim/init.vim	/^let NERDTreeShowHidden=1$/;"	v
 OPEN_ON_ENTER	ranger/commands_full.py	/^    OPEN_ON_ENTER = 'e'$/;"	v	class:scout
 PATH_RE_DQUOTED	ranger/commands_full.py	/^    PATH_RE_DQUOTED = re.compile(r'^setlocal\\s+path="(.*?)"')$/;"	v	class:setlocal
 PATH_RE_SQUOTED	ranger/commands_full.py	/^    PATH_RE_SQUOTED = re.compile(r"^setlocal\\s+path='(.*?)'")$/;"	v	class:setlocal
@@ -225,6 +228,7 @@ allow_abbrev	ranger/commands_full.py	/^    allow_abbrev = False$/;"	v	class:dele
 allow_abbrev	ranger/commands_full.py	/^    allow_abbrev = False$/;"	v	class:quit_bang
 allow_abbrev	ranger/commands_full.py	/^    allow_abbrev = False$/;"	v	class:quitall_bang
 backward	ranger/rc.conf	/^cmap <A-d>        eval fm.ui.console.delete_word(backward=False)$/;"	k
+bind	tmux.conf	/^bind = split-window -h$/;"	k
 bulkrename	ranger/commands_full.py	/^class bulkrename(Command):$/;"	c
 callback	ranger/commands_full.py	/^        def callback(answer):$/;"	f	member:help_.execute	file:
 cancel	ranger/commands_full.py	/^    def cancel(self):$/;"	m	class:scout
@@ -257,7 +261,6 @@ cunmap	ranger/commands_full.py	/^class cunmap(unmap):$/;"	c
 default_linemode	ranger/commands_full.py	/^class default_linemode(Command):$/;"	c
 default_value_completer	ranger/commands_full.py	/^            def default_value_completer():$/;"	f	member:set_.tab	file:
 delete	ranger/commands_full.py	/^class delete(Command):$/;"	c
-delimitMate_expand_cr	nvim/init.vim	/^let delimitMate_expand_cr = 1$/;"	v
 dirarg	ranger/rc.conf	/^map dG  eval fm.cut(dirarg=dict(to=-1), narg=quantifier)$/;"	k
 dirarg	ranger/rc.conf	/^map dgg eval fm.cut(dirarg=dict(to=0), narg=quantifier)$/;"	k
 dirarg	ranger/rc.conf	/^map dj  eval fm.cut(dirarg=dict(down=1), narg=quantifier)$/;"	k
@@ -333,12 +336,12 @@ ext sh	ranger/rifle.conf	/^ext sh  = sh -- "$1"$/;"	k
 filter_inode_type	ranger/commands_full.py	/^class filter_inode_type(Command):$/;"	c
 filter_stack	ranger/commands_full.py	/^class filter_stack(Command):$/;"	c
 flat	ranger/commands_full.py	/^class flat(Command):$/;"	c
-g:NERDTreeChDirMode	nvim/init.vim	/^let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual$/;"	v
 g:airline#extensions#hunks#non_zero_only	nvim/init.vim	/^let g:airline#extensions#hunks#non_zero_only = 1$/;"	v
 g:airline#extensions#tabline#enabled	nvim/init.vim	/^let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)$/;"	v
 g:airline#extensions#tabline#fnamemod	nvim/init.vim	/^let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo$/;"	v
 g:airline_detect_paste	nvim/init.vim	/^let g:airline_detect_paste=1$/;"	v
 g:airline_powerline_fonts	nvim/init.vim	/^let g:airline_powerline_fonts = 1$/;"	v
+g:airline_powerline_fonts	nvim/init.vim	/^let g:airline_powerline_fonts=1$/;"	v
 g:airline_theme	nvim/init.vim	/^let g:airline_theme='minimalist'$/;"	v
 g:ale_echo_msg_error_str	nvim/init.vim	/^let g:ale_echo_msg_error_str = 'E'$/;"	v
 g:ale_echo_msg_format	nvim/init.vim	/^let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'$/;"	v
@@ -351,12 +354,10 @@ g:ale_sign_error	nvim/init.vim	/^let g:ale_sign_error = '●' " Less aggressive 
 g:ale_sign_warning	nvim/init.vim	/^let g:ale_sign_warning = '.'$/;"	v
 g:ctrlp_show_hidden	nvim/init.vim	/^let g:ctrlp_show_hidden = 1 $/;"	v
 g:ctrlp_user_command	nvim/init.vim	/^let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "exclude fol/;"	v
-g:indentLine_bufNameExclude	nvim/init.vim	/^let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']$/;"	v
+g:identLine_char	nvim/init.vim	/^let g:identLine_char="⟩"$/;"	v
+g:identLine_enable	nvim/init.vim	/^let g:identLine_enable=1$/;"	v
 g:indentLine_fileTypeExclude	nvim/init.vim	/^let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']$/;"	v
 g:javascript_plugin_jsdoc	nvim/init.vim	/^let g:javascript_plugin_jsdoc = 1$/;"	v
-g:mapleader	nvim/init.vim	/^let g:mapleader = ' '  " Definir espacio como la tecla líder$/;"	v
-g:material_terminal_italics	nvim/init.vim	/^let g:material_terminal_italics = 1$/;"	v
-g:material_theme_style	nvim/init.vim	/^let g:material_theme_style = 'dark' "| 'palenight' | 'default'$/;"	v
 g:powerline_pycmd	nvim/init.vim	/^let g:powerline_pycmd="py3"$/;"	v
 g:prettier#autoformat	nvim/init.vim	/^let g:prettier#autoformat = 1$/;"	v
 g:syntastic_error_symbol	nvim/init.vim	/^let g:syntastic_error_symbol = '✘'$/;"	v
@@ -419,13 +420,13 @@ map ya copy mode	ranger/rc.conf	/^map ya copy mode=add$/;"	k
 map yr copy mode	ranger/rc.conf	/^map yr copy mode=remove$/;"	k
 map yt copy mode	ranger/rc.conf	/^map yt copy mode=toggle$/;"	k
 map_	ranger/commands_full.py	/^class map_(Command):$/;"	c
+mapleader	nvim/init.vim	/^let mapleader = "\\<SPACE>"  " Definir espacio como la tecla líder$/;"	v
 mark_tag	ranger/commands_full.py	/^class mark_tag(Command):$/;"	c
 meta	ranger/commands_full.py	/^class meta(prompt_metadata):$/;"	c
 mkdir	ranger/commands_full.py	/^class mkdir(Command):$/;"	c
 modes	ranger/commands_full.py	/^    modes = {$/;"	v	class:yank
 mySyntastic	nvim/init.vim	/^augroup mySyntastic$/;"	a
 my_edit	ranger/commands.py	/^class my_edit(Command):$/;"	c
-mydelimitMate	nvim/init.vim	/^augroup mydelimitMate$/;"	a
 name	ranger/commands_full.py	/^    name = 'eval'$/;"	v	class:eval_
 name	ranger/commands_full.py	/^    name = 'help'$/;"	v	class:help_
 name	ranger/commands_full.py	/^    name = 'map'$/;"	v	class:map_

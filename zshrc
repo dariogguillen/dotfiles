@@ -100,42 +100,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias up="sudo pacman -Syyu"
-alias in="sudo pacman -S"
-
-alias mongostart="sudo systemctl start mongodb"
-alias mongostop="sudo systemctl stop mongodb"
-alias mongoin="mongo admin -u dariogg -p"
-alias mongoatlas="mongo "mongodb+srv://m001-sandbox-9qsam.mongodb.net/test" --username dariogguillen"
-
-alias mysqlstart="sudo systemctl start mysqld"
-alias mysqlstop="sudo systemctl stop mysqld"
-alias mysqlin="mysql -u root -p"
-
-alias ni='npm install'
-alias nu='npm uninstall'
-alias nid='npm install --save-dev'
-alias nig='npm install --global'
-alias nug='npm uninstall --global'
-alias nt='npm test'
-alias nit='npm install && npm test'
-alias nk='npm link'
-alias nr='npm run'
-alias ns='npm start'
-alias nf='npm cache clean && rm -rf node_modules && npm install'
-alias nlg='npm list --global --depth=0'
-
-alias yi='yarn init -y'
-alias y='yarn'
-alias ya='yarn add'
-alias yag='yarn global add'
-alias yad='yarn add --dev'
-alias yu='yarn remove'
-alias yug='yarn global remove'
-alias yup='yarn upgrade'
-alias yr='yarn run'
-alias ys='yarn start'
-
 # spaceship configuration
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_HOST_SHOW=always
@@ -147,3 +111,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+if [ "$TMUX" = "" ]; then tmux; fi
+

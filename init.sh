@@ -21,8 +21,14 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/cust
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.oh-my-zsh/custom/plugins/zsh-history-substring-search
 
+# tmux plugins manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 #bumblebee status bar for i3wm
 git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git ~/.config/bumblebee-status
+
+# eliminar folder para evitar errores
+rm -rf ~/.config/i3 ~/.config/termite ~/.config/dunst ~/.ranger ~/.config/i3status ~/.config/nvim
 
 # config files
 ln -sf $folder/i3 ~/.config/
