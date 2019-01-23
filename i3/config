@@ -5,7 +5,8 @@
 set $mod Mod4
 set $mod1 Mod1
 set $monitor eDP1 # laptop's monitor
-set $external HDMI2 # external monitor
+set $external HDMI1 # external monitor
+set $external1 HDMI2 # external monitor
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -42,6 +43,9 @@ bindsym $mod1+Tab exec rofi -show window -config $rofi_theme
 exec --no-startup-id pulseaudio
 exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
+
+# change keyboard layout
+exec --no-startup-id setxkbmap -layout us -variant altgr-intl -option nodeadkeys
 
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
@@ -116,7 +120,9 @@ bindsym $mod+Ctrl+Left workspace prev
 
 # add HDMI monitor
 exec --no-startup-id xrandr --output $external --right-of $monitor
+exec --no-startup-id xrandr --output $external1 --right-of $monitor
 bindsym $mod+c exec --no-startup-id xrandr --output $external --auto --right-of $monitor
+bindsym $mod1+c exec --no-startup-id xrandr --output $external1 --auto --right-of $monitor
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
@@ -155,8 +161,8 @@ workspace $ws3 output $monitor
 workspace $ws4 output $monitor
 workspace $ws5 output $monitor
 workspace $ws6 output $monitor
-workspace $ws7 output $external
-workspace $ws8 output $external
+workspace $ws7 output $external $external1
+workspace $ws8 output $external $external1
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -266,7 +272,7 @@ bar {
 	position top 
 	i3bar_command i3bar
 	# status_command i3status
-        status_command ~/.config/bumblebee-status/bumblebee-status -m arch-update spotify memory brightness battery time date -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal" -t iceberg
+        status_command ~/.config/bumblebee-status/bumblebee-status -m arch-update spotify memory brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal" -t iceberg
 	tray_output eDP1
 
 	colors {
