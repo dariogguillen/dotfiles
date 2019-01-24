@@ -44,7 +44,7 @@ Plug 'scrooloose/nerdcommenter'
 " auto pairs
 ""Plug 'jiangmiao/auto-pairs'
 ""Plug 'tpope/vim-surround'
-""Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 " autocompletion
 ""Plug 'Valloric/YouCompleteMe'
 call plug#end()
@@ -224,3 +224,5 @@ map ~ :VimFilerCurrentDir -explorer -find<CR>
 " deoplete
 let g:deoplete#enable_at_startup=1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"gutentags file
+let g:gutentags_cache_dir="/media/data/.tags"

@@ -195,6 +195,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Slack"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 for_window [class="Arandr"] floating enable
+for_window [class="Klavaro"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
