@@ -192,9 +192,9 @@ for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="Slack"] floating enable
 for_window [class="TelegramDesktop"] floating enable
+for_window [class="Arandr"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -273,7 +273,8 @@ bar {
 	i3bar_command i3bar
 	# status_command i3status
         status_command ~/.config/bumblebee-status/bumblebee-status -m arch-update spotify memory brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal" -t iceberg
-	tray_output eDP1
+	#tray_output eDP1
+        tray_output eDP-1
 
 	colors {
 		background $bg-color
