@@ -102,20 +102,18 @@ set backspace=indent,eol,start	" Backspace behaviour
 set splitbelow
 set splitright
 
-"" navergar entre paneles
-"nnoremap <C-J> <C-W><C-J>
-"nnoremap <C-K> <C-W><C-K>
-"nnoremap <C-L> <C-W><C-L>
-"nnoremap <C-H> <C-W><C-H>
-
 ""avoid vim backups
 set nowritebackup
 set noswapfile
 set nobackup
 
+"python
+let g:python_host_prog="/usr/bin/python2"
+let g:python3_host_prog="/usr/bin/python3"
+
 " mappings """"""""""""""""""""""""""
 nnoremap <C-s> :w<CR>
-let mapleader = "\<SPACE>"  " Definir espacio como la tecla líder
+let mapleader="\<SPACE>"  " Definir espacio como la tecla líder
 
 nnoremap <leader>e :e $MYVIMRC<CR>  " Abrir el archivo init.vim con <líder> + e
 nnoremap <CR> :noh<CR><CR> " tourn searh highlighting off
