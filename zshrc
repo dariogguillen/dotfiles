@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
   export ZSH=/home/dariogg/.oh-my-zsh
 
@@ -111,6 +110,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-
-if [ "$TMUX" = "" ]; then tmux; fi
 
