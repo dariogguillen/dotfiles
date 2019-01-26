@@ -8,6 +8,7 @@ Plug 'Shougo/unite.vim'
 Plug 'kaicataldo/material.vim'
 Plug 'dikiaap/minimalist'
 Plug 'tyrannicaltoucan/vim-quantum' 
+Plug 'mhartington/oceanic-next'
 " colors
 Plug 'lilydjwg/colorizer'
 " airline
@@ -41,6 +42,8 @@ Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'justinmk/vim-sneak'
 " Nerd commenter
 Plug 'scrooloose/nerdcommenter'
+"navigation between nvim and tmux
+Plug 'christoomey/vim-tmux-navigator'
 " auto pairs
 ""Plug 'jiangmiao/auto-pairs'
 ""Plug 'tpope/vim-surround'
@@ -70,6 +73,7 @@ set diffopt+=vertical  " Always use vertical diffs
 ""colorscheme material
 ""let g:material_theme_style = 'dark' "| 'palenight' | 'default'
 colorscheme minimalist
+colorscheme OceanicNext
 ""colorscheme quantum
 set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
@@ -116,6 +120,12 @@ let mapleader = "\<SPACE>"  " Definir espacio como la tecla líder
 nnoremap <leader>e :e $MYVIMRC<CR>  " Abrir el archivo init.vim con <líder> + e
 nnoremap <CR> :noh<CR><CR> " tourn searh highlighting off
 
+"change between panes
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
 nmap <leader><leader> <c-^>
 " Usar <líder> + y para copiar al portapapeles
 vnoremap <leader>y "+y
@@ -152,7 +162,7 @@ nnoremap <Right> :vertical resize +1<CR>
 nnoremap <Up> :resize -1<CR>
 nnoremap <Down> :resize +1<CR>
 """ Aireline theme
-let g:airline_theme='minimalist'
+let g:airline_theme='oceanicnext'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
 
