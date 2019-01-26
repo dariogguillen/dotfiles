@@ -29,26 +29,33 @@ Plug 'mxw/vim-jsx'
 Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'skywind3000/asyncrun.vim'
+"html
+Plug 'valloric/matchtagalways'
+Plug 'alvan/vim-closetag'
+""
 "emmet
 Plug 'mattn/emmet-vim' 
 " identacion
 Plug 'Yggdroot/indentLine'
 " resaltado de sintaxis
 Plug 'sheerun/vim-polyglot'
-" vim filer - file tree
-Plug 'Shougo/vimfiler.vim', {'on': 'VimFiler'}
 " autocomplete
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 " vim-sneak
 Plug 'justinmk/vim-sneak'
-" Nerd commenter
+" Nerd 
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 "navigation between nvim and tmux
 Plug 'christoomey/vim-tmux-navigator'
 " auto pairs
-""Plug 'jiangmiao/auto-pairs'
-""Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
+" icons
+Plug 'ryanoasis/vim-devicons'
 " autocompletion
 ""Plug 'Valloric/YouCompleteMe'
 call plug#end()
@@ -183,7 +190,7 @@ hi clear SignColumn
 let g:prettier#autoformat = 1
 autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 
-" ""'' ----- scrooloose/syntastic settings -----
+" "'' ----- scrooloose/syntastic settings -----
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
 augroup mySyntastic
@@ -214,26 +221,33 @@ autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
 " javascript
 let g:javascript_plugin_jsdoc = 1
-
 " No mostrar en ciertos tipos de buffers y archivos
 let g:identLine_enable=1
 let g:identLine_char="⟩"
 let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
-
 "ctrlp"
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "exclude folders in gitIgnore
 let g:ctrlp_show_hidden = 1 
 " grepper
 nnoremap <leader>fp :Grepper<Space>-query<space> " buscar en proyecto
 nnoremap <leader>fb :Grepper<Space>-buffers<Space>-query<Space>-<Space> " buscar en buffer actual
-" vim filer
-map ` :VimFiler -explorer<CR>
-map ~ :VimFilerCurrentDir -explorer -find<CR>
 " deoplete
 let g:deoplete#enable_at_startup=1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "gutentags file
 let g:gutentags_cache_dir="/media/data/.tags"
+" NERDtree
+autocmd vimenter * NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+map <C-b> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+"autoformat
+autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+

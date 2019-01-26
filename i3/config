@@ -88,6 +88,12 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# move floating windows
+bindsym Mod1+Shift+h move left
+bindsym Mod1+Shift+j move down
+bindsym Mod1+Shift+k move up
+bindsym Mod1+Shift+l move right
+
 # split orientation
 #bindsym $mod+h split h;exec notify-send 'tile horizontally'
 #bindsym $mod+v split v;exec notify-send 'tile vertically'
@@ -196,6 +202,7 @@ for_window [class="Slack"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Klavaro"] floating enable
+for_window [class="Spotify"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
