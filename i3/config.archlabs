@@ -196,6 +196,7 @@ for_window [class="Slack"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Klavaro"] floating enable
+for_window [class="Blueberry.py"] floating enable
 
 ######################################################
 ###############      Border & Gaps     ###############
@@ -253,7 +254,7 @@ bar {
     position top 
     i3bar_command i3bar
     # status_command i3status
-    status_command ~/.config/bumblebee-status/bumblebee-status -m arch-update spotify memory bluetooth pasink brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal" -t iceberg
+    status_command ~/.config/bumblebee-status/bumblebee-status -m arch-update spotify memory bluetooth amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal" bluetooth.left-click="blueberry" amixer.left-click="pavucontrol" -t iceberg
     tray_output primary
 
     colors {
