@@ -291,7 +291,7 @@ bar {
     position top 
     i3bar_command i3bar
     # status_command i3status
-    status_command ~/.config/bumblebee-status/bumblebee-status -m arch-update spotify memory bluetooth amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
+    status_command ~/.config/bumblebee-status/bumblebee-status -m arch-update spotify memory amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
     tray_output primary
 
     colors {
