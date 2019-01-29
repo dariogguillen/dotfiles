@@ -32,7 +32,8 @@ bindsym $Mod+Return exec termite
 #####################################################
 
 # run with reload
-exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id blueman-applet
 
 # run once
 exec --no-startup-id xfsettingsd
@@ -165,8 +166,8 @@ bindsym Mod1+l resize grow width  10 px or 1 ppt
 bindsym Mod1+Right resize grow width  10 px or 1 ppt
 
 # switch to workspace with urgent window
-for_window [urgent="latest"] focus
-focus_on_window_activation   focus
+#for_window [urgent="latest"] focus
+#focus_on_window_activation   focus
 
 # container layout
 bindsym $Mod+q split toggle
@@ -195,8 +196,6 @@ for_window [class="Slack"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Klavaro"] floating enable
-for_window [class="Blueberry.py"] floating enable
-for_window [class="Spotify"] floating enable
 
 ######################################################
 ###############      Border & Gaps     ###############
@@ -292,7 +291,7 @@ bar {
     position top 
     i3bar_command i3bar
     # status_command i3status
-    status_command ~/.config/bumblebee-status/bumblebee-status -m arch-update spotify memory bluetooth amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal" bluetooth.left-click="blueberry" amixer.left-click="pavucontrol" -t iceberg
+    status_command ~/.config/bumblebee-status/bumblebee-status -m arch-update spotify memory bluetooth amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
     tray_output primary
 
     colors {

@@ -29,7 +29,6 @@ Plug 'mxw/vim-jsx'
 Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'skywind3000/asyncrun.vim'
 "html
 Plug 'valloric/matchtagalways'
 Plug 'alvan/vim-closetag'
@@ -56,8 +55,6 @@ Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
 " icons
 Plug 'ryanoasis/vim-devicons'
-" autocompletion
-""Plug 'Valloric/YouCompleteMe'
 call plug#end()
 " end plugins
 
@@ -239,15 +236,17 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "gutentags file
 let g:gutentags_cache_dir="/media/data/.tags"
 " NERDtree
-autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 map <C-b> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 "autoformat
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
