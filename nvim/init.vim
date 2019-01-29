@@ -32,7 +32,6 @@ Plug 'skywind3000/asyncrun.vim'
 "html
 Plug 'valloric/matchtagalways'
 Plug 'alvan/vim-closetag'
-""
 "emmet
 Plug 'mattn/emmet-vim' 
 " identacion
@@ -247,6 +246,18 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeQuitOnOpen = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 "autoformat
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
