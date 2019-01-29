@@ -196,6 +196,7 @@ for_window [class="Slack"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Klavaro"] floating enable
+for_window [class="Blueman-manager"] floating enable
 
 ######################################################
 ###############      Border & Gaps     ###############
