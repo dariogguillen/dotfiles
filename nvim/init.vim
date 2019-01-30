@@ -74,13 +74,13 @@ set colorcolumn=100  " Set & show limit column
 set scrolloff=3  " Display at least 3 lines around you cursor
 set sidescrolloff=5
 set diffopt+=vertical  " Always use vertical diffs
-"colorscheme material
-"let g:material_theme_style = 'dark' "| 'palenight' | 'default'
+colorscheme material
+let g:material_theme_style = 'dark' "| 'palenight' | 'defult'
 "colorscheme OceanicNext
 "colorscheme quantum
 "let ayucolor="mirage"
-let ayucolor="dark"
-colorscheme ayu
+"let ayucolor="dark"
+"colorscheme ayu
 set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
@@ -166,7 +166,6 @@ nnoremap <Right> :vertical resize +1<CR>
 nnoremap <Up> :resize -1<CR>
 nnoremap <Down> :resize +1<CR>
 """ Aireline theme
-"let g:airline_theme='oceanicnext'
 let g:airline_theme='hybrid'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1

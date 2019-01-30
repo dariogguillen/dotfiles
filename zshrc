@@ -2,13 +2,16 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
   export ZSH=/home/dariogg/.oh-my-zsh
-# for tmux: export 256color
  export TERM=xterm-256color
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="spaceship"
+ZSH_THEME="agnoster"
+ZSH_THEME="af-magic"
+ZSH_THEME="bullet-train"
+ZSH_THEME="sorin"
+#ZSH_THEME="spaceship"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
