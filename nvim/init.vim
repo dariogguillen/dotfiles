@@ -17,7 +17,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
 ""CtrlP
-Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
+Plug 'ctrlpvim/ctrlp.vim'
 "vim-grepper
 Plug 'mhinz/vim-grepper'
 " git
@@ -28,7 +28,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier'
-Plug 'skywind3000/asyncrun.vim'
 "html
 Plug 'valloric/matchtagalways'
 Plug 'alvan/vim-closetag'
@@ -54,6 +53,8 @@ Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
 " icons
 Plug 'ryanoasis/vim-devicons'
+"" import js
+Plug 'Galooshi/vim-import-js'
 call plug#end()
 " end plugins
 
@@ -211,7 +212,6 @@ let g:ale_lint_on_text_changed = 1
 let g:ale_fixer = {
   \ 'javascript': ['eslint']
   \ }
-autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 " Mostrar mejor mensajes de error
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -257,6 +257,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
-"autoformat
-autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
+"" import js
+nnoremap <leader>j :ImportJSWord<CR>
+nnoremap <leader>i :ImportJSFix<CR>
+nnoremap <leader>g :ImportJSGoto<CR>
