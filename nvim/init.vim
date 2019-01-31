@@ -76,7 +76,7 @@ set scrolloff=3  " Display at least 3 lines around you cursor
 set sidescrolloff=5
 set diffopt+=vertical  " Always use vertical diffs
 colorscheme material
-let g:material_theme_style = 'dark' "| 'palenight' | 'defult'
+"let g:material_theme_style = 'dark' "| 'palenight' | 'defult'
 "colorscheme OceanicNext
 "colorscheme quantum
 "let ayucolor="mirage"
@@ -89,7 +89,6 @@ set incsearch	" Searches for strings incrementally
 set wrap
 set scrolloff=5
 set mouse=r
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set cursorline
 set autoindent	" Auto-indent new lines
 set expandtab	" Use spaces instead of tabs
@@ -242,23 +241,12 @@ map <C-b> :NERDTreeToggle<CR>
 map <C-n> :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeQuitOnOpen = 1
+"let NERDTreeQuitOnOpen = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
 
 "" import js
 nnoremap <leader>j :ImportJSWord<CR>
 nnoremap <leader>i :ImportJSFix<CR>
 nnoremap <leader>g :ImportJSGoto<CR>
+
