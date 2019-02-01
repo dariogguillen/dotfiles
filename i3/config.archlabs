@@ -21,6 +21,7 @@ set $WS7 "7: "
 set $WS8 "8: "
 
 # monitors
+set $Display primary
 set $Mon1 HDMI1
 set $Mon2 HDMI2
 
@@ -86,6 +87,17 @@ bindsym $Mod+5 workspace $WS5
 bindsym $Mod+6 workspace $WS6
 bindsym $Mod+7 workspace $WS7
 bindsym $Mod+8 workspace $WS8
+
+#assing monitor
+workspace $WS1 output $Display
+workspace $WS2 output $Display
+workspace $WS3 output $Display
+workspace $WS4 output $Display
+workspace $WS5 output $Display
+workspace $WS6 output $Display
+workspace $WS7 output $Mon1
+workspace $WS8 output $Mon1
+
 
 # switch to next or previous workspace
 bindsym $Mod+Mod1+Left workspace prev
@@ -193,7 +205,6 @@ for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Slack"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Klavaro"] floating enable
@@ -293,8 +304,8 @@ bar {
     position top 
     i3bar_command i3bar
     # status_command i3status
-    status_command ~/.config/bumblebee-status/bumblebee-status -m arch-update spotify memory amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
-    tray_output primary
+    status_command ~/.config/bumblebee-status/bumblebee-status -m spotify memory amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
+    tray_output $Display
 
     colors {
         background $bg-color
