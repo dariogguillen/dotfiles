@@ -4,10 +4,7 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'kaicataldo/material.vim'
-Plug 'dikiaap/minimalist'
-Plug 'tyrannicaltoucan/vim-quantum' 
-Plug 'mhartington/oceanic-next'
-Plug 'ayu-theme/ayu-vim'
+Plug 'rafi/awesome-vim-colorschemes'
 " colors
 Plug 'lilydjwg/colorizer'
 " airline
@@ -99,13 +96,11 @@ set autowrite
 set colorcolumn=100  " Set & show limit column
 set scrolloff=3  " Display at least 3 lines around you cursor
 set diffopt+=vertical  " Always use vertical diffs
-colorscheme material
-let g:material_theme_style = 'dark' "| 'palenight' | 'defult'
-"colorscheme OceanicNext
-"colorscheme quantum
-"let ayucolor="mirage"
-"let ayucolor="dark"
-"colorscheme ayu
+"colorscheme material
+"let g:material_theme_style = 'dark' "| 'palenight' | 'defult'
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 
+colorscheme hybrid
 set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
@@ -171,14 +166,11 @@ nnoremap <Right> :vertical resize +1<CR>
 nnoremap <Up> :resize -1<CR>
 nnoremap <Down> :resize +1<CR>
 """ Aireline theme
-let g:airline_theme='hybrid'
+let g:airline_theme='minimalist'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
 " ----- airblade/vim-gitgutter settings -----
 " In vim-airline, only display "hunks" if the diff is non-zero
