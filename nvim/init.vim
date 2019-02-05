@@ -38,7 +38,6 @@ Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'sbdchd/neoformat', {'on': 'ToggleNeoformat'}
-Plug 'skywind3000/asyncrun.vim'
 "html
 Plug 'alvan/vim-closetag'
 Plug 'valloric/MatchTagAlways'
@@ -50,6 +49,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 " autocomplete
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+Plug 'carlitux/deoplete-ternjs'
 " Nerd 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -202,7 +203,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe = 'npm run lint --'
-" emmet
+" 
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
   \  'javascript.jsx' : {
@@ -233,8 +234,19 @@ let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 "ctrlp"
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "exclude folders in gitIgnore
 let g:ctrlp_show_hidden = 1 
-" deoplete
-let g:deoplete#enable_at_startup=1
+" deoplete tern
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#max_abbr_width = 0
+let g:deoplete#max_menu_width = 0
+let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+let g:tern_request_timeout = 1
+let g:tern_request_timeout = 6000
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "gutentags file
 let g:gutentags_cache_dir="/media/data/.tags"
@@ -284,8 +296,6 @@ let test#strategy = "vimux"
 let g:test#javascript#jest#file_pattern = '.*\.spec\.js'
 """"""" mhinz/vim-signify """""""
 let g:signify_vcs_list = [ 'git' ]
-
-autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 "" lastplace
 let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
 let g:lastplace_ignore_buftype = "quickfix,nofile,help"

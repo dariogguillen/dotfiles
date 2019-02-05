@@ -66,6 +66,7 @@ plugins=(
   git
   dotenv
   sudo
+  tmux
   zsh-autosuggestions
   zsh-completions
   zsh-history-substring-search
@@ -102,8 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
- alias tmux="tmux -2"
-
+alias tmux="tmux -2"
 # spaceship configuration
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_HOST_SHOW=always
@@ -118,3 +118,6 @@ PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ ! $TERM =~ screen ]]; then
+    exec tmux
+fi
