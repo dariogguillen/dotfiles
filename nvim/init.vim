@@ -73,8 +73,8 @@ Plug 'janko-m/vim-test'
 " For integrating tmux with vim (for janko-m/vim-test)
 Plug 'benmills/vimux'
 " Highlights new/mofified/deleted lines in the "gutter"
-Plug 'mhinz/vim-signify'
 Plug 'farmergreg/vim-lastplace'
+Plug 'junegunn/rainbow_parentheses.vim'
 call plug#end()
 " end plugins
 
@@ -83,12 +83,16 @@ set nocompatible
 filetype plugin indent on
 set number	" Show line numbers
 set relativenumber
+set foldmethod=syntax
+set foldcolumn=1
+let javaScrip_fold=1
+set foldlevelstart=99
 set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++	" Wrap-broken line prefix
 set textwidth=100	" Line wrap (number of cols)
 set showmatch	" Highlight matching brace
 set spelllang=en,es
-"set background=dark
+set background=dark
 set termguicolors
 set autowrite
 set colorcolumn=100  " Set & show limit column
@@ -133,7 +137,7 @@ set nobackup
 let g:python_host_prog="/usr/bin/python2"
 let g:python3_host_prog="/usr/bin/python3"
 " mappings """"""""""""""""""""""""""
-nnoremap <C-s> :w<CR>
+nnoremap <C-s> :wa<CR>
 let mapleader="\<SPACE>"  " Definir espacio como la tecla líder
 nnoremap <leader>e :e $MYVIMRC<CR>  " Abrir el archivo init.vim con <líder> + e
 nnoremap <CR> :noh<CR><CR> " tourn searh highlighting off
@@ -298,3 +302,5 @@ autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --
 "" lastplace
 let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
 let g:lastplace_ignore_buftype = "quickfix,nofile,help"
+"" rainbow
+let g:rainbow_active = 1
