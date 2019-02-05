@@ -277,21 +277,8 @@ let delimitMate_matchpairs = "(:),[:],{:}"
 """"""" Quramy/tsuquyomi """""""
 let g:tsuquyomi_javascript_support = 1
 let g:tsuquyomi_disable_quickfix = 1
-""""""" edkolev/tmuxline """""""
-" For tmuxline + vim-airline integration
-let g:airline#extensions#tmuxline#enabled = 1
-" Start tmuxline even without vim running
-let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
-" To make it nice
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'b'    : '#W',
-      \'c'    : '#H',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'x'    : '%a',
-      \'y'    : '#W %R',
-      \'z'    : '#H'}
+""tmuxline
+let g:tmuxline_preset = 'tmux'
 """"""" janko-m/vim-test """""""
 let test#strategy = "vimux"
 let g:test#javascript#jest#file_pattern = '.*\.spec\.js'
