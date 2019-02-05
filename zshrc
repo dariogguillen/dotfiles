@@ -116,3 +116,5 @@ export NVM_DIR="$HOME/.nvm"
 
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
