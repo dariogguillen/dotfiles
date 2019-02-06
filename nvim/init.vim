@@ -46,8 +46,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 " autocomplete
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-Plug 'carlitux/deoplete-ternjs'
 " Nerd 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -66,13 +64,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'Galooshi/vim-import-js'
 " Tmuxline
 Plug 'edkolev/tmuxline.vim'
-" For testing integration
-Plug 'janko-m/vim-test'
-" For integrating tmux with vim (for janko-m/vim-test)
-Plug 'benmills/vimux'
 " Highlights new/mofified/deleted lines in the "gutter"
 Plug 'farmergreg/vim-lastplace'
-Plug 'junegunn/rainbow_parentheses.vim'
 call plug#end()
 " end plugins
 
@@ -98,8 +91,8 @@ set scrolloff=3  " Display at least 3 lines around you cursor
 set diffopt+=vertical  " Always use vertical diffs
 "colorscheme material
 "let g:material_theme_style = 'dark' "| 'palenight' | 'defult'
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 
+"let g:hybrid_custom_term_colors = 1
+"let g:hybrid_reduced_contrast = 1 
 colorscheme hybrid
 set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
@@ -235,10 +228,6 @@ let g:deoplete#enable_refresh_always = 1
 let g:deoplete#max_abbr_width = 0
 let g:deoplete#max_menu_width = 0
 let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-let g:tern_request_timeout = 1
-let g:tern_request_timeout = 6000
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "gutentags file
 let g:gutentags_cache_dir="/media/data/.tags"
@@ -283,13 +272,8 @@ let g:tsuquyomi_javascript_support = 1
 let g:tsuquyomi_disable_quickfix = 1
 ""tmuxline
 let g:tmuxline_preset = 'tmux'
-""""""" janko-m/vim-test """""""
-let test#strategy = "vimux"
-let g:test#javascript#jest#file_pattern = '.*\.spec\.js'
 """"""" mhinz/vim-signify """""""
 let g:signify_vcs_list = [ 'git' ]
 "" lastplace
 let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
 let g:lastplace_ignore_buftype = "quickfix,nofile,help"
-"" rainbow
-let g:rainbow_active = 1
