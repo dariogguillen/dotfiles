@@ -45,7 +45,8 @@ Plug 'Yggdroot/indentLine'
 " resaltado de sintaxis
 Plug 'sheerun/vim-polyglot'
 " autocomplete
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+"Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 " Nerd 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -159,7 +160,8 @@ nnoremap <Right> :vertical resize +1<CR>
 nnoremap <Up> :resize -1<CR>
 nnoremap <Down> :resize +1<CR>
 """ Aireline theme
-let g:airline_theme='minimalist'
+"let g:airline_theme='minimalist'
+let g:airline_theme='hybrid'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
@@ -219,16 +221,22 @@ let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 "ctrlp"
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "exclude folders in gitIgnore
 let g:ctrlp_show_hidden = 1 
-" deoplete tern
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#max_abbr_width = 0
-let g:deoplete#max_menu_width = 0
-let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"deoplete tern
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_ignore_case = 1
+"let g:deoplete#enable_smart_case = 1
+"let g:deoplete#enable_camel_case = 1
+"let g:deoplete#enable_refresh_always = 1
+"let g:deoplete#max_abbr_width = 0
+"let g:deoplete#max_menu_width = 0
+"let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+"inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" Start autocompletion after 4 chars
+let g:ycm_min_num_of_chars_for_completion = 4
+let g:ycm_min_num_identifier_candidate_chars = 4
+let g:ycm_enable_diagnostic_highlighting = 0
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
 "gutentags file
 let g:gutentags_cache_dir="/media/data/.tags"
 " NERDtree
