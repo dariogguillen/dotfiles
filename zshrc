@@ -2,16 +2,11 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=/home/dariogg/.oh-my-zsh
-export TERM=screen-256color
- # Set name of the theme to load. Optionally, if you set this to "random"
+# Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
-ZSH_THEME="af-magic"
-ZSH_THEME="bullet-train"
-ZSH_THEME="sorin"
-#ZSH_THEME="spaceship"
+ZSH_THEME="spaceship"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -66,7 +61,6 @@ plugins=(
   git
   dotenv
   sudo
-  tmux
   zsh-autosuggestions
   zsh-completions
   zsh-history-substring-search
@@ -106,7 +100,6 @@ source $ZSH/oh-my-zsh.sh
 alias tmux="tmux -2"
 # spaceship configuration
 SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_HOST_SHOW=always
 SPACESHIP_DIR_TRUNC=1
 
 # NVM
@@ -116,8 +109,8 @@ export NVM_DIR="$HOME/.nvm"
 
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 if [[ ! $TERM =~ screen ]]; then
+  export TERM=screen-256color
     exec tmux
 fi
+

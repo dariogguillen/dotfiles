@@ -1,16 +1,15 @@
 [options]
-# font = Ubuntu Mono derivative Powerline 11
  font = Fira Code 10
  cursor_blink = on
  allow_bold = false
 #  scroll_on_keystroke = off
 #  scroll_on_output = off
  scrollback_lines = 100000
-# fullscreen = true
+ fullscreen = true
 
 [colors]
 foreground          = #a5a2a2
-# foreground_bold     = #d6d5d4
+foreground_bold     = #d6d5d4
 cursor              = #d6d5d4
 cursor_foreground   = #090300
 background          = rgba(0, 0, 0, .9)
