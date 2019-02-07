@@ -53,6 +53,8 @@ bindsym Mod1+F4 kill
 bindsym $Mod+d exec --no-startup-id rofi_run -r
 bindsym Mod1+Tab exec --no-startup-id rofi -show window
 
+# lock
+bindsym $Mod+0 exec --no-startup-id i3lock-fancy -g -p
 # logout script
 bindsym $Mod+x exec --no-startup-id rofi_run -l
 
