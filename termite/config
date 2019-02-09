@@ -1,11 +1,9 @@
 [options]
- font = Fira Code 10
- cursor_blink = on
- allow_bold = false
-#  scroll_on_keystroke = off
-#  scroll_on_output = off
- scrollback_lines = 100000
- fullscreen = true
+font = Fira Code 10
+cursor_blink = on
+allow_bold = false
+scrollback_lines = 100000
+mouse_autohide = true
 
 [colors]
 foreground          = #a5a2a2

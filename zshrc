@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=/home/dariogg/.oh-my-zsh
+export TERM=xterm-256color
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -109,8 +110,5 @@ export NVM_DIR="$HOME/.nvm"
 
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
-if [[ ! $TERM =~ screen ]]; then
-  export TERM=screen-256color
-    exec tmux
-fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
