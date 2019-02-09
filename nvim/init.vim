@@ -6,23 +6,30 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'cocopon/iceberg.vim'
 
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " javascript
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript',  { 'for': ['javascript'] }
+Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'othree/yajs.vim', { 'for': ['javascript' ] }
+Plug 'joegesualdo/jsdoc.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'elzr/vim-json'
 Plug 'vim-syntastic/syntastic'
 Plug 'moll/vim-node'
-Plug 'othree/yajs.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'mxw/vim-jsx'
 Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'Galooshi/vim-import-js'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " HTML CSS
 Plug 'hail2u/vim-css3-syntax'
@@ -225,6 +232,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 
 """ javascript
+let g:jsx_ext_required = 0
 let g:used_javascript_libs = 'underscore,ramda,vue,d3,react'
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
@@ -243,26 +251,30 @@ let g:user_emmet_settings = {
   \}
 
 """ w0rp/ale
-nmap <leader>d <Plug>(ale_fix)
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
 \   'python': ['flake8', 'pylint'],
 \   'javascript': ['eslint'],
+\   'javascript.jsx': ['eslitn'],
 \   'vue': ['eslint']
 \}
 let g:ale_fixers = {
 \    'javascript': ['eslint'],
 \    'vue': ['eslint'],
-\    'scss': ['prettier']
+\    'scss': ['prettier'],
+\    'css': ['prettier']
 \}
-let g:ale_fix_on_save = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+""" prettier
+let g:prettier#autoformat = 1
+autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 
 """ youcompleteme
 let g:ycm_filetype_blacklist = {
