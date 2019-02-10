@@ -240,7 +240,7 @@ bindsym $Mod+u border none
 # gaps inner all set 10
 # gaps outer all plus 5
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
@@ -307,7 +307,7 @@ set $urgent-bg-color     #CB4B16
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-    position top 
+    position top
     i3bar_command i3bar
     # status_command i3status
     status_command ~/.config/bumblebee-status/bumblebee-status -m spotify memory amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
@@ -329,10 +329,9 @@ bar {
   client.focused_inactive #2F3D44 #2F3D44 #999999 #454948
   client.unfocused        #2F3D44 #2F3D44 #999999 #454948
   client.urgent           #CB4B16 #FDF6E3 #999999 #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+  client.placeholder      #000000 #0c0c0c #ffffff #000000
 
   client.background       #2B2C2B
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
-

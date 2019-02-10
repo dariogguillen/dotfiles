@@ -14,14 +14,11 @@ Plug 'vim-airline/vim-airline-themes'
 
 " javascript
 Plug 'pangloss/vim-javascript',  { 'for': ['javascript'] }
-Plug 'neoclide/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'maxmellon/vim-jsx-pretty'
 Plug 'othree/yajs.vim', { 'for': ['javascript' ] }
 Plug 'joegesualdo/jsdoc.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'elzr/vim-json'
-Plug 'vim-syntastic/syntastic'
 Plug 'moll/vim-node'
 Plug 'mxw/vim-jsx'
 Plug 'w0rp/ale'
@@ -30,6 +27,9 @@ Plug 'Galooshi/vim-import-js'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'skywind3000/asyncrun.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
 
 " HTML CSS
 Plug 'hail2u/vim-css3-syntax'
@@ -59,7 +59,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " autocomplete
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+Plug 'carlitux/deoplete-ternjs'
+Plug 'mhartington/deoplete-typescript'
+
 Plug 'ternjs/tern_for_vim'
 
 " Nerdtree
@@ -87,7 +91,7 @@ call plug#end()
 set number
 set relativenumber
 syntax enable
-set mouse=r 
+set mouse=r
 set wrap
 set linebreak
 set showbreak=+++
@@ -135,7 +139,8 @@ let g:python3_host_prog="/usr/bin/python3"
 """""""""""""""""""
 """" MAP KEYS """""
 """""""""""""""""""
-
+" Escape with fj
+inoremap fj <esc>
 "change between panes
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -178,7 +183,7 @@ nnoremap <Down> :resize +1<CR>
 """" PLUGINS """"""
 """""""""""""""""""
 
-""" Aireline """""" 
+""" Aireline """"""
 let g:airline_theme='hybrid'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
@@ -215,22 +220,6 @@ let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
-""" syntastic
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = "▲"
-augroup mySyntastic
-  au!
-  au FileType tex let b:syntastic_mode = "passive"
-augroup END
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-
 """ javascript
 let g:jsx_ext_required = 0
 let g:used_javascript_libs = 'underscore,ramda,vue,d3,react'
@@ -251,6 +240,9 @@ let g:user_emmet_settings = {
   \}
 
 """ w0rp/ale
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 1
@@ -259,43 +251,49 @@ let g:ale_lint_on_text_changed = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 let g:ale_linters = {
 \   'python': ['flake8', 'pylint'],
-\   'javascript': ['eslint'],
-\   'javascript.jsx': ['eslitn'],
-\   'vue': ['eslint']
+\   'javascript': ['eslint', 'prettier'],
+\   'javascript.jsx': ['eslitn', 'prettier'],
+\   'vue': ['eslint', 'prettier'],
+\   'css': ['prettier'],
+\   'scss': ['prettier'],
 \}
 let g:ale_fixers = {
-\    'javascript': ['eslint'],
-\    'vue': ['eslint'],
-\    'scss': ['prettier'],
-\    'css': ['prettier']
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['flake8', 'pylint'],
+\   'javascript': ['eslint', 'prettier'],
+\   'javascript.jsx': ['eslitn', 'prettier'],
+\   'vue': ['eslint', 'prettier'],
+\   'css': ['prettier'],
+\   'scss': ['prettier'],
 \}
+autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
 """ prettier
 let g:prettier#autoformat = 1
 autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 
-""" youcompleteme
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1
-      \}
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_min_num_of_chars_for_completion = 4
-let g:ycm_min_num_identifier_candidate_chars = 4
-let g:ycm_enable_diagnostic_highlighting = 0
-set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
+""" deoplete tern
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#max_abbr_width = 0
+let g:tern#command = ["tern"]
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#max_menu_width = 0
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+let g:tern_request_timeout = 1
+let g:tern_request_timeout = 6000
+let g:tern#arguments = ["--persistent"]
+let g:deoplete#sources#tss#javascript_support = 1
+let g:tsuquyomi_javascript_support = 1
+let g:tsuquyomi_auto_open = 1
+let g:tsuquyomi_disable_quickfix = 1
 
 """ indentline
 let g:indentLine_enable=1
@@ -303,7 +301,7 @@ let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 
 """ ctrlp
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_show_hidden = 1 
+let g:ctrlp_show_hidden = 1
 
 """ fzf
 nnoremap <leader>f :Ag<CR>
