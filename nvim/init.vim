@@ -6,7 +6,7 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'cocopon/iceberg.vim'
+Plug 'kaicataldo/material.vim'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -122,7 +122,7 @@ set termguicolors
 
 """" THEME """""""
 set background=dark
-colorscheme hybrid
+colorscheme hybrid_material
 
 let g:python_host_prog="/usr/bin/python2"
 let g:python3_host_prog="/usr/bin/python3"
