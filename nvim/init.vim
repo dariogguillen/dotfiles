@@ -20,20 +20,22 @@ Plug 'neoclide/vim-jsx-improve'
 Plug 'othree/es.next.syntax.vim'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'elzr/vim-json'
-Plug 'moll/vim-node'
-Plug 'mmalecki/vim-node.js'
 Plug 'w0rp/ale'
 Plug 'Galooshi/vim-import-js'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
+" node
+Plug 'moll/vim-node'
+Plug 'mmalecki/vim-node.js'
+
 " HTML CSS
-Plug 'groenewege/vim-less', { 'on_ft' : ['less']}
-Plug 'cakebaker/scss-syntax.vim', { 'on_ft' : ['scss','sass']}
-Plug 'hail2u/vim-css3-syntax', { 'on_ft' : ['css','scss','sass']}
-Plug 'ap/vim-css-color', { 'on_ft' : ['css','scss','sass','less','styl']}
-Plug 'othree/html5.vim', { 'on_ft' : ['html']}
-Plug 'wavded/vim-stylus', { 'on_ft' : ['stylus']}
-Plug 'mattn/emmet-vim', { 'on_cmd' : 'EmmetInstall'}
+Plug 'groenewege/vim-less'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'ap/vim-css-color'
+Plug 'othree/html5.vim'
+Plug 'wavded/vim-stylus'
+Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 Plug 'valloric/MatchTagAlways'
 Plug 'Raimondi/delimitMate'
@@ -60,7 +62,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 Plug 'carlitux/deoplete-ternjs'
-
 Plug 'ternjs/tern_for_vim'
 
 " Nerdtree
@@ -92,21 +93,14 @@ set mouse=r
 set wrap
 set linebreak
 set showbreak=+++
-set textwidth=100
 set showmatch
 set scrolloff=3
 set diffopt+=vertical
-set foldmethod=syntax
-set foldcolumn=1
-let javascript_fold=1
-set foldlevelstart=99
 set hlsearch
 set smartcase
 set ignorecase
 set incsearch
 set cursorline
-set colorcolumn=100
-set showbreak=100
 " Indentación a 2 espacios
 set tabstop=2
 set shiftwidth=2
