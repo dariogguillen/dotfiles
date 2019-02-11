@@ -18,7 +18,6 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'neoclide/vim-jsx-improve'
 Plug 'othree/es.next.syntax.vim'
-Plug 'maksimr/vim-jsbeautify'
 Plug 'elzr/vim-json'
 Plug 'w0rp/ale'
 Plug 'Galooshi/vim-import-js'
@@ -34,7 +33,6 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
 Plug 'othree/html5.vim'
-Plug 'wavded/vim-stylus'
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 Plug 'valloric/MatchTagAlways'
@@ -78,7 +76,7 @@ Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
 
 " icons
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-webdevicons'
 
 call plug#end()
 " end plugins
@@ -118,11 +116,10 @@ hi clear SignColumn
 set nowritebackup
 set noswapfile
 set nobackup
-set termguicolors
 
 """" THEME """""""
-set background=dark
-colorscheme hybrid_material
+set termguicolors
+colorscheme hybrid
 
 let g:python_host_prog="/usr/bin/python2"
 let g:python3_host_prog="/usr/bin/python3"
@@ -163,7 +160,8 @@ nnoremap <leader>l :bnext<CR>
 " Moverse al buffer anterior con <líder> + j
 nnoremap <leader>h :bprevious<CR>
 " Cerrar el buffer actual con <líder> + q
-nnoremap <leader>q :bdelete<CR>
+" nnoremap <leader>q :bdelete<CR>
+nnoremap <leader>q :bp<cr>:bd #<cr>
 " arrow keys resize panes
 nnoremap <Left> :vertical resize -1<CR>
 nnoremap <Right> :vertical resize +1<CR>
@@ -184,27 +182,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#hunks#non_zero_only = 1
 
 """" NERDtree
+map <C-n> :NERDTreeToggle<CR>
+map <C-b> :NERDTreeFocus<CR>
+let NERDTreeDirArrows = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
 
 """ nerdcommenter
 let g:NERDSpaceDelims = 1
@@ -212,15 +194,10 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 """ javascript
-let g:jsx_ext_required = 0
 let g:used_javascript_libs = 'underscore,ramda,vue,d3,react'
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
-augroup javascript_folding
-    au!
-    au FileType javascript setlocal foldmethod=syntax
-augroup END
 
 """ emmet
 let g:user_emmet_leader_key='<Tab>'
@@ -279,7 +256,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
 let g:tern_request_timeout = 1
 let g:tern_request_timeout = 6000
-let g:tern#arguments = ["--persistent"]
+let g:tern#arguments = ["--persistent", "--no-port-file"]
 let g:deoplete#sources#tss#javascript_support = 1
 let g:tsuquyomi_javascript_support = 1
 let g:tsuquyomi_auto_open = 1
