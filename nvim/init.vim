@@ -13,22 +13,18 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " javascript
-Plug 'othree/yajs.vim', { 'on_ft': 'javascript' }
-Plug 'heavenshell/vim-jsdoc', { 'on_cmd': 'JsDoc' }
-Plug 'othree/javascript-libraries-syntax.vim', { 'on_ft': ['javascript', 'coffee', 'ls', 'typescript'] }
-Plug 'neoclide/vim-jsx-improve', { 'on_ft': 'javascript' }
-Plug 'othree/es.next.syntax.vim', { 'on_ft': 'javascript' }
-Plug 'maksimr/vim-jsbeautify', { 'on_ft': 'javascript' }
-Plug 'leafgarland/typescript-vim'
+Plug 'othree/yajs.vim'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'neoclide/vim-jsx-improve'
+Plug 'othree/es.next.syntax.vim'
+Plug 'maksimr/vim-jsbeautify'
 Plug 'elzr/vim-json'
 Plug 'moll/vim-node'
-Plug 'mmalecki/vim-node.js', { 'on_ft': 'javascript' }
+Plug 'mmalecki/vim-node.js'
 Plug 'w0rp/ale'
-" Plug 'sheerun/vim-polyglot'
-Plug 'Galooshi/vim-import-js', { 'on_ft': 'javascript', 'build': 'npm install -g import-js' }
+Plug 'Galooshi/vim-import-js'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
 
 " HTML CSS
 Plug 'groenewege/vim-less', { 'on_ft' : ['less']}
@@ -64,7 +60,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 Plug 'carlitux/deoplete-ternjs'
-Plug 'mhartington/deoplete-typescript'
 
 Plug 'ternjs/tern_for_vim'
 
@@ -332,10 +327,6 @@ let g:mta_filetypes = {
 
 """ Raimondi/delimitMate
 let delimitMate_matchpairs = "(:),[:],{:}"
-
-""" Quramy/tsuquyomi
-let g:tsuquyomi_javascript_support = 1
-let g:tsuquyomi_disable_quickfix = 1
 
 ""tmuxline
 let g:tmuxline_preset = 'tmux'
