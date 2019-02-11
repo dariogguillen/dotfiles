@@ -13,31 +13,33 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " javascript
-Plug 'pangloss/vim-javascript',  { 'for': ['javascript'] }
-Plug 'othree/yajs.vim', { 'for': ['javascript' ] }
-Plug 'joegesualdo/jsdoc.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'othree/yajs.vim', { 'on_ft': 'javascript' }
+Plug 'heavenshell/vim-jsdoc', { 'on_cmd': 'JsDoc' }
+Plug 'othree/javascript-libraries-syntax.vim', { 'on_ft': ['javascript', 'coffee', 'ls', 'typescript'] }
+Plug 'neoclide/vim-jsx-improve', { 'on_ft': 'javascript' }
+Plug 'othree/es.next.syntax.vim', { 'on_ft': 'javascript' }
+Plug 'maksimr/vim-jsbeautify', { 'on_ft': 'javascript' }
 Plug 'leafgarland/typescript-vim'
 Plug 'elzr/vim-json'
 Plug 'moll/vim-node'
-Plug 'mxw/vim-jsx'
+Plug 'mmalecki/vim-node.js', { 'on_ft': 'javascript' }
 Plug 'w0rp/ale'
-Plug 'sheerun/vim-polyglot'
-Plug 'Galooshi/vim-import-js'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-Plug 'skywind3000/asyncrun.vim'
+" Plug 'sheerun/vim-polyglot'
+Plug 'Galooshi/vim-import-js', { 'on_ft': 'javascript', 'build': 'npm install -g import-js' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
 
 " HTML CSS
-Plug 'hail2u/vim-css3-syntax'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'othree/html5.vim'
+Plug 'groenewege/vim-less', { 'on_ft' : ['less']}
+Plug 'cakebaker/scss-syntax.vim', { 'on_ft' : ['scss','sass']}
+Plug 'hail2u/vim-css3-syntax', { 'on_ft' : ['css','scss','sass']}
+Plug 'ap/vim-css-color', { 'on_ft' : ['css','scss','sass','less','styl']}
+Plug 'othree/html5.vim', { 'on_ft' : ['html']}
+Plug 'wavded/vim-stylus', { 'on_ft' : ['stylus']}
+Plug 'mattn/emmet-vim', { 'on_cmd' : 'EmmetInstall'}
 Plug 'alvan/vim-closetag'
 Plug 'valloric/MatchTagAlways'
-Plug 'mattn/emmet-vim'
 Plug 'Raimondi/delimitMate'
 Plug 'lilydjwg/colorizer'
 
@@ -270,7 +272,6 @@ let g:ale_fixers = {
 \   'css': ['prettier'],
 \   'scss': ['prettier'],
 \}
-autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
 """ prettier
 let g:prettier#autoformat = 1
