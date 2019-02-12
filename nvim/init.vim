@@ -58,9 +58,8 @@ Plug 'junegunn/fzf.vim'
 
 " autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-Plug 'carlitux/deoplete-ternjs'
-Plug 'ternjs/tern_for_vim'
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+" Plug 'carlitux/deoplete-ternjs'
 
 " Nerdtree
 Plug 'scrooloose/nerdtree'
@@ -247,20 +246,17 @@ autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#max_abbr_width = 0
-let g:tern#command = ["tern"]
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_refresh_always = 1
 let g:deoplete#max_menu_width = 0
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-let g:tern_request_timeout = 1
-let g:tern_request_timeout = 6000
-let g:tern#arguments = ["--persistent", "--no-port-file"]
+" let g:tern_request_timeout = 1
+" let g:tern#command = ["tern"]
+" let g:tern_request_timeout = 6000
+" let g:tern#arguments = ["--no-port-file"]
 let g:deoplete#sources#tss#javascript_support = 1
-let g:tsuquyomi_javascript_support = 1
-let g:tsuquyomi_auto_open = 1
-let g:tsuquyomi_disable_quickfix = 1
 
 """ indentline
 let g:indentLine_enable=1
