@@ -52,9 +52,8 @@ Plug 'Yggdroot/indentLine'
 " ctrlp
 Plug 'ctrlpvim/ctrlp.vim'
 
-" fzf
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" ack.vim
+Plug 'mileszs/ack.vim'
 
 " autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -186,6 +185,7 @@ map <C-b> :NERDTreeFocus<CR>
 let NERDTreeDirArrows = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """ nerdcommenter
 let g:NERDSpaceDelims = 1
@@ -266,8 +266,13 @@ let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_show_hidden = 1
 
-""" fzf
-nnoremap <leader>f :Ag<CR>
+""" ack.vim
+nnoremap \ :Ack<SPACE>
+if executable('rg')
+    let g:ackprg = 'rg -S --no-heading --vimgrep'
+elseif executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
 
 """ import js
 nnoremap <leader>j :ImportJSWord<CR>
