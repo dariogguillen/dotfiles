@@ -163,9 +163,9 @@ vnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>P "+P
 " Moverse al buffer siguiente con <líder> + l
-nnoremap <leader>l :bnext<CR>
+nnoremap <Tab> :bnext<CR>
 " Moverse al buffer anterior con <líder> + j
-nnoremap <leader>h :bprevious<CR>
+nnoremap <S-Tab> :bprevious<CR>
 " Cerrar el buffer actual con <líder> + q
 " nnoremap <leader>q :bdelete<CR>
 nnoremap <leader>q :bp<cr>:bd #<cr>
