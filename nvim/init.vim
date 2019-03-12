@@ -126,7 +126,10 @@ set nobackup
 
 """" THEME """""""
 set termguicolors
-colorscheme hybrid
+" colorscheme hybrid
+" colorscheme angr
+" colorscheme apprentice
+colorscheme gruvbox
 
 let g:python_host_prog="/usr/bin/python2"
 let g:python3_host_prog="/usr/bin/python3"
@@ -180,18 +183,24 @@ nnoremap <Down> :resize +1<CR>
 """""""""""""""""""
 
 """ Aireline """"""
-let g:airline_theme='hybrid'
+let g:airline_theme='gruvbox'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 """" NERDtree
-map <C-n> :NERDTreeToggle<CR>
-map <C-b> :NERDTreeFocus<CR>
+map <leader>n :NERDTreeToggle<CR>
+map <leader>b :NERDTreeFocus<CR>
+map <leader>f :NERDTreeFind<CR>
 let NERDTreeDirArrows = 1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

@@ -38,7 +38,7 @@ exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id blueman-applet
 
 # run once
-exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
+# exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
 exec --no-startup-id xfsettingsd
 exec --no-startup-id al-compositor --start
 
