@@ -2,6 +2,7 @@
   "libs": [
     "browser",
     "jquery",
+    "ecmascript",
     "react"
   ],
   "plugins": {

@@ -16,7 +16,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'othree/yajs.vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'neoclide/vim-jsx-improve'
+" Plug 'mxw/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
+" Plug 'neoclide/vim-jsx-improve'
 Plug 'othree/es.next.syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'w0rp/ale'
@@ -127,9 +129,8 @@ set nobackup
 """" THEME """""""
 set termguicolors
 " colorscheme hybrid
-" colorscheme angr
-" colorscheme apprentice
-colorscheme gruvbox
+" colorscheme hybrid_material
+colorscheme hybrid_reverse
 
 let g:python_host_prog="/usr/bin/python2"
 let g:python3_host_prog="/usr/bin/python3"
