@@ -1,5 +1,3 @@
-scriptencoding utf-8
-
 """""""""""""""""""""""""""
 """"" Plugins folder """"""
 """""""""""""""""""""""""""
@@ -16,12 +14,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'othree/yajs.vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'othree/javascript-libraries-syntax.vim'
-" Plug 'mxw/vim-jsx'
 Plug 'MaxMEllon/vim-jsx-pretty'
-" Plug 'neoclide/vim-jsx-improve'
 Plug 'othree/es.next.syntax.vim'
 Plug 'elzr/vim-json'
-Plug 'w0rp/ale'
+Plug 'w0rp/ale', { 'tag': '*' }
 Plug 'Galooshi/vim-import-js'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
@@ -73,6 +69,7 @@ Plug 'carlitux/deoplete-ternjs'
 
 " Nerdtree
 Plug 'scrooloose/nerdtree'
+Plug 'ivalkeen/nerdtree-execute'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 
@@ -85,13 +82,13 @@ Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
 
 " icons
-Plug 'ryanoasis/vim-webdevicons'
+" Plug 'ryanoasis/vim-webdevicons'
 
 call plug#end()
 " end plugins
 
 """"""""""""""""""""""""
-"""""" GENERAL """""""""
+"""""" SETTINGS """"""""
 """"""""""""""""""""""""
 set number
 set relativenumber
@@ -123,8 +120,37 @@ set splitright
 hi clear SignColumn
 ""avoid vim backups
 set nowritebackup
-set noswapfile
-set nobackup
+set autoread                        " auto reload file if changed externally
+set nobackup                        " no ~backup files
+set noswapfile                      " no swap files
+set autowrite                       " save files automatically in most cases
+set list                            " show hidden characters
+set listchars=tab:\ \ ,trail:·      " show · for trailing space, \ \ for trailing tab
+set sidescrolloff=5                 " show next 5 columns while side-scrolling
+set splitbelow                      " more natural horizontal split
+set splitright                      " more natural vertical split
+set clipboard=unnamedplus           " yanks puts it on clipboard
+set colorcolumn=100                 " show a right margin column
+set lazyredraw                      " wait to redraw
+set pumheight=10                    " completion window max size
+set updatetime=500                  " millis before cursorhold event, useful for tern
+
+" hide everywhere
+set wildignore+=*.o,.git,.svn,node_modules,vendor,bower_components,__jsdocs,.nyc_output,coverage,target
+
+au FileType python set noet
+au FileType java set sw=4 ts=4 sts=4
+
+au BufRead,BufNewFile doc.go setlocal spell
+au BufRead,BufNewFile .eslintrc setf json
+au BufRead,BufNewFile .prettierrc setf json
+au BufRead,BufNewFile .babelrc setf json
+au BufRead,BufNewFile .tern-project setf json
+au BufRead,BufNewFile *.jsdoc setf javascript.jsx
+au FileType gitcommit setlocal spell
+
+" open files where last edits took place
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
 """" THEME """""""
 set termguicolors
@@ -199,9 +225,12 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 map <leader>n :NERDTreeToggle<CR>
 map <leader>b :NERDTreeFocus<CR>
 map <leader>f :NERDTreeFind<CR>
-let NERDTreeDirArrows = 1
-let NERDTreeQuitOnOpen = 1
-let NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeRespectWildIgnore = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -287,6 +316,12 @@ let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 """ ctrlp
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_switch_buffer = 'et'      " jump to a file if it's open already
+let g:ctrlp_mruf_max = 450            " number of recently opened files
+let g:ctrlp_max_files = 0             " do not limit the number of searchable files
+let g:ctrlp_use_caching = 0
 
 """ ack.vim
 nnoremap \ :Ack<SPACE>
@@ -330,3 +365,6 @@ let g:airline#extensions#hunks#non_zero_only = 1
 
 """ gutentags file
 let g:gutentags_cache_dir="/media/data/.tags"
+
+""" auto-pairs
+let g:AutoPairsUseInsertedCount = 1
