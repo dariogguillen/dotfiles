@@ -17,7 +17,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'othree/es.next.syntax.vim'
 Plug 'elzr/vim-json'
-Plug 'w0rp/ale', { 'tag': '*' }
+Plug 'w0rp/ale'
 Plug 'Galooshi/vim-import-js'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
@@ -80,9 +80,6 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
-
-" icons
-" Plug 'ryanoasis/vim-webdevicons'
 
 call plug#end()
 " end plugins
