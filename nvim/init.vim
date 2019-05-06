@@ -6,6 +6,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'kaicataldo/material.vim'
 
+" Denite - Fuzzy finding, buffer management, install ripgrep
+Plug 'Shougo/denite.nvim'
+
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -17,15 +20,21 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'othree/es.next.syntax.vim'
 Plug 'elzr/vim-json'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'Galooshi/vim-import-js'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+
+" Snippet support
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
-Plug 'mhartington/deoplete-typescript'
+" Plug 'mhartington/deoplete-typescript'
 
 " node
 Plug 'moll/vim-node'
@@ -56,22 +65,17 @@ Plug 'tpope/vim-fugitive'
 " identacion
 Plug 'Yggdroot/indentLine'
 
-" ctrlp
-Plug 'ctrlpvim/ctrlp.vim'
-
-" ack.vim
-Plug 'mileszs/ack.vim'
-
 " autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-Plug 'carlitux/deoplete-ternjs'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+" Plug 'carlitux/deoplete-ternjs'
 
 " Nerdtree
 Plug 'scrooloose/nerdtree'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "navigation between nvim and tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -80,6 +84,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 " end plugins
@@ -202,6 +208,8 @@ nnoremap <Right> :vertical resize +1<CR>
 nnoremap <Up> :resize -1<CR>
 nnoremap <Down> :resize +1<CR>
 
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
 """""""""""""""""""
 """" PLUGINS """"""
 """""""""""""""""""
@@ -212,8 +220,6 @@ let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -223,7 +229,7 @@ map <leader>n :NERDTreeToggle<CR>
 map <leader>b :NERDTreeFocus<CR>
 map <leader>f :NERDTreeFind<CR>
 let g:NERDTreeDirArrows = 1
-let g:NERDTreeQuitOnOpen = 1
+" let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeAutoDeleteBuffer = 1
@@ -251,82 +257,13 @@ let g:user_emmet_settings = {
   \  },
   \}
 
-""" w0rp/ale
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-let g:airline#extensions#ale#enabled = 1
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '.'
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-let g:ale_linters = {
-\   'python': ['flake8', 'pylint'],
-\   'javascript': ['eslint', 'prettier'],
-\   'javascript.jsx': ['eslitn', 'prettier'],
-\   'vue': ['eslint', 'prettier'],
-\   'css': ['prettier'],
-\   'scss': ['prettier'],
-\}
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['flake8', 'pylint'],
-\   'javascript': ['eslint', 'prettier'],
-\   'javascript.jsx': ['eslitn', 'prettier'],
-\   'vue': ['eslint', 'prettier'],
-\   'css': ['prettier'],
-\   'scss': ['prettier'],
-\}
-
 """ prettier
 let g:prettier#autoformat = 1
 autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 
-""" deoplete tern
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#max_abbr_width = 0
-let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#max_menu_width = 0
-let g:tern_request_timeout = 1
-let g:tern_request_timeout = 6000
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-let g:deoplete#sources#tss#javascript_support = 1
-let g:tsuquyomi_javascript_support = 1
-let g:tsuquyomi_auto_open = 1
-let g:tsuquyomi_disable_quickfix = 1
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
 """ indentline
 let g:indentLine_enable=1
 let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
-
-""" ctrlp
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_cmd = 'CtrlPMRU'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_switch_buffer = 'et'      " jump to a file if it's open already
-let g:ctrlp_mruf_max = 450            " number of recently opened files
-let g:ctrlp_max_files = 0             " do not limit the number of searchable files
-let g:ctrlp_use_caching = 0
-
-""" ack.vim
-nnoremap \ :Ack<SPACE>
-if executable('rg')
-    let g:ackprg = 'rg -S --no-heading --vimgrep'
-elseif executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
 
 """ import js
 nnoremap <leader>j :ImportJSWord<CR>
@@ -358,6 +295,7 @@ let delimitMate_matchpairs = "(:),[:],{:}"
 let g:tmuxline_preset = 'tmux'
 
 """" gitgutter
+let g:gitgutter_map_keys = 0
 let g:airline#extensions#hunks#non_zero_only = 1
 
 """ gutentags file
@@ -365,3 +303,87 @@ let g:gutentags_cache_dir="/media/data/.tags"
 
 """ auto-pairs
 let g:AutoPairsUseInsertedCount = 1
+
+" === Denite setup ==="
+" Use ripgrep for searching current directory for files
+" By default, ripgrep will respect rules in .gitignore
+"   --files: Print each file that would be searched (but don't search)
+"   --glob:  Include or exclues files for searching that match the given glob
+"            (aka ignore .git files)
+"
+call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
+
+" Use ripgrep in place of "grep"
+call denite#custom#var('grep', 'command', ['rg'])
+
+" Custom options for ripgrep
+"   --vimgrep:  Show results with every match on it's own line
+"   --hidden:   Search hidden directories and files
+"   --heading:  Show the file name above clusters of matches from each file
+"   --S:        Search case insensitively if the pattern is all lowercase
+call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--heading', '-S'])
+
+" Recommended defaults for ripgrep via Denite docs
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+" Remove date from buffer list
+call denite#custom#var('buffer', 'date_format', '')
+
+" Custom options for Denite
+"   auto_resize             - Auto resize the Denite window height automatically.
+"   prompt                  - Customize denite prompt
+"   direction               - Specify Denite window direction as directly below current pane
+"   winminheight            - Specify min height for Denite window
+"   highlight_mode_insert   - Specify h1-CursorLine in insert mode
+"   prompt_highlight        - Specify color of prompt
+"   highlight_matched_char  - Matched characters highlight
+"   highlight_matched_range - matched range highlight
+let s:denite_options = {'default' : {
+\ 'auto_resize': 1,
+\ 'prompt': 'λ:',
+\ 'direction': 'rightbelow',
+\ 'winminheight': '10',
+\ 'highlight_mode_insert': 'Visual',
+\ 'highlight_mode_normal': 'Visual',
+\ 'prompt_highlight': 'Function',
+\ 'highlight_matched_char': 'Function',
+\ 'highlight_matched_range': 'Normal'
+\ }}
+
+" Loop through denite options and enable them
+function! s:profile(opts) abort
+  for l:fname in keys(a:opts)
+    for l:dopt in keys(a:opts[l:fname])
+      call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
+    endfor
+  endfor
+endfunction
+
+call s:profile(s:denite_options)
+
+nmap <S-P> :Denite buffer -split=floating -winrow=1<CR>
+nmap <C-p> :Denite file/rec -split=floating -winrow=1<CR>
+nnoremap \ :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+nnoremap <leader>\ :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+
+" === Coc.nvim === "
+" use <tab> for trigger completion and navigate to next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+"Close preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+nmap <silent> <leader>dd <Plug>(coc-definition)
+nmap <silent> <leader>dr <Plug>(coc-references)
+nmap <silent> <leader>dj <Plug>(coc-implementation)
