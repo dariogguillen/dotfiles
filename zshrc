@@ -62,6 +62,7 @@ plugins=(
   git
   dotenv
   sudo
+  tmux
   zsh-autosuggestions
   zsh-completions
   zsh-history-substring-search
@@ -102,6 +103,7 @@ alias tmux="tmux -2"
 # spaceship configuration
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_DIR_TRUNC=1
+ZSH_TMUX_AUTOSTART=true
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
