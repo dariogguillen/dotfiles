@@ -205,7 +205,7 @@ assign [class="Code"] $WS2
 assign [class="Google-chrome"] $WS3
 assign [class="Slack"] $WS4
 assign [class="TelegramDesktop"] $WS6
-assign [class='GraphQL Playground'] $WS9
+# assign [class='graphql playground'] $WS9
 assign [class="Chromium"] $WS7
 for_window [class="Spotify"] move to workspace $WS5
 
