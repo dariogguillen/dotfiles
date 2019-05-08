@@ -128,7 +128,7 @@ set nobackup                        " no ~backup files
 set noswapfile                      " no swap files
 set autowrite                       " save files automatically in most cases
 set list                            " show hidden characters
-set listchars=tab:\ \ ,trail:·      " show · for trailing space, \ \ for trailing tab
+set listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:%,eol:¬
 set sidescrolloff=5                 " show next 5 columns while side-scrolling
 set splitbelow                      " more natural horizontal split
 set splitright                      " more natural vertical split
@@ -262,8 +262,13 @@ let g:prettier#autoformat = 1
 autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 
 """ indentline
-let g:indentLine_enable=1
-let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
+" let g:indentLine_enable=1
+" let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
+let g:indentLine_faster = 1
+let g:indentLine_color_term = 236
+let g:indentLine_noConcealCursor = "nc"
+let g:indentLine_concealcursor=""
+let g:indentLine_char ='┆'
 
 """ import js
 nnoremap <leader>j :ImportJSWord<CR>

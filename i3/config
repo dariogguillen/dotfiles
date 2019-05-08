@@ -37,7 +37,7 @@ bindsym $Mod+Return exec termite
 exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id blueman-applet
 exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
-exec --no-startup-id xfsettingsd
+# exec --no-startup-id xfsettingsd
 exec --no-startup-id al-compositor --start
 
 ###########################################################
@@ -199,7 +199,7 @@ default_orientation horizontal
 
 # assing workspaces
 assign [class="Code"] $WS2
-assign [class="Google-chrome"] $WS8
+assign [class="Google-chrome"] $WS7
 assign [class="Slack"] $WS4
 assign [class="TelegramDesktop"] $WS4
 assign [class="Chromium"] $WS3
