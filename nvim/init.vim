@@ -369,7 +369,6 @@ endfunction
 
 call s:profile(s:denite_options)
 
-nmap <S-P> :Denite buffer -split=floating -winrow=1<CR>
 nmap <C-p> :Denite file/rec -split=floating -winrow=1<CR>
 nnoremap \ :<C-u>Denite grep:. -no-empty -mode=normal<CR>
 nnoremap <leader>\ :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
