@@ -205,9 +205,9 @@ assign [class="Code"] $WS2
 assign [class="Google-chrome"] $WS7
 assign [class="Slack"] $WS4
 assign [class="TelegramDesktop"] $WS6
-# assign [class='graphql playground'] $WS9
 assign [class="Chromium"] $WS3
 for_window [class="Spotify"] move to workspace $WS5
+for_window [class="GraphQL Playground"] move to workspace $WS10
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
