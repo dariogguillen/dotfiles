@@ -20,7 +20,6 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'othree/es.next.syntax.vim'
 Plug 'elzr/vim-json'
-" Plug 'w0rp/ale'
 Plug 'Galooshi/vim-import-js'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
@@ -32,9 +31,6 @@ Plug 'Shougo/neosnippet-snippets'
 
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
-" Plug 'mhartington/deoplete-typescript'
 
 " node
 Plug 'moll/vim-node'
@@ -75,7 +71,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "navigation between nvim and tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -262,8 +257,6 @@ let g:prettier#autoformat = 1
 autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 
 """ indentline
-" let g:indentLine_enable=1
-" let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 let g:indentLine_faster = 1
 let g:indentLine_color_term = 236
 let g:indentLine_noConcealCursor = "nc"

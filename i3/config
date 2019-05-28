@@ -339,5 +339,5 @@ bar {
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
-exec --no-startup-id ./screenlayout.sh
+exec_always --no-startup-id ./screenlayout.sh
 
