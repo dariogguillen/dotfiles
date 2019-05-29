@@ -15,26 +15,17 @@ Plug 'vim-airline/vim-airline-themes'
 
 " javascript
 Plug 'othree/yajs.vim'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'othree/es.next.syntax.vim'
+Plug 'heavenshell/vim-jsdoc'
 Plug 'elzr/vim-json'
-" Plug 'w0rp/ale'
 Plug 'Galooshi/vim-import-js'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-
-Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-
-" Snippet support
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
-" Plug 'mhartington/deoplete-typescript'
 
 " node
 Plug 'moll/vim-node'
@@ -46,7 +37,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
 Plug 'othree/html5.vim'
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 Plug 'valloric/MatchTagAlways'
 Plug 'Raimondi/delimitMate'
@@ -137,6 +128,8 @@ set colorcolumn=100                 " show a right margin column
 set lazyredraw                      " wait to redraw
 set pumheight=10                    " completion window max size
 set updatetime=500                  " millis before cursorhold event, useful for tern
+set undofile
+set undodir=~/.config/nvim/undodir
 
 " hide everywhere
 set wildignore+=*.o,.git,.svn,node_modules,vendor,bower_components,__jsdocs,.nyc_output,coverage,target

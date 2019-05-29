@@ -1,5 +1,5 @@
 [options]
-font = Ubuntu Mono 11
+font = Fira Code 8
 cursor_blink = on
 allow_bold = false
 scrollback_lines = 100000
