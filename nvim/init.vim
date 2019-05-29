@@ -66,7 +66,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "navigation between nvim and tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -255,8 +254,6 @@ let g:prettier#autoformat = 1
 autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 
 """ indentline
-" let g:indentLine_enable=1
-" let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 let g:indentLine_faster = 1
 let g:indentLine_color_term = 236
 let g:indentLine_noConcealCursor = "nc"
