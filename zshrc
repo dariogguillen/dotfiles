@@ -111,3 +111,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t 0 || tmux new -s 0
+fi
