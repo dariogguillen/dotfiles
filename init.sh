@@ -25,25 +25,26 @@ git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.oh-my
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 #bumblebee status bar for i3wm
-git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git ~/.config/bumblebee-status
+#git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git ~/.config/bumblebee-status
 
 # eliminar folder para evitar errores
-rm -rf ~/.config/i3 ~/.config/termite ~/.config/dunst ~/.ranger ~/.config/i3status ~/.config/nvim
+#rm -rf ~/.config/i3 ~/.config/termite ~/.config/dunst ~/.ranger ~/.config/i3status ~/.config/nvim
 
 # config files
-ln -sf $folder/i3 ~/.config/
-ln -sf $folder/termite ~/.config/
-ln -sf $folder/dunst ~/.config/
-ln -sf $folder/ranger ~/.config/
-ln -sf $folder/i3status ~/.config/
+#ln -sf $folder/i3 ~/.config/
+#ln -sf $folder/termite ~/.config/
+#ln -sf $folder/dunst ~/.config/
+#ln -sf $folder/ranger ~/.config/
+#ln -sf $folder/i3status ~/.config/
 
 # neovim
-ln -sf $folder/nvim ~/.config/
+#ln -sf $folder/nvim ~/.config/
 
 # neovim plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# coc-json coc-tsserver coc-html coc-css coc-vetur coc-yaml coc-python coc-highlight coc-emmet coc-snippets coc-git coc-svg coc-vimlsp coc-angular coc-import-cost coc-pairs coc-jest coc-syntax coc-prettier coc-eslint coc-docker
 
 # accountsservice
 # alsa-firmware

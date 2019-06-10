@@ -56,11 +56,6 @@ Plug 'tpope/vim-fugitive'
 " identacion
 Plug 'Yggdroot/indentLine'
 
-" autocomplete
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-" Plug 'carlitux/deoplete-ternjs'
-
 " Nerdtree
 Plug 'scrooloose/nerdtree'
 Plug 'ivalkeen/nerdtree-execute'
@@ -294,7 +289,7 @@ let g:gitgutter_map_keys = 0
 let g:airline#extensions#hunks#non_zero_only = 1
 
 """ gutentags file
-let g:gutentags_cache_dir="/media/data/.tags"
+let g:gutentags_cache_dir="~/.config/nvim/tags"
 
 """ auto-pairs
 let g:AutoPairsUseInsertedCount = 1
