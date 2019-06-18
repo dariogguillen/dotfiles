@@ -1,4 +1,4 @@
- move to workspace $WSt be set to border pixel for gaps to work
+# border & title.. Must be set to border pixel for gaps to work
 for_window [class="^.*"] border pixel 1, title_format "<b> %class >> %title </b>"
 
 # font
@@ -11,18 +11,18 @@ focus_follows_mouse no
 set $Mod Mod4
 
 set $WS1 "1: "
-set $WS2 "2: "
+set $WS2 "2: "
 set $WS3 "3: "
 set $WS4 "4: "
 set $WS5 "5: "
 set $WS6 "6: "
-set $WS7 "7: "
+set $WS7 "7: "
 set $WS8 "8: "
-set $WS9 "9: "
+set $WS9 "9: "
 set $WS10 "10: "
 
 # monitors
-set $Display primary
+set $Display eDP1
 set $Mon1 HDMI1
 set $Mon2 HDMI2
 
@@ -36,9 +36,7 @@ bindsym $Mod+Return exec termite
 # run with reload
 exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id blueman-applet
-
-# run once
-# exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
+exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
 exec --no-startup-id xfsettingsd
 exec --no-startup-id al-compositor --start
 
@@ -95,16 +93,16 @@ bindsym $Mod+9 workspace $WS9
 bindsym $Mod+0 workspace $WS10
 
 #assing monitor
-workspace $WS1 output $Display
-workspace $WS2 output $Display
-workspace $WS3 output $Display
-workspace $WS4 output $Display
-workspace $WS5 output $Display
-workspace $WS6 output $Display
-workspace $WS7 output $Mon1
-workspace $WS8 output $Mon1
-workspace $WS9 output $Mon1
-workspace $WS10 output $Mon1
+workspace $WS1 output $Mon1
+workspace $WS2 output $Mon1
+workspace $WS3 output $Mon1
+workspace $WS4 output $Mon1
+workspace $WS5 output $Mon1
+workspace $WS6 output $Mon1
+workspace $WS7 output $Display
+workspace $WS8 output $Display
+workspace $WS9 output $Display
+workspace $WS10 output $Display
 
 
 # switch to next or previous workspace
@@ -200,12 +198,11 @@ bindsym $Mod+e layout toggle split
 default_orientation horizontal
 
 # assing workspaces
-assign [class="Firefox"] $WS2
+assign [class="Firefox"] $WS7
 assign [class="Google-chrome"] $WS7
 assign [class="Slack"] $WS4
-assign [class="TelegramDesktop"] $WS6
-assign [class="Chromium"] $WS3
-for_window [class="Spotify"] move to workspace $WS5
+assign [class="Chromium"] $WS2
+for_window [class="Spotify"] move to workspace $WS9
 for_window [class="GraphQL Playground"] move to workspace $WS10
 
 # Open specific applications in floating mode
@@ -316,7 +313,7 @@ bar {
     i3bar_command i3bar
     # status_command i3status
     status_command ~/.config/bumblebee-status/bumblebee-status -m spotify memory amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
-    tray_output $Display
+    tray_output primary
 
     colors {
         background $bg-color

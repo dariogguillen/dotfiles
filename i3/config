@@ -1,4 +1,3 @@
-
 # border & title.. Must be set to border pixel for gaps to work
 for_window [class="^.*"] border pixel 1, title_format "<b> %class >> %title </b>"
 
@@ -37,7 +36,7 @@ bindsym $Mod+Return exec termite
 exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id blueman-applet
 exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
-# exec --no-startup-id xfsettingsd
+exec --no-startup-id xfsettingsd
 exec --no-startup-id al-compositor --start
 
 ###########################################################
