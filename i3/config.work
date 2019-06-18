@@ -12,7 +12,7 @@ set $Mod Mod4
 
 set $WS1 "1: "
 set $WS2 "2: "
-set $WS3 "3: "
+set $WS3 "3: "
 set $WS4 "4: "
 set $WS5 "5: "
 set $WS6 "6: "
@@ -213,7 +213,7 @@ for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
-for_window [class="TelegramDesktop"] floating enable
+for_window [class="Slack"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Klavaro"] floating enable
 for_window [class="Blueman-manager"] floating enable

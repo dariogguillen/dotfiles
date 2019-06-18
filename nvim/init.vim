@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 """""""""""""""""""""""""""
 """"" Plugins folder """"""
 """""""""""""""""""""""""""
@@ -21,6 +23,7 @@ Plug 'elzr/vim-json'
 Plug 'Galooshi/vim-import-js'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'othree/javascript-libraries-syntax.vim'
 
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
@@ -71,7 +74,8 @@ Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'easymotion/vim-easymotion'
-
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 " end plugins
 
@@ -355,7 +359,7 @@ endfunction
 call s:profile(s:denite_options)
 
 nmap <C-p> :Denite file/rec -split=floating -winrow=1<CR>
-nnoremap \ :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+nnoremap \ :<C-u>Denite grep:. -no-empty<CR>
 nnoremap <leader>\ :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
 
 " === Coc.nvim === "
