@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 """""""""""""""""""""""""""
 """"" Plugins folder """"""
 """""""""""""""""""""""""""
@@ -33,6 +35,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': [
   \ 'html'
   \ ] }
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'othree/javascript-libraries-syntax.vim'
 
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
@@ -82,7 +85,8 @@ Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'easymotion/vim-easymotion'
-
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 " end plugins
 
