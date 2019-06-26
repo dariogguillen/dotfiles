@@ -269,11 +269,6 @@ let g:indentLine_noConcealCursor = "nc"
 let g:indentLine_concealcursor=""
 let g:indentLine_char ='┆'
 
-""" import js
-nnoremap <leader>j :ImportJSWord<CR>
-nnoremap <leader>i :ImportJSFix<CR>
-nnoremap <leader>g :ImportJSGoto<CR>
-
 "" closetag
 let g:closetag_filenames = '*.html,*.jsx,*.js'
 let g:closetag_filetypes = 'html,jsx,js'
