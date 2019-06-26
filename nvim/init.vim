@@ -17,10 +17,10 @@ Plug 'vim-airline/vim-airline-themes'
 
 " javascript
 Plug 'othree/yajs.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'elzr/vim-json'
-Plug 'Galooshi/vim-import-js'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': [
   \ 'javascript',
   \ 'typescript',
@@ -35,7 +35,6 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': [
   \ 'html'
   \ ] }
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'othree/javascript-libraries-syntax.vim'
 
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
