@@ -84,7 +84,6 @@ Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'easymotion/vim-easymotion'
-Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 " end plugins

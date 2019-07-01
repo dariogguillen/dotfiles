@@ -3,8 +3,8 @@
 folder=`pwd`
 
 # install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-ln -sf $folder/zshrc ~/.zshrc
+# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# ln -sf $folder/zshrc ~/.zshrc
 
 # install nvm
 git clone https://github.com/creationix/nvm.git ~/.nvm
@@ -23,9 +23,6 @@ git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.oh-my
 
 # tmux plugins manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-#bumblebee status bar for i3wm
-#git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git ~/.config/bumblebee-status
 
 # eliminar folder para evitar errores
 #rm -rf ~/.config/i3 ~/.config/termite ~/.config/dunst ~/.ranger ~/.config/i3status ~/.config/nvim

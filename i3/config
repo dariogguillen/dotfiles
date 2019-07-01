@@ -13,8 +13,8 @@ set $Mod Mod4
 set $WS1 "1: "
 set $WS2 "2: "
 set $WS3 "3: "
-set $WS4 "4:  "
-set $WS5 "5: "
+set $WS4 "4:  "
+set $WS5 "5: "
 set $WS6 "6: "
 set $WS7 "7: "
 set $WS8 "8: "
@@ -22,9 +22,9 @@ set $WS9 "9: "
 set $WS10 "10: "
 
 # monitors
-set $Display eDP1
-set $Mon1 HDMI1
-set $Mon2 HDMI2
+set $Display eDP-1
+set $Mon1 HDMI-1
+set $Mon2 HDMI-2
 
 # open terminal
 bindsym $Mod+Return exec termite
@@ -48,13 +48,13 @@ bindsym $Mod+Shift+q kill
 bindsym Mod1+F4 kill
 
 # launchers
-bindsym $Mod+d exec --no-startup-id rofi_run -r
-bindsym Mod1+Tab exec --no-startup-id rofi -show window
+bindsym $Mod+d exec --no-startup-id rofi -show run -theme ~/dotfiles/i3/adapta-theme.rasi
+bindsym Mod1+Tab exec --no-startup-id rofi -show window -theme ~/dotfiles/i3/adapta-theme.rasi
 
-# lock
-bindsym $Mod+Mod1+l exec --no-startup-id i3lock-fancy -g -p
-# logout script
-bindsym $Mod+x exec --no-startup-id rofi_run -l
+# lock https://github.com/pavanjadhaw/betterlockscreen
+bindsym $Mod+x exec --no-startup-id betterlockscreen -l blur
+# lock and suspend
+bindsym $Mod+Shift+x exec --no-startup-id betterlockscreen -s blur
 
 # Screenshot
 bindsym Print exec --no-startup-id "scrot '%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png ; feh $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png'"
@@ -225,26 +225,11 @@ for_window [class="Blueman-manager"] floating enable
 new_window 1pixel
 new_float  normal
 
-hide_edge_borders both
-
 bindsym $Mod+shift+b border toggle
 
-# changing border style
-bindsym $Mod+n border normal
-bindsym $Mod+y border 1pixel
-bindsym $Mod+u border none
 
 # Set inner/outer gaps
-# gaps inner 5
-
-# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
-# gaps inner|outer current|all set|plus|minus <px>
-# gaps inner all set 10
-# gaps outer all plus 5
-
-# Smart borders (draw borders around container only if it is not the only container on this workspace)
-# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+gaps inner 10
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
