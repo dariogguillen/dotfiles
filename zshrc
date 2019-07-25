@@ -102,11 +102,15 @@ source $ZSH/oh-my-zsh.sh
 alias tmux="tmux -2"
 alias y="yarn"
 alias ya="yarn add"
+alias yad="yarn add --dev"
 alias ys="yarn start"
+
+alias update="yay -Syu --devel --timeupdate"
+
 # spaceship configuration
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_DIR_TRUNC=1
-ZSH_TMUX_AUTOSTART=true
+SPACESHIP_HOST_SHOW=always
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
