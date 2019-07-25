@@ -27,7 +27,8 @@ set $Mon1 HDMI-1
 set $Mon2 HDMI-2
 
 # open terminal
-bindsym $Mod+Return exec termite
+# bindsym $Mod+Return exec termite
+bindsym $Mod+Return exec alacritty
 
 #####################################################
 ###############     Autostart      ##################
@@ -184,10 +185,6 @@ bindsym $Mod+Mod1+Shift+Left resize shrink width  10 px or 1 ppt
 bindsym $Mod+Mod1+Shift+l resize grow width  10 px or 1 ppt
 bindsym $Mod+Mod1+Shift+Right resize grow width  10 px or 1 ppt
 
-# switch to workspace with urgent window
-#for_window [urgent="latest"] focus
-#focus_on_window_activation   focus
-
 # container layout
 bindsym $Mod+q split toggle
 bindsym $Mod+s layout stacking
@@ -227,9 +224,7 @@ new_float  normal
 
 bindsym $Mod+shift+b border toggle
 
-
-# Set inner/outer gaps
-gaps inner 10
+smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -271,9 +266,6 @@ mode "$mode_gaps_outer" {
 ############    application settings   ############
 ###################################################
 
-for_window [class="(?i)(?:termite|thunar)"] focus
-
-# focus, floating, & sticky
 for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
 for_window [window_role="(?i)(?:pop-up|setup)"]      floating enable
 
