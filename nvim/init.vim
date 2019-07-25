@@ -8,8 +8,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'kaicataldo/material.vim'
 
-" Denite - Fuzzy finding, buffer management, install ripgrep
-Plug 'Shougo/denite.nvim'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -37,9 +35,9 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': [
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " typescript
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
+" Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+" Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
 
 " node
 Plug 'moll/vim-node'
@@ -71,20 +69,21 @@ Plug 'Yggdroot/indentLine'
 
 " Nerdtree
 Plug 'scrooloose/nerdtree'
-Plug 'ivalkeen/nerdtree-execute'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 
-"navigation between nvim and tmux
+" navigation between nvim and tmux
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 
+" others
+" Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'easymotion/vim-easymotion'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'Shougo/denite.nvim'
 call plug#end()
 " end plugins
 
@@ -366,6 +365,26 @@ endfunction
 
 " === Coc.nvim === "
 " use <tab> for trigger completion and navigate to next complete item
+let g:coc_global_extensions = [
+  \ 'coc-css',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-python',
+  \ 'coc-yaml',
+  \ 'coc-emoji',
+  \ 'coc-tsserver',
+  \ 'coc-ultisnips',
+  \ 'coc-vimlsp',
+  \ 'coc-github',
+  \ 'coc-git',
+  \ 'coc-svg',
+  \ 'coc-syntax',
+  \ 'coc-json',
+  \ 'coc-prettier',
+  \ 'coc-vetur',
+  \ 'coc-docker'
+  \ ]
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'

@@ -199,7 +199,7 @@ bindsym $Mod+e layout toggle split
 default_orientation horizontal
 
 # assing workspaces
-assign [class="Chromium"] $WS2
+assign [class="Chromium"] $WS8
 assign [class="Slack"] $WS4
 assign [class="Firefox"] $WS7
 for_window [class="Spotify"] move to workspace $WS9
@@ -312,7 +312,7 @@ bar {
     mode hide
     position top
     i3bar_command i3bar
-    status_command ~/.config/bumblebee-status/bumblebee-status -m spotify memory amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
+    status_command ~/.config/bumblebee-status/bumblebee-status -m sensors memory amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
     tray_output primary
 
     colors {
