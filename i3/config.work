@@ -27,7 +27,8 @@ set $Mon1 HDMI1
 set $Mon2 HDMI2
 
 # open terminal
-bindsym $Mod+Return exec termite
+# bindsym $Mod+Return exec termite
+bindsym $Mod+Return exec alacritty
 
 #####################################################
 ###############     Autostart      ##################
