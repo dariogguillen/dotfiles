@@ -200,8 +200,9 @@ bindsym $Mod+e layout toggle split
 default_orientation horizontal
 
 # assing workspaces
-assign [class="Chromium"] $WS8
+assign [class="Chromium"] $WS2
 assign [class="Slack"] $WS4
+assign [class="Code"] $WS3
 assign [class="Firefox"] $WS7
 for_window [class="Spotify"] move to workspace $WS9
 for_window [class="GraphQL Playground"] move to workspace $WS10

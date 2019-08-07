@@ -382,7 +382,8 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-prettier',
   \ 'coc-vetur',
-  \ 'coc-docker'
+  \ 'coc-docker',
+  \ 'coc-jest'
   \ ]
 
 function! s:check_back_space() abort
