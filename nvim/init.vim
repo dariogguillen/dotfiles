@@ -8,7 +8,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'kaicataldo/material.vim'
 
-
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -167,7 +166,7 @@ let g:python3_host_prog="/usr/bin/python3"
 """" MAP KEYS """""
 """""""""""""""""""
 " Escape with fj
-inoremap fj <esc>
+inoremap jk <esc>
 "change between panes
 map <C-j> <C-W>j
 map <C-k> <C-W>k
