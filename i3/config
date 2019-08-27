@@ -197,7 +197,7 @@ default_orientation horizontal
 assign [class="Chromium"] $WS2
 assign [class="Slack"] $WS4
 assign [class="TelegramDesktop"] $WS4
-assign [class="Firefox"] $WS7
+assign [class="firefox"] $WS7
 for_window [class="Spotify"] move to workspace $WS9
 for_window [class="GraphQL Playground"] move to workspace $WS10
 
