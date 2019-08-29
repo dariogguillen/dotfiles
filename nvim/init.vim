@@ -77,7 +77,6 @@ Plug 'edkolev/tmuxline.vim'
 
 " others
 " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'ntpeters/vim-better-whitespace'
@@ -297,9 +296,6 @@ let g:airline#extensions#hunks#non_zero_only = 1
 """ gutentags file
 let g:gutentags_cache_dir="~/.config/nvim/tags"
 
-""" auto-pairs
-let g:AutoPairsUseInsertedCount = 1
-
 " === Denite setup ==="
 let s:denite_options = {'default' : {
 \ 'auto_resize': 1,
@@ -322,19 +318,14 @@ function! s:profile(opts) abort
 endfunction
 
 call denite#custom#var(
-  \ 'buffer',
-  \ 'date_format', '%d-%m-%Y %H:%M:%S'
-  \ )
-
-call denite#custom#var('file/rec', 'command',
+  \ 'file/rec',
+  \'command',
   \ ['rg', '--hidden', '--files', '--glob', '!.git', '--glob', '']
   \ )
 
 " Use ripgrep in place of "grep"
 call denite#custom#var('grep', 'command', ['rg'])
 call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-
-" Recommended defaults for ripgrep via Denite docs
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
 call denite#custom#var('grep', 'separator', ['--'])
@@ -342,25 +333,19 @@ call denite#custom#var('grep', 'final_opts', [])
 
 call s:profile(s:denite_options)
 
-nnoremap <C-p> :Denite file/rec<CR>
-nnoremap \ :Denite -start-filter grep:::!<CR>
-
 " Define mappings
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
+  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
 endfunction
+
+nnoremap <C-p> :Denite -start-filter file/rec<CR>
+nnoremap \ :Denite -start-filter grep:::!<CR>
 
 " === Coc.nvim === "
 " use <tab> for trigger completion and navigate to next complete item
@@ -370,19 +355,23 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-python',
   \ 'coc-yaml',
-  \ 'coc-emoji',
   \ 'coc-tsserver',
-  \ 'coc-ultisnips',
+  \ 'coc-json',
+  \ 'coc-prettier',
+  \ 'coc-eslint',
+  \ 'coc-tslint-plugin',
   \ 'coc-vimlsp',
   \ 'coc-github',
   \ 'coc-git',
+  \ 'coc-gitignore',
+  \ 'coc-pairs',
   \ 'coc-svg',
   \ 'coc-syntax',
-  \ 'coc-json',
-  \ 'coc-prettier',
   \ 'coc-vetur',
   \ 'coc-docker',
-  \ 'coc-jest'
+  \ 'coc-jest',
+  \ 'coc-import-cost',
+  \ 'coc-marketplace'
   \ ]
 
 function! s:check_back_space() abort
