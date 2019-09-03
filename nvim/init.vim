@@ -135,12 +135,6 @@ set updatetime=500                  " millis before cursorhold event, useful for
 set undofile
 set undodir=~/.config/nvim/undodir
 
-""" Folding
-set foldmethod=syntax "syntax highlighting items specify folds
-set foldcolumn=1 "defines 1 col at window left, to indicate folding
-let javaScript_fold=1 "activate folding by JS syntax
-set foldlevelstart=99 "start file with all folds opened
-
 " hide everywhere
 set wildignore+=*.o,.git,.svn,node_modules,vendor,bower_components,__jsdocs,.nyc_output,coverage,target
 
