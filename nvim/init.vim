@@ -16,8 +16,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'heavenshell/vim-jsdoc'
 Plug 'elzr/vim-json'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': [
   \ 'javascript',
   \ 'typescript',
@@ -31,16 +31,6 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': [
   \ 'yaml',
   \ 'html'
   \ ] }
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-
-" typescript
-" Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-" Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
-
-" node
-Plug 'moll/vim-node'
-Plug 'mmalecki/vim-node.js'
 
 " HTML CSS
 Plug 'groenewege/vim-less'
@@ -56,6 +46,8 @@ Plug 'lilydjwg/colorizer'
 " graphql
 Plug 'jparise/vim-graphql'
 
+" scala
+Plug 'derekwyatt/vim-scala'
 " editor config
 Plug 'editorconfig/editorconfig-vim'
 
@@ -350,27 +342,17 @@ nnoremap \ :Denite -start-filter grep:::!<CR>
 " === Coc.nvim === "
 " use <tab> for trigger completion and navigate to next complete item
 let g:coc_global_extensions = [
-  \ 'coc-css',
   \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-tsserver',
+  \ 'coc-prettier',
   \ 'coc-json',
+  \ 'coc-syntax',
   \ 'coc-python',
   \ 'coc-yaml',
-  \ 'coc-tsserver',
-  \ 'coc-json',
-  \ 'coc-prettier',
-  \ 'coc-eslint',
-  \ 'coc-tslint-plugin',
   \ 'coc-vimlsp',
-  \ 'coc-github',
   \ 'coc-git',
-  \ 'coc-gitignore',
-  \ 'coc-pairs',
-  \ 'coc-svg',
-  \ 'coc-syntax',
-  \ 'coc-vetur',
   \ 'coc-docker',
-  \ 'coc-jest',
-  \ 'coc-import-cost',
   \ 'coc-marketplace'
   \ ]
 
@@ -390,3 +372,7 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
+
+" Configuration for vim-scala
+au BufRead,BufNewFile *.sbt set filetype=scala
+autocmd FileType json syntax match Comment +\/\/.\+$+

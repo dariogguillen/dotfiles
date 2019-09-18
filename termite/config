@@ -1,5 +1,5 @@
 [options]
-font = Fira Code 8
+font = Fira Code 7.5
 cursor_blink = on
 allow_bold = false
 scrollback_lines = 100000
