@@ -372,6 +372,7 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Configuration for vim-scala
 au BufRead,BufNewFile *.sbt set filetype=scala
