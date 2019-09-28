@@ -200,7 +200,7 @@ bindsym $Mod+e layout toggle split
 default_orientation horizontal
 
 # assing workspaces
-assign [class="Chromium"] $WS2
+assign [class="Chromium"] $WS3
 assign [class="Slack"] $WS4
 assign [class="Code"] $WS2
 assign [class="firefox"] $WS7
@@ -312,7 +312,6 @@ set $urgent-bg-color     #CB4B16
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-    mode hide
     position top
     i3bar_command i3bar
     status_command ~/.config/bumblebee-status/bumblebee-status -m sensors memory amixer brightness battery date time -p time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
