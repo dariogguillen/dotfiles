@@ -4,7 +4,6 @@ for_window [class="^.*"] border pixel 1, title_format "<b> %class >> %title </b>
 # font
 font pango:Fira 9
 
-# focus follows mouse
 focus_follows_mouse no
 
 # $Mod = Super or Alt?
@@ -187,10 +186,6 @@ bindsym $Mod+Mod1+Shift+Left resize shrink width  10 px or 1 ppt
 bindsym $Mod+Mod1+Shift+l resize grow width  10 px or 1 ppt
 bindsym $Mod+Mod1+Shift+Right resize grow width  10 px or 1 ppt
 
-# switch to workspace with urgent window
-#for_window [urgent="latest"] focus
-#focus_on_window_activation   focus
-
 # container layout
 bindsym $Mod+q split toggle
 bindsym $Mod+s layout stacking
@@ -289,8 +284,6 @@ mode "$mode_gaps_outer" {
 ############    application settings   ############
 ###################################################
 
-for_window [class="(?i)(?:termite|thunar)"] focus
-
 # focus, floating, & sticky
 for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
 for_window [window_role="(?i)(?:pop-up|setup)"]      floating enable
@@ -339,4 +332,3 @@ bar {
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
-

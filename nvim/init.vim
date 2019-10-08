@@ -6,11 +6,11 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'kaicataldo/material.vim'
 
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
 
 " javascript
 Plug 'othree/yajs.vim'
@@ -62,6 +62,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " navigation between nvim and tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -146,8 +147,8 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'
 
 """" THEME """""""
 set termguicolors
-" colorscheme hybrid
-" colorscheme hybrid_material
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
 colorscheme hybrid_reverse
 
 let g:python_host_prog="/usr/bin/python2"
