@@ -203,6 +203,7 @@ default_orientation horizontal
 assign [class="Chromium"] $WS2
 assign [class="Slack"] $WS4
 assign [class="Code"] $WS2
+assign [class="jetbrains-idea-ce"] $WS2
 assign [class="firefox"] $WS7
 for_window [class="Spotify"] move to workspace $WS9
 for_window [class="GraphQL Playground"] move to workspace $WS10
@@ -314,7 +315,7 @@ set $urgent-bg-color     #CB4B16
 bar {
     position top
     i3bar_command i3bar
-    status_command bumblebee-status -m spotify nic memory amixer brightness battery date time -p nic.exclude="lo,virbr,docker,vbocnert,veth,br-ac01eb276b6e,br-87ca5d5214ea" time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
+    status_command bumblebee-status -m spotify nic memory amixer brightness battery date time -p nic.exclude="lo,virbr,docker,vbocnert,veth,br" time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
     tray_output primary
 
     colors {
