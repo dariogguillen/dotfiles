@@ -27,8 +27,8 @@ set $Mon1 HDMI1
 set $Mon2 HDMI2
 
 # open terminal
-# bindsym $Mod+Return exec termite
-bindsym $Mod+Return exec alacritty
+bindsym $Mod+Return exec termite
+# bindsym $Mod+Return exec alacritty
 
 #####################################################
 ###############     Autostart      ##################
@@ -95,12 +95,12 @@ bindsym $Mod+9 workspace $WS9
 bindsym $Mod+0 workspace $WS10
 
 #assing monitor
-workspace $WS1 output $Mon2
-workspace $WS2 output $Mon2
-workspace $WS3 output $Mon2
-workspace $WS4 output $Mon2
-workspace $WS5 output $Mon2
-workspace $WS6 output $Mon2
+workspace $WS1 output $Mon1
+workspace $WS2 output $Mon1
+workspace $WS3 output $Mon1
+workspace $WS4 output $Mon1
+workspace $WS5 output $Mon1
+workspace $WS6 output $Mon1
 workspace $WS7 output $Display
 workspace $WS8 output $Display
 workspace $WS9 output $Display
