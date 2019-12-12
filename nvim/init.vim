@@ -77,9 +77,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'Shougo/denite.nvim'
 call plug#end()
 " end plugins
-        let N1 = [ '#E4E4E4', '#3A3A3A', 254, 237 ]
-        let N2 = [ '#E4E4E4', '#4E4E4E', 254, 239 ]
-        let N3 = [ '#EEEEEE', '#262626', 255, 235 ]
+
 """"""""""""""""""""""""
 """""" SETTINGS """"""""
 """"""""""""""""""""""""
