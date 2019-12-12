@@ -77,7 +77,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'Shougo/denite.nvim'
 call plug#end()
 " end plugins
-
+        let N1 = [ '#E4E4E4', '#3A3A3A', 254, 237 ]
+        let N2 = [ '#E4E4E4', '#4E4E4E', 254, 239 ]
+        let N3 = [ '#EEEEEE', '#262626', 255, 235 ]
 """"""""""""""""""""""""
 """""" SETTINGS """"""""
 """"""""""""""""""""""""
@@ -205,7 +207,8 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 """""""""""""""""""
 
 """ Aireline """"""
-let g:airline_theme='gruvbox'
+let g:airline_minimalist_showmod = 1
+let g:airline_theme='minimalist'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
