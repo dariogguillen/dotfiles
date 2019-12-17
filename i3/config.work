@@ -200,27 +200,25 @@ bindsym $Mod+e layout toggle split
 default_orientation horizontal
 
 # assing workspaces
-assign [class="Chromium"] $WS2
-assign [class="Slack"] $WS4
+assign [class="Chromium"] $WS3
 assign [class="Code"] $WS2
 assign [class="jetbrains-idea-ce"] $WS2
 assign [class="firefox"] $WS7
-for_window [class="Spotify"] move to workspace $WS9
+assign [class="com-onseven-dbvis-DbVisualizerGUI"] $WS8
+# for_window [class="Spotify"] move to workspace $WS9
+for_window [class="Keybase"] move to workspace $WS4
 for_window [class="GraphQL Playground"] move to workspace $WS10
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="Galculator"] floating enable border pixel 1
-for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Slack"] floating enable
+for_window [class="Keybase"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Klavaro"] floating enable
 for_window [class="Blueman-manager"] floating enable
-for_window [class="keybase"] floating enable
 
 ######################################################
 ###############      Border & Gaps     ###############
