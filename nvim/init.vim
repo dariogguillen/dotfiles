@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 """""""""""""""""""""""""""
-""""" Plugins folder """"""
+"""""""" Plugins """"""""""
 """""""""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
@@ -17,7 +17,7 @@ Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'elzr/vim-json'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': [
   \ 'javascript',
   \ 'typescript',
@@ -375,8 +375,16 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gr <Plug>(coc-references)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gt <Plug>(coc-type-definition)
+nmap <silent> <leader>rn <Plug>(coc-rename)
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Configuration for vim-scala
 au BufRead,BufNewFile *.sbt set filetype=scala
 autocmd FileType json syntax match Comment +\/\/.\+$+
+" Metals specific commands
+" Start Metals Doctor
+command! -nargs=0 MetalsDoctor :call CocRequestAsync('metals', 'workspace/executeCommand', { 'command': 'doctor-run' })
+" Manually start build import
+command! -nargs=0 MetalsImport :call CocRequestAsync('metals', 'workspace/executeCommand', { 'command': 'build-import' })
+" Manually connect with the build server
+command! -nargs=0 MetalsConnect :call CocRequestAsync('metals', 'workspace/executeCommand', { 'command': 'build-connect' })
