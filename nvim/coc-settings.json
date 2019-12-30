@@ -2,12 +2,8 @@
   "coc.preferences.formatOnSaveFiletypes": ["scala"],
   "suggest.noselect": false,
   "suggest.enablePreview": true,
+  "metals.javaHome": "/usr/lib/jvm/java-11-openjdk",
   "languageserver": {
-    "metals": {
-      "command": "metals-vim",
-      "rootPatterns": ["build.sbt"],
-      "filetypes": ["scala", "sbt"]
-    },
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": ["dockerfile"],

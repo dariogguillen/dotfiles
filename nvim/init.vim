@@ -6,6 +6,7 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'sainnhe/vim-color-forest-night'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -17,7 +18,7 @@ Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'elzr/vim-json'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': [
   \ 'javascript',
   \ 'typescript',
@@ -48,6 +49,8 @@ Plug 'jparise/vim-graphql'
 
 " scala
 Plug 'derekwyatt/vim-scala'
+Plug 'ckipp01/coc-metals', {'do': 'yarn install --frozen-lockfile'}
+
 " editor config
 Plug 'editorconfig/editorconfig-vim'
 
@@ -89,7 +92,6 @@ set wrap
 set linebreak
 set showbreak=+++
 set showmatch
-set scrolloff=3
 set diffopt+=vertical
 set hlsearch
 set smartcase
@@ -207,6 +209,7 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 """ Aireline """"""
 let g:airline_minimalist_showmod = 1
 let g:airline_theme='minimalist'
+" let g:airline_theme='forest_night'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
@@ -220,13 +223,13 @@ map <leader>n :NERDTreeToggle<CR>
 map <leader>b :NERDTreeFocus<CR>
 map <leader>f :NERDTreeFind<CR>
 let g:NERDTreeDirArrows = 1
-" let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeRespectWildIgnore = 1
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """ nerdcommenter
@@ -342,7 +345,6 @@ nnoremap <C-p> :Denite -start-filter file/rec<CR>
 nnoremap \ :Denite -start-filter grep:::!<CR>
 
 " === Coc.nvim === "
-" use <tab> for trigger completion and navigate to next complete item
 let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-css',
