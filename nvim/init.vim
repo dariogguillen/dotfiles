@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 """""""""""""""""""""""""""
-"""""""" Plugins """"""""""
+""""" Plugins folder """"""
 """""""""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
@@ -49,7 +49,7 @@ Plug 'jparise/vim-graphql'
 
 " scala
 Plug 'derekwyatt/vim-scala'
-Plug 'ckipp01/coc-metals', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'ckipp01/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 
 " editor config
 Plug 'editorconfig/editorconfig-vim'
@@ -209,13 +209,10 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 """ Aireline """"""
 let g:airline_minimalist_showmod = 1
 let g:airline_theme='minimalist'
-" let g:airline_theme='forest_night'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 """" NERDtree
@@ -377,12 +374,12 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gr <Plug>(coc-references)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gt <Plug>(coc-type-definition)
-nmap <silent> <leader>rn <Plug>(coc-rename)
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Configuration for vim-scala
 au BufRead,BufNewFile *.sbt set filetype=scala
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
 " Metals specific commands
 " Start Metals Doctor
 command! -nargs=0 MetalsDoctor :call CocRequestAsync('metals', 'workspace/executeCommand', { 'command': 'doctor-run' })
