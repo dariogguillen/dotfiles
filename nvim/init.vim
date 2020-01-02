@@ -6,7 +6,6 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'sainnhe/vim-color-forest-night'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -18,7 +17,6 @@ Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'elzr/vim-json'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': [
   \ 'javascript',
   \ 'typescript',
@@ -49,7 +47,6 @@ Plug 'jparise/vim-graphql'
 
 " scala
 Plug 'derekwyatt/vim-scala'
-" Plug 'ckipp01/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 
 " editor config
 Plug 'editorconfig/editorconfig-vim'
@@ -69,7 +66,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " navigation between nvim and tmux
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'edkolev/tmuxline.vim'
 
 " others
 " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -78,6 +74,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'easymotion/vim-easymotion'
 Plug 'Shougo/denite.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 " end plugins
 
@@ -123,7 +120,6 @@ set sidescrolloff=5                 " show next 5 columns while side-scrolling
 set splitbelow                      " more natural horizontal split
 set splitright                      " more natural vertical split
 set clipboard=unnamedplus           " yanks puts it on clipboard
-set colorcolumn=100                 " show a right margin column
 set lazyredraw                      " wait to redraw
 set pumheight=10                    " completion window max size
 set updatetime=500                  " millis before cursorhold event, useful for tern
@@ -213,6 +209,7 @@ let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 """" NERDtree

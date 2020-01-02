@@ -3,6 +3,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/dariogg/.oh-my-zsh
 export TERM=xterm-256color
+export EDITOR=nvim
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -106,6 +107,9 @@ alias yad="yarn add --dev"
 alias ys="yarn start"
 
 alias update="yay -Syu --devel --timeupdate"
+
+alias txn="tmuxinator new"
+alias txs="tmuxinator start"
 
 # spaceship configuration
 SPACESHIP_PROMPT_ADD_NEWLINE=false
