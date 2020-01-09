@@ -289,8 +289,9 @@ let g:gutentags_cache_dir="~/.config/nvim/tags"
 
 " === Denite setup ==="
 let s:denite_options = {'default' : {
-\ 'auto_resize': 1,
 \ 'prompt': '❯ ',
+\ 'split': 'floating',
+\ 'auto_resize': 1,
 \ 'direction': 'rightbelow',
 \ 'winminheight': '10',
 \ 'highlight_mode_insert': 'Visual',
@@ -336,6 +337,7 @@ function! s:denite_my_settings() abort
 endfunction
 
 nnoremap <C-p> :Denite -start-filter file/rec<CR>
+nnoremap <leader><C-p> :Denite buffer<CR>
 nnoremap \ :Denite -start-filter grep:::!<CR>
 
 " === Coc.nvim === "
