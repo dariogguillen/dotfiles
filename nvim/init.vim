@@ -68,7 +68,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'christoomey/vim-tmux-navigator'
 
 " others
-" Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'ntpeters/vim-better-whitespace'
@@ -341,39 +340,39 @@ nnoremap <leader><C-p> :Denite buffer<CR>
 nnoremap \ :Denite -start-filter grep:::!<CR>
 
 " === Coc.nvim === "
-let g:coc_global_extensions = [
-  \ 'coc-html',
-  \ 'coc-css',
-  \ 'coc-tsserver',
-  \ 'coc-prettier',
-  \ 'coc-json',
-  \ 'coc-syntax',
-  \ 'coc-python',
-  \ 'coc-yaml',
-  \ 'coc-vimlsp',
-  \ 'coc-git',
-  \ 'coc-docker',
-  \ 'coc-marketplace'
-  \ ]
+" let g:coc_global_extensions = [
+  " \ 'coc-html',
+  " \ 'coc-css',
+  " \ 'coc-tsserver',
+  " \ 'coc-prettier',
+  " \ 'coc-json',
+  " \ 'coc-syntax',
+  " \ 'coc-python',
+  " \ 'coc-yaml',
+  " \ 'coc-vimlsp',
+  " \ 'coc-git',
+  " \ 'coc-docker',
+  " \ 'coc-marketplace'
+  " \ ]
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+" function! s:check_back_space() abort
+  " let col = col('.') - 1
+  " return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+" inoremap <silent><expr> <TAB>
+      " \ pumvisible() ? "\<C-n>" :
+      " \ <SID>check_back_space() ? "\<TAB>" :
+      " \ coc#refresh()
 
 "Close preview window when completion is done.
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+" autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gr <Plug>(coc-references)
-nmap <silent> <leader>gi <Plug>(coc-implementation)
-nmap <silent> <leader>gt <Plug>(coc-type-definition)
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" nmap <silent> <leader>gd <Plug>(coc-definition)
+" nmap <silent> <leader>gr <Plug>(coc-references)
+" nmap <silent> <leader>gi <Plug>(coc-implementation)
+" nmap <silent> <leader>gt <Plug>(coc-type-definition)
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Configuration for vim-scala
 au BufRead,BufNewFile *.sbt set filetype=scala
