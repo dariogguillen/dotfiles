@@ -1,7 +1,7 @@
-# /home/dariogg/.config/tmuxinator/nous-front.yml
+# /home/dariogg/.config/tmuxinator/essential-scala.yml
 
-name: nous-front
-root: ~/Documents/dev/nous-front
+name: essential-scala
+root: ~/Documents/code/scala/Essential-Scala-exercises
 
 # Optional tmux socket
 # socket_name: foo
@@ -40,12 +40,11 @@ root: ~/Documents/dev/nous-front
 # attach: false
 
 windows:
-  - server:
-      layout: event-vertical
+  - editor:
+      layout: main-horizontal
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - gfa
-        -
-  - editor: nvim
+        - nvim
+        - gst
