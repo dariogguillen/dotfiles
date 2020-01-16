@@ -1,7 +1,7 @@
-# /home/dariogg/.config/tmuxinator/bureau.yml
+# /home/dariogg/.config/tmuxinator/nous-front.yml
 
-name: bureau
-root: ~/Documents/dev/arkon-bureau
+name: nous-front
+root: ~/Documents/dev/nous-front
 
 # Optional tmux socket
 # socket_name: foo
@@ -40,8 +40,8 @@ root: ~/Documents/dev/arkon-bureau
 # attach: false
 
 windows:
-  - test:
-      layout: even-horizontal
+  - server:
+      layout: event-horizontal
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
