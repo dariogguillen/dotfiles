@@ -48,4 +48,4 @@ windows:
       panes:
         - gst
         -
-  - editor: bundle exec rails s
+  - editor: nvim
