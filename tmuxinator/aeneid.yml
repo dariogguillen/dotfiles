@@ -1,7 +1,7 @@
-# /home/dariogg/.config/tmuxinator/bureau.yml
+# /home/dariogg/.config/tmuxinator/aeneid.yml
 
-name: bureau
-root: ~/Documents/dev/arkon-bureau
+name: aeneid
+root: ~/Documents/dev/arkon-aeneid
 
 # Optional tmux socket
 # socket_name: foo
@@ -46,6 +46,6 @@ windows:
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - gfa
+        - gst
         -
-  - editor: nvim
+  - editor: bundle exec rails s
