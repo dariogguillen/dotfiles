@@ -6,7 +6,6 @@ scriptencoding utf-8
 call plug#begin('~/.local/share/nvim/plugged')
 " Themes
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'rakr/vim-one'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -145,8 +144,7 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'
 
 """" THEME """""""
 set termguicolors
-" colorscheme hybrid_reverse
-colorscheme one
+colorscheme hybrid_reverse
 
 let g:python_host_prog="/usr/bin/python2"
 let g:python3_host_prog="/usr/bin/python3"
@@ -203,8 +201,7 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 """ Aireline """"""
 let g:airline_minimalist_showmod = 1
-" let g:airline_theme='minimalist'
-let g:airline_theme='one'
+let g:airline_theme='minimalist'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
