@@ -146,7 +146,6 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'
 """" THEME """""""
 set termguicolors
 " colorscheme hybrid_reverse
-let g:one_allow_italics = 1
 colorscheme one
 
 let g:python_host_prog="/usr/bin/python2"
