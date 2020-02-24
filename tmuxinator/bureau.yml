@@ -48,4 +48,4 @@ windows:
       panes:
         - gfa
         -
-  - editor: nvim
+  # - editor: nvim

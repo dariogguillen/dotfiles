@@ -209,6 +209,7 @@ for_window [class="Spotify"] move to workspace $WS9
 for_window [class="Keybase"] move to workspace $WS4
 for_window [class="Slack"] move to workspace $WS4
 for_window [class="GraphQL Playground"] move to workspace $WS10
+for_window [class="Insomnia"] move to workspace $WS10
 
 # Open specific applications in floating mode
 for_window [class="Galculator"] floating enable border pixel 1
