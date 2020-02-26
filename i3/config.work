@@ -200,14 +200,15 @@ bindsym $Mod+e layout toggle split
 default_orientation horizontal
 
 # assing workspaces
-assign [class="Chromium"] $WS3
+assign [class="Chromium"] $WS4
+assign [class="Camunda Modeler"] $WS4
 assign [class="Code"] $WS2
 assign [class="jetbrains-idea-ce"] $WS2
-assign [class="firefox"] $WS7
+assign [class="firefox"] $WS3
 assign [class="com-onseven-dbvis-DbVisualizerGUI"] $WS8
 for_window [class="Spotify"] move to workspace $WS9
-for_window [class="Keybase"] move to workspace $WS4
-for_window [class="Slack"] move to workspace $WS4
+for_window [class="Keybase"] move to workspace $WS5
+for_window [class="Slack"] move to workspace $WS5
 for_window [class="GraphQL Playground"] move to workspace $WS10
 for_window [class="Insomnia"] move to workspace $WS10
 
