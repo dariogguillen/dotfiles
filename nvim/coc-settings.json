@@ -4,7 +4,7 @@
   "suggest.noselect": false,
   "suggest.enablePreview": true,
   "metals.javaHome": "/usr/lib/jvm/java-11-openjdk",
-  "metals.serverVersion": "0.8.0+214-264e5c23-SNAPSHOT",
+  "metals.serverVersion": "0.8.1+17-eb60068f-SNAPSHOT",
   "languageserver": {
     "dockerfile": {
       "command": "docker-langserver",

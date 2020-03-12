@@ -208,7 +208,7 @@ assign [class="firefox"] $WS3
 assign [class="com-onseven-dbvis-DbVisualizerGUI"] $WS8
 for_window [class="Spotify"] move to workspace $WS9
 for_window [class="Keybase"] move to workspace $WS5
-for_window [class="Slack"] move to workspace $WS5
+for_window [class="Slack"] move to workspace $WS7
 for_window [class="GraphQL Playground"] move to workspace $WS10
 for_window [class="Insomnia"] move to workspace $WS10
 
