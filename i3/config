@@ -101,8 +101,8 @@ workspace $WS3 output $Mon2
 workspace $WS4 output $Mon2
 workspace $WS5 output $Mon2
 workspace $WS6 output $Mon2
-workspace $WS7 output $Display
-workspace $WS8 output $Display
+workspace $WS7 output $Mon2
+workspace $WS8 output $Mon2
 workspace $WS9 output $Display
 workspace $WS10 output $Display
 
