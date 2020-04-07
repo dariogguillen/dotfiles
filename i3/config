@@ -75,8 +75,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 2
 bindsym $mod+f fullscreen toggle
 
 # backlight
-bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 2
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 
 ################################################################
 ###########          Workspace Bindings          ###############
