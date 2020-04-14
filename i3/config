@@ -210,6 +210,7 @@ assign [class="com-onseven-dbvis-DbVisualizerGUI"] $WS7
 for_window [class="GraphQL Playground"] move to workspace $WS8
 for_window [class="Insomnia"] move to workspace $WS8
 for_window [class="Slack"] move to workspace $WS9
+assign [class="TelegramDesktop"] $WS9
 for_window [class="Spotify"] move to workspace $WS10
 
 # Open specific applications in floating mode
@@ -220,6 +221,7 @@ for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Keybase"] floating enable
 for_window [class="Slack"] floating enable
+for_window [class="TelegramDesktop"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Klavaro"] floating enable
 for_window [class="Blueman-manager"] floating enable
