@@ -1,18 +1,22 @@
 scriptencoding utf-8
 
 """""""""""""""""""""""""""
-""""" Plugins folder """"""
+""""""Plugins folder"""""""
 """""""""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/plugged')
-" Themes
+""""" Themes
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'ryanoasis/vim-devicons'
 
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 
-" javascript
+""""" autocompletion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+""""" javascript
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
@@ -31,7 +35,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': [
   \ 'html'
   \ ] }
 
-" HTML CSS
+""""" HTML CSS
 Plug 'groenewege/vim-less'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
@@ -42,51 +46,47 @@ Plug 'valloric/MatchTagAlways'
 Plug 'Raimondi/delimitMate'
 Plug 'lilydjwg/colorizer'
 
-" graphql
+""""" graphql
 Plug 'jparise/vim-graphql'
 
-" scala
+""""" scala
 Plug 'derekwyatt/vim-scala'
 
-" editor config
+""""" editor config
 Plug 'editorconfig/editorconfig-vim'
 
-" git
+""""" git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-" identacion
+""""" identacion
 Plug 'Yggdroot/indentLine'
 
-" Nerdtree
+""""" Nerdtree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-" navigation between nvim and tmux
+""""" others
 Plug 'christoomey/vim-tmux-navigator'
-
-" others
 Plug 'tpope/vim-surround'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'easymotion/vim-easymotion'
 Plug 'Shougo/denite.nvim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
-" end plugins
 
 """"""""""""""""""""""""
-"""""" SETTINGS """"""""
+"""""""SETTINGS"""""""""
 """"""""""""""""""""""""
-set number
 set relativenumber
 syntax enable
 set mouse=r
 set wrap
 set linebreak
-set showbreak=+++
+set breakindent
+set showbreak=+
 set showmatch
 set diffopt+=vertical
 set hlsearch
@@ -94,39 +94,35 @@ set smartcase
 set ignorecase
 set incsearch
 set cursorline
-" Indentación a 2 espacios
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set shiftround
-set expandtab  " Insertar espacios en lugar de <Tab>s
-set hidden  " Permitir cambiar de buffers sin tener que guardarlos
-set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)
-set spelllang=en,es  " Corregir palabras usando diccionarios en inglés y español
-" Open new splits to right and bottom
+set expandtab
+set hidden
+set noshowmode
+set spelllang=en
 set splitbelow
 set splitright
+set signcolumn=yes
 hi clear SignColumn
-""avoid vim backups
 set nowritebackup
-set autoread                        " auto reload file if changed externally
-set nobackup                        " no ~backup files
-set noswapfile                      " no swap files
-set autowrite                       " save files automatically in most cases
-set list                            " show hidden characters
+set autoread
+set nobackup
+set noswapfile
+set autowrite
+set list
 set listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:%,eol:¬
-set sidescrolloff=5                 " show next 5 columns while side-scrolling
-set splitbelow                      " more natural horizontal split
-set splitright                      " more natural vertical split
-set clipboard=unnamedplus           " yanks puts it on clipboard
-set lazyredraw                      " wait to redraw
-set pumheight=10                    " completion window max size
-set updatetime=500                  " millis before cursorhold event, useful for tern
+set sidescrolloff=5
+set clipboard=unnamedplus
+set lazyredraw
+set pumheight=10
+set updatetime=300
 set undofile
 set undodir=~/.config/nvim/undodir
 
 " hide everywhere
-set wildignore+=*.o,.git,.svn,node_modules,vendor,bower_components,__jsdocs,.nyc_output,coverage,target
+"set wildignore+=*.o,.git,.svn,node_modules,vendor,bower_components,__jsdocs,.nyc_output,coverage,target
 
 au FileType python set noet
 au FileType java set sw=4 ts=4 sts=4
@@ -142,79 +138,77 @@ au FileType gitcommit setlocal spell
 " open files where last edits took place
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
-"""" THEME """""""
+""""" THEME
 set termguicolors
-colorscheme hybrid_reverse
+"colorscheme hybrid_reverse
+"colorscheme hybrid
+"colorscheme two-firewatch
+"colorscheme nord
+colorscheme pink-moon
 
 let g:python_host_prog="/usr/bin/python2"
 let g:python3_host_prog="/usr/bin/python3"
 
 """""""""""""""""""
-"""" MAP KEYS """""
+"""""MAP KEYS""""""
 """""""""""""""""""
 " Escape with fj
 inoremap jk <esc>
-"change between panes
+
+" change between panes
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-let g:mapleader = ' '  " Definir espacio como la tecla líder
-nnoremap <leader>e :e $MYVIMRC<CR>  " Abrir el archivo init.vim con <líder> + e
-nnoremap <leader>s :w<CR>  " Guardar con <líder> + s
-nnoremap <C-s> :wa<CR>  " Guardar todo
-nnoremap <leader>so :so ~/.config/nvim/init.vim <CR> " recargar configuracion
-nnoremap <leader>pi :PlugInstall<CR> " install plugins
-nnoremap <leader>pc :PlugClean<CR> " clean plugins
-nnoremap <leader>pu :PlugUpdate<CR> " update plugins
-nnoremap <leader>pr :PlugUpgrade<CR> " upgrade plug
-nnoremap <ESC> :noh<CR> " tourn searh highlighting off
-" Usar <líder> + y para copiar al portapapeles
+let g:mapleader = ' '
+nnoremap <leader>e :e $MYVIMRC<CR>
+nnoremap <leader>s :w<CR>
+nnoremap <C-s> :wa<CR>
+nnoremap <leader>so :so ~/.config/nvim/init.vim <CR>
+nnoremap <leader>pi :PlugInstall<CR>
+nnoremap <leader>pc :PlugClean<CR>
+nnoremap <leader>pu :PlugUpdate<CR>
+nnoremap <leader>pr :PlugUpgrade<CR>
+nnoremap <ESC> :noh<CR>
 vnoremap <leader>y "+y
 nnoremap <leader>y "+y
-" Usar <líder> + d para cortar al portapapeles
 vnoremap <leader>d "+d
 nnoremap <leader>d "+d
-" Usar <líder> + p para pegar desde el portapapeles
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>P "+P
-" Moverse al buffer siguiente con <líder> + l
 nnoremap <Tab> :bnext<CR>
-" Moverse al buffer anterior con <líder> + j
 nnoremap <S-Tab> :bprevious<CR>
-" Cerrar el buffer actual con <líder> + q
-" nnoremap <leader>q :bdelete<CR>
 nnoremap <leader>q :bp<cr>:bd #<cr>
-" arrow keys resize panes
-nnoremap <Left> :vertical resize -1<CR>
-nnoremap <Right> :vertical resize +1<CR>
-nnoremap <Up> :resize -1<CR>
-nnoremap <Down> :resize +1<CR>
+nnoremap <S-Left> :vertical resize -1<CR>
+nnoremap <S-Right> :vertical resize +1<CR>
+nnoremap <S-Up> :resize -1<CR>
+nnoremap <S-Down> :resize +1<CR>
 
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 """""""""""""""""""
-"""" PLUGINS """"""
+"""""PLUGINS"""""""
 """""""""""""""""""
 
-""" Aireline """"""
+""""" Aireline
 let g:airline_minimalist_showmod = 1
-let g:airline_theme='minimalist'
+" let g:airline_theme='minimalist'
+let g:airline_theme='hybrid'
 let g:powerline_pycmd="py3"
 let g:airline_powerline_fonts=1
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-"""" NERDtree
+""""" NERDtree
 map <leader>n :NERDTreeToggle<CR>
 map <leader>b :NERDTreeFocus<CR>
 map <leader>f :NERDTreeFind<CR>
 let g:NERDTreeDirArrows = 1
-let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeAutoDeleteBuffer = 1
@@ -222,18 +216,18 @@ let g:NERDTreeRespectWildIgnore = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-""" nerdcommenter
+""""" nerdcommenter
 let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
-""" javascript
+""""" javascript
 let g:used_javascript_libs = 'underscore,ramda,vue,d3,react'
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
 
-""" emmet
+""""" emmet
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
   \  'javascript.jsx' : {
@@ -241,18 +235,18 @@ let g:user_emmet_settings = {
   \  },
   \}
 
-""" prettier
+""""" prettier
 let g:prettier#autoformat = 1
 autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 
-""" indentline
+""""" indentline
 let g:indentLine_faster = 1
 let g:indentLine_color_term = 236
 let g:indentLine_noConcealCursor = "nc"
 let g:indentLine_concealcursor=""
 let g:indentLine_char ='┆'
 
-"" closetag
+""""" closetag
 let g:closetag_filenames = '*.html,*.jsx,*.js'
 let g:closetag_filetypes = 'html,jsx,js'
 let g:closetag_emptyTags_caseSensitive = 1
@@ -262,7 +256,7 @@ let g:closetag_xhtml_filetypes = 'xhtml,javascript.jsx,jsx'
 autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 
-"" MatchTagAlways
+""""" MatchTagAlways
 let g:mta_filetypes = {
   \ 'html' : 1,
   \ 'xhtml' : 1,
@@ -270,20 +264,17 @@ let g:mta_filetypes = {
   \ 'javascript.jsx' : 1,
   \ }
 
-""" Raimondi/delimitMate
+""""" Raimondi/delimitMate
 let delimitMate_matchpairs = "(:),[:],{:}"
 
-""tmuxline
-let g:tmuxline_preset = 'tmux'
-
-"""" gitgutter
+"""""" gitgutter
 let g:gitgutter_map_keys = 0
 let g:airline#extensions#hunks#non_zero_only = 1
 
-""" gutentags file
+""""" gutentags file
 let g:gutentags_cache_dir="~/.config/nvim/tags"
 
-" === Denite setup ==="
+""""" Denite setup
 let s:denite_options = {'default' : {
 \ 'prompt': '❯ ',
 \ 'split': 'floating',
@@ -311,7 +302,7 @@ call denite#custom#var(
   \ ['rg', '--hidden', '--files', '--glob', '!.git', '--glob', '']
   \ )
 
-" Use ripgrep in place of "grep"
+""""" Use ripgrep in place of "grep"
 call denite#custom#var('grep', 'command', ['rg'])
 call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
 call denite#custom#var('grep', 'recursive_opts', [])
@@ -321,7 +312,7 @@ call denite#custom#var('grep', 'final_opts', [])
 
 call s:profile(s:denite_options)
 
-" Define mappings
+""""" Define mappings
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
@@ -336,7 +327,7 @@ nnoremap <C-p> :Denite -start-filter file/rec<CR>
 nnoremap <leader><C-p> :Denite buffer<CR>
 nnoremap \ :Denite -start-filter grep:::!<CR>
 
-" === Coc.nvim === "
+""""" Coc.nvim
 let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-css',
@@ -346,8 +337,6 @@ let g:coc_global_extensions = [
   \ 'coc-syntax',
   \ 'coc-python',
   \ 'coc-yaml',
-  \ 'coc-vimlsp',
-  \ 'coc-git',
   \ 'coc-docker',
   \ 'coc-marketplace',
   \ 'coc-metals'
@@ -364,16 +353,29 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-"Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gt <Plug>(coc-type-definition)
+
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" Configuration for vim-scala
-au BufRead,BufNewFile *.sbt set filetype=scala
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+""""" Configuration for vim-scala
+au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
