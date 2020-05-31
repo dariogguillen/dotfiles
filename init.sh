@@ -58,7 +58,6 @@ alsa-utils \
 arandr \
 autoconf \
 automake \
-b43-firmware \
 b43-fwcutter \
 bash \
 betterlockscreen \
