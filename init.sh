@@ -124,7 +124,7 @@ gtk-engines \
 gtk3 \
 gvfs \
 gvfs-afc \
-gvgs-mtp \
+gvfs-mtp \
 gzip \
 haveged \
 hdparm \
@@ -251,7 +251,6 @@ xclip \
 xdg-user-dirs \
 xdotool \
 xf86-input-evdev \
-xf86-input-keyboard \
 xf86-input-libinput \
 xf86-input-mouse \
 xf86-input-synaptics \
