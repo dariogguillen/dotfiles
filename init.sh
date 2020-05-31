@@ -251,7 +251,6 @@ xdg-user-dirs \
 xdotool \
 xf86-input-evdev \
 xf86-input-libinput \
-xf86-input-mouse \
 xf86-input-synaptics \
 xf86-input-vmmouse \
 xf86-input-void \
