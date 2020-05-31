@@ -167,6 +167,7 @@ noto-fonts \
 noto-fonts-cjk \
 noto-fonts-emoji \
 ntfs-3g \
+nvm \
 os-prober \
 p7zip \
 pacman \
