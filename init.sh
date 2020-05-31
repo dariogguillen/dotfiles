@@ -38,6 +38,10 @@ ln -sf $folder/zshrc ~/.zshrc
 ln -sf $folder/tmux.conf ~/.tmux.conf
 ln -sf $folder/tmux-status.conf ~/.tmux-stats.conf
 ln -sf $folder/zshrc ~/.zshrc
+ln -sf $folder/xprofile ~/.xprofile
+
+mkdir ~/bin
+ln -f $folder/rofi_run ~/bin/rofi_run
 
 sudo ln -sf $folder/10-monitor.conf /usr/share/X11/xorg.conf.d/10-monitor.conf
 sudo ln -sf $folder/pacman.conf /etc/pacman.conf
@@ -185,6 +189,7 @@ playerctl \
 polkit-gnome \
 postgresql \
 postgresql-libs \
+powerline-fonts \
 procps-ng \
 psmisc \
 pulseaudio \
