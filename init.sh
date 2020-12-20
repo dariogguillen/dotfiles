@@ -254,16 +254,7 @@ xarchiver \
 xclip \
 xdg-user-dirs \
 xdotool \
-xf86-input-evdev \
-xf86-input-libinput \
-xf86-input-synaptics \
-xf86-input-vmmouse \
-xf86-input-void \
 xf86-video-intel \
-xf86-video-qxl \
-xf86-video-vesa \
-xf86-video-vmware \
-xf86-video-voodoo \
 xfce4-power-manager \
 xfce4-settings \
 xfsprogs \

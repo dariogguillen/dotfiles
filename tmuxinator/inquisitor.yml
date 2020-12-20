@@ -41,11 +41,12 @@ root: ~/Documents/dev/arkon-inquisitor
 
 windows:
   - test:
-      layout: even-horizontal
+      layout: 2dff,365x71,0,0{182x71,0,0,45,182x71,183,0[182x55,183,0,47,182x15,183,56,48]}
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - gfa
         -
-  # - editor: nvim
+        - cd proto/src/main/protobuf
+  - editor: nvim

@@ -4,12 +4,32 @@
   "suggest.noselect": false,
   "suggest.enablePreview": true,
   "metals.javaHome": "/usr/lib/jvm/java-11-openjdk",
-  "metals.serverVersion": "0.9.0",
-  "languageserver": {
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": ["dockerfile"],
-      "args": ["--stdio"]
-    }
-  }
+  "metals.serverVersion": "0.9.5",
+  "metals.statusBarEnabled": true,
+  "codeLens.enable": true,
+  "git.enableGutters": true,
+  "explorer.width": 40,
+  "explorer.toggle": true,
+  "explorer.git.enable": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings.global": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  },
+  "explorer.git.icon.status.added": "+",
+  "explorer.git.icon.status.deleted": "✗",
+  "explorer.git.icon.status.ignored": "!",
+  "explorer.git.icon.status.mixed": "*",
+  "explorer.git.icon.status.modified": "~",
+  "explorer.git.icon.status.renamed": "→",
+  "explorer.git.icon.status.unmerged": "=",
+  "explorer.git.icon.status.unmodified": " ",
+  "explorer.git.icon.status.untracked": "?",
+  "explorer.git.icon.rootStatus.conflicted": "=",
+  "explorer.git.icon.rootStatus.ahead": "⇡",
+  "explorer.git.icon.rootStatus.behind": "⇣",
+  "explorer.git.showIgnored": true,
+  "explorer.filename.colored.enable": true,
+  "explorer.quitOnOpen": true
 }

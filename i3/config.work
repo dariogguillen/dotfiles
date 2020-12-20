@@ -103,7 +103,7 @@ workspace $WS5 output $Mon1
 workspace $WS6 output $Mon1
 workspace $WS7 output $Mon1
 workspace $WS8 output $Mon1
-workspace $WS9 output $Display
+workspace $WS9 output $Mon1
 workspace $WS10 output $Display
 
 
@@ -317,11 +317,12 @@ set $urgent-bg-color     #CB4B16
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-    mode hide
+    # mode hide
     position top
-    i3bar_command i3bar
-    status_command bumblebee-status -m nic memory amixer brightness battery date time -p nic.exclude="enp2s0,lo,virbr,docker,vbocnert,veth,br" time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
-    tray_output primary
+    # i3bar_command i3bar
+    status_command bumblebee-status -m spotify nic memory amixer brightness battery date time -p nic.exclude="enp2s0,lo,virbr,docker,vbocnert,veth,br" time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
+    tray_output $Mon1
+    tray_output $Display
 
     colors {
         background $bg-color

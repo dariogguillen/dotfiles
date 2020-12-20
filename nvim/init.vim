@@ -4,89 +4,42 @@ scriptencoding utf-8
 """"""Plugins folder"""""""
 """""""""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/plugged')
-""""" Themes
+Plug 'ryanoasis/vim-devicons'
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'ryanoasis/vim-devicons'
-
-" airline
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ryanoasis/vim-devicons'
-
-""""" autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-""""" javascript
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'elzr/vim-json'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': [
-  \ 'javascript',
-  \ 'typescript',
-  \ 'css',
-  \ 'less',
-  \ 'scss',
-  \ 'json',
-  \ 'graphql',
-  \ 'markdown',
-  \ 'vue',
-  \ 'yaml',
-  \ 'html'
-  \ ] }
-
-""""" HTML CSS
-Plug 'groenewege/vim-less'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'ap/vim-css-color'
-Plug 'othree/html5.vim'
 Plug 'alvan/vim-closetag'
 Plug 'valloric/MatchTagAlways'
 Plug 'Raimondi/delimitMate'
 Plug 'lilydjwg/colorizer'
-
-""""" graphql
-Plug 'jparise/vim-graphql'
-
-""""" scala
-Plug 'derekwyatt/vim-scala'
-
-""""" editor config
 Plug 'editorconfig/editorconfig-vim'
-
-""""" git
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-
-""""" identacion
 Plug 'Yggdroot/indentLine'
-
-""""" Nerdtree
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-""""" others
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'easymotion/vim-easymotion'
-Plug 'Shougo/denite.nvim'
+Plug 'mhinz/vim-startify'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
 call plug#end()
 
 """"""""""""""""""""""""
 """""""SETTINGS"""""""""
 """"""""""""""""""""""""
+set nu
 set relativenumber
 syntax enable
-set mouse=r
+set mouse=a
 set wrap
 set linebreak
 set breakindent
-set showbreak=+
+set showbreak=>>>
 set showmatch
 set diffopt+=vertical
 set hlsearch
@@ -121,8 +74,7 @@ set updatetime=300
 set undofile
 set undodir=~/.config/nvim/undodir
 
-" hide everywhere
-"set wildignore+=*.o,.git,.svn,node_modules,vendor,bower_components,__jsdocs,.nyc_output,coverage,target
+au! BufWritePost $MYVIMRC source %
 
 au FileType python set noet
 au FileType java set sw=4 ts=4 sts=4
@@ -140,12 +92,10 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'
 
 """"" THEME
 set termguicolors
-"colorscheme hybrid_reverse
-"colorscheme hybrid
-"colorscheme two-firewatch
-"colorscheme nord
-colorscheme pink-moon
+let g:nord_uniform_diff_background = 1
+colorscheme nord
 
+let g:loaded_perl_provider=0
 let g:python_host_prog="/usr/bin/python2"
 let g:python3_host_prog="/usr/bin/python3"
 
@@ -154,6 +104,7 @@ let g:python3_host_prog="/usr/bin/python3"
 """""""""""""""""""
 " Escape with fj
 inoremap jk <esc>
+inoremap kj <esc>
 
 " change between panes
 map <C-j> <C-W>j
@@ -164,6 +115,7 @@ let g:mapleader = ' '
 nnoremap <leader>e :e $MYVIMRC<CR>
 nnoremap <leader>s :w<CR>
 nnoremap <C-s> :wa<CR>
+nnoremap <C-x> :SSave! <bar> :xa<CR>
 nnoremap <leader>so :so ~/.config/nvim/init.vim <CR>
 nnoremap <leader>pi :PlugInstall<CR>
 nnoremap <leader>pc :PlugClean<CR>
@@ -185,6 +137,8 @@ nnoremap <S-Left> :vertical resize -1<CR>
 nnoremap <S-Right> :vertical resize +1<CR>
 nnoremap <S-Up> :resize -1<CR>
 nnoremap <S-Down> :resize +1<CR>
+vnoremap < <gv
+vnoremap > >gv
 
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
@@ -194,28 +148,13 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 """"" Aireline
 let g:airline_minimalist_showmod = 1
-" let g:airline_theme='minimalist'
-let g:airline_theme='hybrid'
-let g:powerline_pycmd="py3"
-let g:airline_powerline_fonts=1
+let g:airline_theme='nord'
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-""""" NERDtree
-map <leader>n :NERDTreeToggle<CR>
-map <leader>b :NERDTreeFocus<CR>
-map <leader>f :NERDTreeFind<CR>
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeRespectWildIgnore = 1
-autocmd StdinReadPre * let s:std_in=1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-""""" nerdcommenter
+"""" nerdcommenter
 let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
@@ -225,14 +164,6 @@ let g:used_javascript_libs = 'underscore,ramda,vue,d3,react'
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
-
-""""" emmet
-let g:user_emmet_leader_key='<Tab>'
-let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-  \      'extends' : 'jsx',
-  \  },
-  \}
 
 """"" prettier
 let g:prettier#autoformat = 1
@@ -266,79 +197,21 @@ let g:mta_filetypes = {
 """"" Raimondi/delimitMate
 let delimitMate_matchpairs = "(:),[:],{:}"
 
-"""""" gitgutter
-let g:gitgutter_map_keys = 0
-let g:airline#extensions#hunks#non_zero_only = 1
-
-""""" gutentags file
-let g:gutentags_cache_dir="~/.config/nvim/tags"
-
-""""" Denite setup
-let s:denite_options = {'default' : {
-\ 'prompt': '❯ ',
-\ 'split': 'floating',
-\ 'auto_resize': 1,
-\ 'direction': 'rightbelow',
-\ 'winminheight': '10',
-\ 'highlight_mode_insert': 'Visual',
-\ 'highlight_mode_normal': 'Visual',
-\ 'prompt_highlight': 'Function',
-\ 'highlight_matched_char': 'Function',
-\ 'highlight_matched_range': 'Normal'
-\ }}
-
-function! s:profile(opts) abort
-  for fname in keys(a:opts)
-    for dopt in keys(a:opts[fname])
-      call denite#custom#option(fname, dopt, a:opts[fname][dopt])
-    endfor
-  endfor
-endfunction
-
-call denite#custom#var(
-  \ 'file/rec',
-  \'command',
-  \ ['rg', '--hidden', '--files', '--glob', '!.git', '--glob', '']
-  \ )
-
-""""" Use ripgrep in place of "grep"
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
-call s:profile(s:denite_options)
-
-""""" Define mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-endfunction
-
-nnoremap <C-p> :Denite -start-filter file/rec<CR>
-nnoremap <leader><C-p> :Denite buffer<CR>
-nnoremap \ :Denite -start-filter grep:::!<CR>
-
 """"" Coc.nvim
 let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-css',
   \ 'coc-tsserver',
+  \ 'coc-eslint',
   \ 'coc-prettier',
   \ 'coc-json',
   \ 'coc-syntax',
-  \ 'coc-python',
-  \ 'coc-yaml',
-  \ 'coc-docker',
   \ 'coc-marketplace',
-  \ 'coc-metals'
+  \ 'coc-metals',
+  \ 'coc-explorer',
+  \ 'coc-git',
+  \ 'coc-vimlsp',
+  \ 'coc-sql'
   \ ]
 
 function! s:check_back_space() abort
@@ -363,6 +236,7 @@ nmap <silent> gt <Plug>(coc-type-definition)
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+nmap <leader>rn <Plug>(coc-rename)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -374,7 +248,30 @@ function! s:show_documentation()
   endif
 endfunction
 
-""""" Configuration for vim-scala
 au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
+"" coc-explorer
+nmap <leader>b :CocCommand explorer<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+
+"""" startify
+nnoremap <leader>ss :SSave!<CR>
+let g:startify_session_autoload = 1
+let g:startify_session_dir = '~/.config/nvim/sessions/'
+let g:startify_change_to_vsc_root = 1
+let g:startify_fortune_use_unicode = 1
+let g:startify_session_persistance = 1
+let g:startify_lists = [
+  \ { 'type': 'sessions', 'header': ['   Sesions'] },
+  \ { 'type': 'dir', 'header': ['   CurrentDirectory: '. getcwd()] },
+  \ { 'type': 'files', 'header': ['   Files'] }
+  \ ]
+
+" FZF
+map <C-p> :GFiles<CR>
+map <leader><C-p> :Buffers<CR>
+nnoremap \ :Rg! 
+nnoremap <leader>t :Tags<CR>
+nnoremap <leader>m :Marks<CR>
 
