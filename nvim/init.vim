@@ -26,7 +26,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
 call plug#end()
 
 """"""""""""""""""""""""

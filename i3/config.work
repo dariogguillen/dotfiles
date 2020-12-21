@@ -27,19 +27,7 @@ set $Mon1 HDMI1
 set $Mon2 HDMI2
 
 # open terminal
-# bindsym $Mod+Return exec termite
 bindsym $Mod+Return exec alacritty
-
-#####################################################
-###############     Autostart      ##################
-#####################################################
-
-# run with reload
-exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id blueman-applet
-exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
-exec --no-startup-id xfsettingsd
-exec --no-startup-id al-compositor --start
 
 ###########################################################
 #############         Bindings           #################
@@ -47,20 +35,13 @@ exec --no-startup-id al-compositor --start
 
 # kill focused window
 bindsym $Mod+Shift+q kill
-bindsym Mod1+F4 kill
 
 # launchers
-bindsym $Mod+d exec --no-startup-id rofi_run -r
+bindsym $mod+d exec rofi -modi run -show drun -show-icons
 bindsym Mod1+Tab exec --no-startup-id rofi -show window
 
-# lock https://github.com/pavanjadhaw/betterlockscreen
-bindsym $Mod+x exec --no-startup-id betterlockscreen -l blur
-# lock and suspend
-bindsym $Mod+Shift+x exec --no-startup-id betterlockscreen -s blur
-
-
 # Screenshot
-bindsym Print exec --no-startup-id "scrot '%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png ; feh $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png'"
+# bindsym Print exec --no-startup-id "scrot '%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png ; feh $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png'"
 
 # audio
 bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
@@ -75,8 +56,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 2
 bindsym $mod+f fullscreen toggle
 
 # backlight
-bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+# bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5
+# bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 
 ################################################################
 ###########          Workspace Bindings          ###############
@@ -102,8 +83,8 @@ workspace $WS4 output $Mon1
 workspace $WS5 output $Mon1
 workspace $WS6 output $Mon1
 workspace $WS7 output $Mon1
-workspace $WS8 output $Mon1
-workspace $WS9 output $Mon1
+workspace $WS8 output $Display
+workspace $WS9 output $Display
 workspace $WS10 output $Display
 
 
@@ -187,10 +168,6 @@ bindsym $Mod+Mod1+Shift+Left resize shrink width  10 px or 1 ppt
 bindsym $Mod+Mod1+Shift+l resize grow width  10 px or 1 ppt
 bindsym $Mod+Mod1+Shift+Right resize grow width  10 px or 1 ppt
 
-# switch to workspace with urgent window
-#for_window [urgent="latest"] focus
-#focus_on_window_activation   focus
-
 # container layout
 bindsym $Mod+q split toggle
 bindsym $Mod+s layout stacking
@@ -203,10 +180,13 @@ default_orientation horizontal
 assign [class="Code"] $WS2
 assign [class="jetbrains-idea-ce"] $WS2
 assign [class="firefox"] $WS3
+assign [class="brave-browser"] $WS3
 assign [class="Chromium"] $WS4
 assign [class="Camunda Modeler"] $WS4
+assign [class="Pavucontrol"] $WS8
 for_window [class="Keybase"] move to workspace $WS5
 assign [class="com-onseven-dbvis-DbVisualizerGUI"] $WS7
+assign [class="DBeaver"] $WS7
 for_window [class="GraphQL Playground"] move to workspace $WS8
 for_window [class="Insomnia"] move to workspace $WS8
 for_window [class="Slack"] move to workspace $WS9
@@ -214,17 +194,12 @@ assign [class="TelegramDesktop"] $WS9
 for_window [class="Spotify"] move to workspace $WS10
 
 # Open specific applications in floating mode
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Keybase"] floating enable
 for_window [class="Slack"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 for_window [class="Arandr"] floating enable
-for_window [class="Klavaro"] floating enable
-for_window [class="Blueman-manager"] floating enable
 
 ######################################################
 ###############      Border & Gaps     ###############
@@ -243,7 +218,7 @@ bindsym $Mod+y border 1pixel
 bindsym $Mod+u border none
 
 # Set inner/outer gaps
-# gaps inner 5
+gaps inner 5
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -294,15 +269,11 @@ mode "$mode_gaps_outer" {
 ############    application settings   ############
 ###################################################
 
-for_window [class="(?i)(?:termite|thunar)"] focus
-
 # focus, floating, & sticky
 for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
 for_window [window_role="(?i)(?:pop-up|setup)"]      floating enable
 
 popup_during_fullscreen smart
-
-exec --no-startup-id i3-msg workspace $WS1
 
 ###################################################
 ############            i3 Bar          ###########
@@ -346,4 +317,29 @@ bar {
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
+
+# Plasma compatibility improvements
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+for_window [class="yakuake"] floating enable
+for_window [class="plasmashell"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="(?i)*nextcloud*"] floating disable
+for_window [class="plasmashell" window_type="notification"] border none move position 1575 30
+no_focus [class="plasmashell" window_type="notification"]
+
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+for_window [title="Arbeitsfläche — Plasma"] kill; floating enable; border none
+
+# using plasma's logout screen instead of i3's
+bindsym $mod+Shift+x exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 
