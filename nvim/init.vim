@@ -35,7 +35,7 @@ set nu
 set relativenumber
 syntax enable
 set mouse=a
-set wrap
+set nowrap
 set linebreak
 set breakindent
 set showbreak=>>>
@@ -91,8 +91,10 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'
 
 """"" THEME
 set termguicolors
-let g:nord_uniform_diff_background = 1
-colorscheme nord
+" let g:nord_uniform_diff_background = 1
+" colorscheme nord
+" colorscheme hybrid_reverse
+colorscheme pink-moon
 
 let g:loaded_perl_provider=0
 let g:python_host_prog="/usr/bin/python2"
@@ -147,11 +149,12 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 """"" Aireline
 let g:airline_minimalist_showmod = 1
-let g:airline_theme='nord'
+let g:airline_theme='snow_dark'
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#hunks#non_zero_only = 1
 
 """" nerdcommenter
 let g:NERDSpaceDelims = 1
@@ -205,12 +208,10 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-json',
   \ 'coc-syntax',
-  \ 'coc-marketplace',
   \ 'coc-metals',
   \ 'coc-explorer',
   \ 'coc-git',
   \ 'coc-vimlsp',
-  \ 'coc-sql'
   \ ]
 
 function! s:check_back_space() abort

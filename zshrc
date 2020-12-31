@@ -4,6 +4,7 @@
 export ZSH=/home/dariogg/.oh-my-zsh
 export TERM=screen-256color
 export EDITOR=nvim
+export HISTCONTROL=ignoreboth
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -61,7 +62,7 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  # dotenv
+  dotenv
   sudo
   tmux
   zsh-autosuggestions

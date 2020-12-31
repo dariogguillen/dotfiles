@@ -1,5 +1,5 @@
 # border & title.. Must be set to border pixel for gaps to work
-for_window [class="^.*"] border pixel 1, title_format "<b> %class >> %title </b>"
+for_window [class="^.*"] border pixel 2, title_format "<b> %class >> %title </b>"
 
 # font
 font pango:Fira 9
@@ -43,6 +43,9 @@ bindsym Mod1+Tab exec --no-startup-id rofi -show window
 # Screenshot
 # bindsym Print exec --no-startup-id "scrot '%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png ; feh $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png'"
 
+# Wallpaper
+exec_always --no-startup-id nitrogen --restore
+
 # audio
 bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext        exec --no-startup-id playerctl next
@@ -82,7 +85,7 @@ workspace $WS3 output $Mon1
 workspace $WS4 output $Mon1
 workspace $WS5 output $Mon1
 workspace $WS6 output $Mon1
-workspace $WS7 output $Mon1
+workspace $WS7 output $Display
 workspace $WS8 output $Display
 workspace $WS9 output $Display
 workspace $WS10 output $Display
@@ -180,10 +183,10 @@ default_orientation horizontal
 assign [class="Code"] $WS2
 assign [class="jetbrains-idea-ce"] $WS2
 assign [class="firefox"] $WS3
-assign [class="brave-browser"] $WS3
+assign [class="Brave-browser"] $WS7
 assign [class="Chromium"] $WS4
 assign [class="Camunda Modeler"] $WS4
-assign [class="Pavucontrol"] $WS8
+assign [class="Pavucontrol"] $WS6
 for_window [class="Keybase"] move to workspace $WS5
 assign [class="com-onseven-dbvis-DbVisualizerGUI"] $WS7
 assign [class="DBeaver"] $WS7
@@ -194,7 +197,7 @@ assign [class="TelegramDesktop"] $WS9
 for_window [class="Spotify"] move to workspace $WS10
 
 # Open specific applications in floating mode
-for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Nitrogen"] floating enable sticky enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Keybase"] floating enable
 for_window [class="Slack"] floating enable
@@ -205,17 +208,7 @@ for_window [class="Arandr"] floating enable
 ###############      Border & Gaps     ###############
 ######################################################
 
-new_window 1pixel
-new_float  normal
-
-hide_edge_borders both
-
 bindsym $Mod+shift+b border toggle
-
-# changing border style
-bindsym $Mod+n border normal
-bindsym $Mod+y border 1pixel
-bindsym $Mod+u border none
 
 # Set inner/outer gaps
 gaps inner 5
@@ -227,7 +220,7 @@ gaps inner 5
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+# smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -323,22 +316,22 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 for_window [class="yakuake"] floating enable
-for_window [class="plasmashell"] floating enable;
-for_window [class="Plasma"] floating enable; border none
-for_window [title="plasma-desktop"] floating enable; border none
-for_window [title="win7"] floating enable; border none
-for_window [class="krunner"] floating enable; border none
-for_window [class="Kmix"] floating enable; border none
-for_window [class="Klipper"] floating enable; border none
-for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="plasmashell"] floating enable
+for_window [class="Plasma"] floating enable
+for_window [title="plasma-desktop"] floating enable
+for_window [title="win7"] floating enable
+for_window [class="krunner"] floating enable
+for_window [class="Kmix"] floating enable
+for_window [class="Klipper"] floating enable
+for_window [class="Plasmoidviewer"] floating enable
 for_window [class="(?i)*nextcloud*"] floating disable
-for_window [class="plasmashell" window_type="notification"] border none move position 1575 30
+for_window [class="plasmashell" window_type="notification"] move position 1575 30
 no_focus [class="plasmashell" window_type="notification"]
 
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
+for_window [title="Desktop — Plasma"] kill; floating enable
 
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
-for_window [title="Arbeitsfläche — Plasma"] kill; floating enable; border none
+for_window [title="Desktop — Plasma"] kill; floating enable
+for_window [title="Arbeitsfläche — Plasma"] kill; floating enable
 
 # using plasma's logout screen instead of i3's
 bindsym $mod+Shift+x exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
