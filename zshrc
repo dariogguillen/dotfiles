@@ -65,6 +65,7 @@ plugins=(
   dotenv
   sudo
   tmux
+  safe-paste
   zsh-autosuggestions
   zsh-completions
   zsh-history-substring-search

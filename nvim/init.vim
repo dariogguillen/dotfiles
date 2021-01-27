@@ -17,7 +17,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'lilydjwg/colorizer'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
-Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
@@ -94,7 +93,8 @@ set termguicolors
 " let g:nord_uniform_diff_background = 1
 " colorscheme nord
 " colorscheme hybrid_reverse
-colorscheme pink-moon
+colorscheme yellow-moon
+hi Search guifg=blue
 
 let g:loaded_perl_provider=0
 let g:python_host_prog="/usr/bin/python2"
@@ -171,13 +171,6 @@ let g:javascript_plugin_flow = 1
 let g:prettier#autoformat = 1
 autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 
-""""" indentline
-let g:indentLine_faster = 1
-let g:indentLine_color_term = 236
-let g:indentLine_noConcealCursor = "nc"
-let g:indentLine_concealcursor=""
-let g:indentLine_char ='┆'
-
 """"" closetag
 let g:closetag_filenames = '*.html,*.jsx,*.js'
 let g:closetag_filetypes = 'html,jsx,js'
@@ -212,6 +205,7 @@ let g:coc_global_extensions = [
   \ 'coc-explorer',
   \ 'coc-git',
   \ 'coc-vimlsp',
+  \ 'coc-java',
   \ ]
 
 function! s:check_back_space() abort
