@@ -1,5 +1,7 @@
+# set layout
+# localectl --no-convert set-x11-keymap us thinkpad altgr-intl caps:ctrl_modifier
 # border & title.. Must be set to border pixel for gaps to work
-for_window [class="^.*"] border pixel 1, title_format "<b> %class >> %title </b>"
+for_window [class="^.*"] border pixel 2, title_format "<b> %class >> %title </b>"
 
 # font
 font pango:Fira 9
@@ -23,23 +25,15 @@ set $WS10 "10: "
 
 # monitors
 set $Display eDP1
-set $Mon1 HDMI1
-set $Mon2 HDMI2
+# set $Mon1 DP-1-1
+set $Mon1 HDMI-1-0
+set $Mon2 DP-1-3
 
 # open terminal
-# bindsym $Mod+Return exec termite
 bindsym $Mod+Return exec alacritty
 
-#####################################################
-###############     Autostart      ##################
-#####################################################
-
-# run with reload
-exec_always --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id blueman-applet
-exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
-exec --no-startup-id xfsettingsd
-exec --no-startup-id al-compositor --start
+exec --no-startup-id xinput --set-prop 18 'libinput Accel Speed' 0.4
+exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' 0.4
 
 ###########################################################
 #############         Bindings           #################
@@ -47,29 +41,29 @@ exec --no-startup-id al-compositor --start
 
 # kill focused window
 bindsym $Mod+Shift+q kill
-bindsym Mod1+F4 kill
 
 # launchers
-bindsym $Mod+d exec --no-startup-id rofi_run -r
-bindsym Mod1+Tab exec --no-startup-id rofi -show window
+#bindsym $mod+d exec rofi -modi run -show drun -show-icons
+bindsym $mod+d exec dmenu_run
+# bindsym Mod1+Tab exec --no-startup-id rofi -show window
 
 # lock https://github.com/pavanjadhaw/betterlockscreen
 bindsym $Mod+x exec --no-startup-id betterlockscreen -l blur
 # lock and suspend
 bindsym $Mod+Shift+x exec --no-startup-id betterlockscreen -s blur
 
-
 # Screenshot
-bindsym Print exec --no-startup-id "scrot '%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png ; feh $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png'"
+# bindsym Print exec --no-startup-id "scrot '%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png ; feh $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png'"
+
+# Wallpaper
+exec_always --no-startup-id nitrogen --restore
 
 # audio
-bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
-bindsym XF86AudioNext        exec --no-startup-id playerctl next
-bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
-bindsym XF86AudioStop        exec --no-startup-id playerctl stop
-bindsym XF86AudioMute        exec --no-startup-id pamixer -t
+bindsym XF86AudioMute exec --no-startup-id pamixer -t
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 2
 bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 2
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
+
 
 #toggle fullscreen mode
 bindsym $mod+f fullscreen toggle
@@ -88,21 +82,21 @@ bindsym $Mod+2 workspace $WS2
 bindsym $Mod+3 workspace $WS3
 bindsym $Mod+4 workspace $WS4
 bindsym $Mod+5 workspace $WS5
-bindsym $Mod+6 workspace $WS6
-bindsym $Mod+7 workspace $WS7
-bindsym $Mod+8 workspace $WS8
-bindsym $Mod+9 workspace $WS9
-bindsym $Mod+0 workspace $WS10
+bindsym $Mod+q workspace $WS6
+bindsym $Mod+w workspace $WS7
+bindsym $Mod+e workspace $WS8
+bindsym $Mod+r workspace $WS9
+bindsym $Mod+t workspace $WS10
 
 #assing monitor
-workspace $WS1 output $Mon2
-workspace $WS2 output $Mon2
-workspace $WS3 output $Mon2
-workspace $WS4 output $Mon2
-workspace $WS5 output $Mon2
-workspace $WS6 output $Mon2
-workspace $WS7 output $Mon2
-workspace $WS8 output $Mon2
+workspace $WS1 output $Mon1
+workspace $WS2 output $Mon1
+workspace $WS3 output $Mon1
+workspace $WS4 output $Mon1
+workspace $WS5 output $Mon1
+workspace $WS6 output $Mon1
+workspace $WS7 output $Display
+workspace $WS8 output $Display
 workspace $WS9 output $Display
 workspace $WS10 output $Display
 
@@ -142,7 +136,7 @@ bindsym $Mod+space floating toggle
 floating_modifier  $Mod
 
 bindsym $Mod+Shift+z move scratchpad
-bindsym $Mod+z scratchpad show
+# bindsym $Mod+z scratchpad show
 
 # change focus
 bindsym $Mod+h focus left
@@ -187,63 +181,46 @@ bindsym $Mod+Mod1+Shift+Left resize shrink width  10 px or 1 ppt
 bindsym $Mod+Mod1+Shift+l resize grow width  10 px or 1 ppt
 bindsym $Mod+Mod1+Shift+Right resize grow width  10 px or 1 ppt
 
-# switch to workspace with urgent window
-#for_window [urgent="latest"] focus
-#focus_on_window_activation   focus
-
 # container layout
-bindsym $Mod+q split toggle
-bindsym $Mod+s layout stacking
-bindsym $Mod+w layout tabbed
-bindsym $Mod+e layout toggle split
+# bindsym $Mod+q split toggle
+bindsym $Mod+a split toggle
+# bindsym $Mod+s layout stacking
+bindsym $Mod+s layout tabbed
+bindsym $Mod+z layout toggle split
 
 default_orientation horizontal
 
 # assing workspaces
 assign [class="Code"] $WS2
 assign [class="jetbrains-idea-ce"] $WS2
-assign [class="firefox"] $WS3
-assign [class="Chromium"] $WS4
-assign [class="Camunda Modeler"] $WS4
+assign [class="firefox"] $WS8
+assign [class="Brave-browser"] $WS7
+assign [class="Camunda Modeler"] $WS6
+assign [class="Pavucontrol"] $WS8
+assign [class="Lens"] $WS4
 for_window [class="Keybase"] move to workspace $WS5
-assign [class="com-onseven-dbvis-DbVisualizerGUI"] $WS7
-for_window [class="GraphQL Playground"] move to workspace $WS8
+assign [class="DBeaver"] $WS6
 for_window [class="Insomnia"] move to workspace $WS8
-for_window [class="Slack"] move to workspace $WS9
-assign [class="TelegramDesktop"] $WS9
+for_window [class="Slack"] move to workspace $WS5
+assign [class="TelegramDesktop"] $WS5
 for_window [class="Spotify"] move to workspace $WS10
 
 # Open specific applications in floating mode
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Pavucontrol"] floating enable
+for_window [class="Nitrogen"] floating enable
 for_window [class="Keybase"] floating enable
 for_window [class="Slack"] floating enable
 for_window [class="TelegramDesktop"] floating enable
-for_window [class="Arandr"] floating enable
-for_window [class="Klavaro"] floating enable
-for_window [class="Blueman-manager"] floating enable
+for_window [class="Xfce4-settings-manager"] floating enable
+for_window [class="Lxappearance"] floating enable
 
 ######################################################
 ###############      Border & Gaps     ###############
 ######################################################
 
-new_window 1pixel
-new_float  normal
-
-hide_edge_borders both
-
 bindsym $Mod+shift+b border toggle
 
-# changing border style
-bindsym $Mod+n border normal
-bindsym $Mod+y border 1pixel
-bindsym $Mod+u border none
-
 # Set inner/outer gaps
-# gaps inner 5
+gaps inner 5
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -252,7 +229,7 @@ bindsym $Mod+u border none
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+# smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -294,15 +271,11 @@ mode "$mode_gaps_outer" {
 ############    application settings   ############
 ###################################################
 
-for_window [class="(?i)(?:termite|thunar)"] focus
-
 # focus, floating, & sticky
 for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
 for_window [window_role="(?i)(?:pop-up|setup)"]      floating enable
 
 popup_during_fullscreen smart
-
-exec --no-startup-id i3-msg workspace $WS1
 
 ###################################################
 ############            i3 Bar          ###########
@@ -317,10 +290,10 @@ set $urgent-bg-color     #CB4B16
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-    mode hide
+    # mode hide
     position top
-    i3bar_command i3bar
-    status_command bumblebee-status -m nic memory amixer brightness battery date time -p nic.exclude="enp2s0,lo,virbr,docker,vbocnert,veth,br" time.format="%H:%M" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
+    # i3bar_command i3bar
+    status_command bumblebee-status -m spotify disk nic amixer pasource brightness battery date time -p nic.exclude="enp*,lo,virbr,docker,vbocnert,veth,br" time.format="%H:%M:%S" date.format="%b %d %Y" date.left-click="gsimplecal"  amixer.left-click="pavucontrol" -t iceberg
     tray_output primary
 
     colors {
@@ -345,4 +318,7 @@ bar {
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
+
+
+
 

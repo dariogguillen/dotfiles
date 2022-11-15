@@ -50,7 +50,7 @@
     
     # Split notifications into multiple lines if they don't fit into
     # geometry.
-    word_wrap = no
+    word_wrap = yes
     
     # Ignore newlines '\n' in notifications.
     ignore_newline = no
@@ -83,10 +83,10 @@
     # for longer than idle_threshold seconds.
     # Set to 0 to disable.
     # default 120
-    idle_threshold = 120 
+    idle_threshold = 0 
     
     # Which monitor should the notifications be displayed on.
-    monitor = 0
+    monitor = HDMI-1-0
     
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
@@ -99,7 +99,7 @@
     # 
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = mouse
+    follow = none
     
     # Should a notification popped up from history be sticky or timeout
     # as if it would normally do.
@@ -145,7 +145,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
     
     # Browser for opening urls in context menu.
-    browser = palemoon
+    browser = firefox
 
     # Align icons left/right/off
     icon_position = left
@@ -154,7 +154,7 @@
     icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
 
     # Limit icons size.
-    max_icon_size=128
+    max_icon_size=64
 
 [shortcuts]
 
@@ -183,17 +183,17 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#263238"
     foreground = "#556064"
-    timeout = 10
+    timeout = 5
 
 [urgency_normal]
     background = "#263238"
     foreground = "#F9FAF9"
-    timeout = 10
+    timeout = 5
 
 [urgency_critical]
     background = "#D62929"
     foreground = "#F9FAF9"
-    timeout = 0
+    timeout = 5
 
 
 # Every section that isn't one of the above is interpreted as a rules to
@@ -273,7 +273,7 @@
 #
 [irc]
         appname = weechat
-        timeout = 0
+        timeout = 5
         background = "#0033bb"
         foreground = "#dddddd"
 #

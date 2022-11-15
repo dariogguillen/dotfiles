@@ -49,4 +49,4 @@ windows:
         - gfa
         -
         - cd proto/src/main/protobuf
-  - editor: nvim
+#  - editor: nvim

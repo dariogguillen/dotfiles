@@ -48,5 +48,5 @@ windows:
       panes:
         - gfa
         -
-        - cd proto/src/main/protobuf
-  - editor: nvim
+        - cd modules/proto/src/main/protobuf
+#  - editor: nvim

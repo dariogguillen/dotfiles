@@ -4,6 +4,7 @@ scriptencoding utf-8
 """"""Plugins folder"""""""
 """""""""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'wojciechkepka/vim-github-dark'
 Plug 'ryanoasis/vim-devicons'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'vim-airline/vim-airline'
@@ -17,12 +18,12 @@ Plug 'Raimondi/delimitMate'
 Plug 'lilydjwg/colorizer'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'easymotion/vim-easymotion'
-Plug 'mhinz/vim-startify'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -92,9 +93,8 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'
 set termguicolors
 " let g:nord_uniform_diff_background = 1
 " colorscheme nord
-" colorscheme hybrid_reverse
-colorscheme yellow-moon
-hi Search guifg=blue
+colorscheme hybrid
+" hi Search guifg=blue
 
 let g:loaded_perl_provider=0
 let g:python_host_prog="/usr/bin/python2"
@@ -149,8 +149,9 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 """"" Aireline
 let g:airline_minimalist_showmod = 1
-let g:airline_theme='snow_dark'
+let g:airline_theme='minimalist'
 let g:airline_detect_paste=1
+let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -203,9 +204,9 @@ let g:coc_global_extensions = [
   \ 'coc-syntax',
   \ 'coc-metals',
   \ 'coc-explorer',
-  \ 'coc-git',
   \ 'coc-vimlsp',
   \ 'coc-java',
+  \ 'coc-rust-analyzer'
   \ ]
 
 function! s:check_back_space() abort
@@ -249,19 +250,6 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 nmap <leader>b :CocCommand explorer<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
-"""" startify
-nnoremap <leader>ss :SSave!<CR>
-let g:startify_session_autoload = 1
-let g:startify_session_dir = '~/.config/nvim/sessions/'
-let g:startify_change_to_vsc_root = 1
-let g:startify_fortune_use_unicode = 1
-let g:startify_session_persistance = 1
-let g:startify_lists = [
-  \ { 'type': 'sessions', 'header': ['   Sesions'] },
-  \ { 'type': 'dir', 'header': ['   CurrentDirectory: '. getcwd()] },
-  \ { 'type': 'files', 'header': ['   Files'] }
-  \ ]
-
 " FZF
 map <C-p> :GFiles<CR>
 map <leader><C-p> :Buffers<CR>
@@ -269,3 +257,5 @@ nnoremap \ :Rg!
 nnoremap <leader>t :Tags<CR>
 nnoremap <leader>m :Marks<CR>
 
+"""" rust
+let g:rustfmt_autosave=1

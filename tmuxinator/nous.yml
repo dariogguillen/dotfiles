@@ -49,4 +49,4 @@ windows:
         - gfa
         -
         -
-  - editor: nvim
+#  - editor: nvim
