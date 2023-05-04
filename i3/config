@@ -191,18 +191,16 @@ bindsym $Mod+z layout toggle split
 default_orientation horizontal
 
 # assing workspaces
-assign [class="Code"] $WS2
 assign [class="jetbrains-idea-ce"] $WS2
 assign [class="firefox"] $WS8
 assign [class="Brave-browser"] $WS7
 assign [class="Camunda Modeler"] $WS6
 assign [class="Pavucontrol"] $WS8
-assign [class="Lens"] $WS4
-for_window [class="Keybase"] move to workspace $WS5
+for_window [class="Keybase"] move to workspace $WS4
 assign [class="DBeaver"] $WS6
 for_window [class="Insomnia"] move to workspace $WS8
-for_window [class="Slack"] move to workspace $WS5
-assign [class="TelegramDesktop"] $WS5
+for_window [class="Slack"] move to workspace $WS4
+assign [class="TelegramDesktop"] $WS4
 for_window [class="Spotify"] move to workspace $WS10
 
 # Open specific applications in floating mode

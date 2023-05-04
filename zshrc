@@ -64,7 +64,7 @@ plugins=(
   git
   dotenv
   sudo
-  tmux
+# tmux
   safe-paste
   zsh-autosuggestions
   zsh-completions
@@ -116,12 +116,13 @@ alias txs="tmuxinator start"
 # spaceship configuration
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_DIR_TRUNC=1
-SPACESHIP_HOST_SHOW=always
+SPACESHIP_HOST_SHOW=false
 
 # NVM
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -134,3 +135,5 @@ source <(kubectl completion zsh)
 # Kubectx
 autoload -U compinit && compinit
 
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit ; compinit
