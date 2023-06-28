@@ -64,7 +64,7 @@ plugins=(
   git
   dotenv
   sudo
-# tmux
+  tmux
   safe-paste
   zsh-autosuggestions
   zsh-completions
