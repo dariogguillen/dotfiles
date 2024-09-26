@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
+export PATH=/home/dariogg/.local/bin:$PATH
+export PATH=$PATH:/home/dariogg/.local/share/coursier/bin
 export ZSH=/home/dariogg/.oh-my-zsh
 export TERM=screen-256color
 export EDITOR=nvim
@@ -124,9 +126,6 @@ SPACESHIP_HOST_SHOW=false
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # Kubectl
@@ -137,3 +136,8 @@ autoload -U compinit && compinit
 
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit ; compinit
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
