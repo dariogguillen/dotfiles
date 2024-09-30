@@ -26,11 +26,22 @@ keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) 
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
-
+-- buffer management
 keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Move to next buffer" })
 keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Move to previous buffer" })
+keymap.set("n", "<leader>q", "<cmd>bp<cr><cmd>bd #<cr>")
+
+-- resize splits with arrows key
+keymap.set("n", "<Left>", "<cmd>vertical resize -1<CR>", { desc = "Resize split vertical -1" })
+keymap.set("n", "<Right>", "<cmd>vertical resize +1<CR>", { desc = "Resize split vertical +1" })
+keymap.set("n", "<Up>", "<cmd>resize -1<CR>", { desc = "Resize split -1" })
+keymap.set("n", "<Down>", "<cmd>resize +1<CR>", { desc = "Resize split +1" })
+
+-- save and save all
+keymap.set("n", "<C-s>", "<cmd>w<CR>")
+keymap.set("i", "<C-s>", "<cmd>w<CR>")
+keymap.set("n", "<C-S>", "<cmd>wa<CR>")
+keymap.set("i", "<C-S>", "<cmd>wa<CR>")
+
+-- source config
+keymap.set("n", "<leader>so", "<cmd>source %<CR>", { desc = "Reload configuration" })
