@@ -30,7 +30,7 @@ config.window_padding = {
 config.default_cursor_style = "BlinkingBlock"
 config.cursor_blink_rate = 500
 
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.99
 -- config.macos_window_background_blur = 10
 
 -- and finally, return the configuration to wezterm

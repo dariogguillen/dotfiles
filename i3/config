@@ -154,10 +154,10 @@ bindsym $Mod+p focus parent
 bindsym $Mod+c focus child
 
 # move windows
-bindym $Mod+Shift+h move left
-bindym $Mod+Shift+j move dow
-bindym $Mod+Shift+k move up
-bindym $Mod+Shift+l move right
+bindsym $Mod+Shift+h move left
+bindsym $Mod+Shift+j move dow
+bindsym $Mod+Shift+k move up
+bindsym $Mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $Mod+Shift+Up    move up
