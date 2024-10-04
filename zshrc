@@ -72,6 +72,7 @@ plugins=(
   zsh-completions
   zsh-history-substring-search
   zsh-syntax-highlighting
+  zsh-256color
 )
 
 source $ZSH/oh-my-zsh.sh
