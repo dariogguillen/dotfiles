@@ -41,5 +41,9 @@ opt.clipboard = "unnamedplus" -- use system clipboard as default register
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
--- turn off swapfile
-opt.swapfile = false
+local prefix = vim.env.XDG_CONFIG_HOME or vim.fn.expand("~/.config")
+
+opt.undofile = true
+opt.undodir = { prefix .. "/nvim/.undo//" }
+opt.backupdir = { prefix .. "/nvim/.backup//" }
+opt.directory = { prefix .. "/nvim/.swp//" }

@@ -31,7 +31,7 @@ root: ~/dotfiles
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: editor
+startup_window: editor
 
 # Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
 # startup_pane: 1
@@ -41,10 +41,16 @@ root: ~/dotfiles
 
 windows:
   - editor:
-      layout: main-vertical
+      layout: de35,271x67,0,0{200x67,0,0,10,70x67,201,0,12}
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - nvim
-        - gfa
+        -
+  - hyprland:
+      root: ~/.config/hypr/
+      layout: de35,271x67,0,0{200x67,0,0,10,70x67,201,0,12}
+      panes:
+        -
+        -

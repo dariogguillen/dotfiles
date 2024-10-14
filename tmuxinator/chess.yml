@@ -1,7 +1,7 @@
-# /home/dariogg/.config/tmuxinator/nous-front.yml
+# /home/dariogg/.config/tmuxinator/chess.js.yml
 
-name: nous-front
-root: ~/Documents/dev/nous-front
+name: chess
+root: ~/Documents/code/chess-game
 
 # Optional tmux socket
 # socket_name: foo
@@ -10,14 +10,19 @@ root: ~/Documents/dev/nous-front
 # project hooks.
 
 # Project hooks
+
 # Runs on project start, always
 # on_project_start: command
+
 # Run on project start, the first time
 # on_project_first_start: command
+
 # Run on project start, after the first time
 # on_project_restart: command
+
 # Run on project exit ( detaching from tmux session )
 # on_project_exit: command
+
 # Run on project stop
 # on_project_stop: command
 
@@ -27,7 +32,7 @@ root: ~/Documents/dev/nous-front
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
 
-# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# Change the command to call tmux. This can be used by derivatives/wrappers like byobu.
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
@@ -40,12 +45,13 @@ root: ~/Documents/dev/nous-front
 # attach: false
 
 windows:
-  - server:
-      layout: even-horizontal
+  - editor:
+      nvim
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
-      panes:
-        - gfa
-        -
-  # - editor: nvim
+  - server:
+    layout: even-vertical
+    panes:
+      - gst
+      -

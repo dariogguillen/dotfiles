@@ -1,3 +1,6 @@
-undodir/
+.undo/
+.backup/
+.swp/
 tags/
 nvim/sessions/
+
