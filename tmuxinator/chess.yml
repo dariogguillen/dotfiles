@@ -36,7 +36,7 @@ root: ~/Documents/code/chess-game
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: editor
+# startup_window: server
 
 # Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
 # startup_pane: 1
@@ -45,13 +45,23 @@ root: ~/Documents/code/chess-game
 # attach: false
 
 windows:
-  - editor:
-      nvim
+  - frontend:
+      root: ~/Documents/code/chess-game/frontend/
+      panes: nvim
+  - backend:
+      root: ~/Documents/code/chess-game/backend/
+      panes: nvim
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
   - server:
-    layout: even-vertical
-    panes:
-      - gst
-      -
+      layout: tiled
+      panes:
+        - server_front:
+            - cd  ~/Documents/code/chess-game/frontend/
+            - npm run dev
+        - server_back:
+            - cd  ~/Documents/code/chess-game/backend/
+            - npm run dev
+        - cd  ~/Documents/code/chess-game/frontend/
+        - cd  ~/Documents/code/chess-game/backend/
