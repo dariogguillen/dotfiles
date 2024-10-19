@@ -43,7 +43,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 local prefix = vim.env.XDG_CONFIG_HOME or vim.fn.expand("~/.config")
 
+opt.swapfile = false
 opt.undofile = true
 opt.undodir = { prefix .. "/nvim/.undo//" }
-opt.backupdir = { prefix .. "/nvim/.backup//" }
-opt.directory = { prefix .. "/nvim/.swp//" }
