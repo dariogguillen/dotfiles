@@ -121,11 +121,6 @@ SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_DIR_TRUNC=1
 SPACESHIP_HOST_SHOW=false
 
-# NVM
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
