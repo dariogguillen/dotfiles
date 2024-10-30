@@ -1,5 +1,7 @@
 -- set leader key to space
 vim.g.mapleader = " "
+-- Disable the spacebar key's default behavior in Normal and Visual modes
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 local keymap = vim.keymap -- for conciseness
 
@@ -15,6 +17,16 @@ keymap.set("n", "<ESC>", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
+-- Keep last yanked when pasting
+vim.keymap.set("v", "p", '"_dP')
+
+-- Vertical scroll and center
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Find and center
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
