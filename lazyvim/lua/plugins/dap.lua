@@ -3,7 +3,6 @@ local js_based_languages = {
   "javascript",
   "typescriptreact",
   "javascriptreact",
-  "vue",
 }
 
 return {
@@ -80,33 +79,29 @@ return {
     end,
     keys = {
       {
-        "<leader>dO",
+        "<F5>",
         function()
-          require("dap").step_out()
+          require("dap").continue()
         end,
-        desc = "Step Out",
       },
+
       {
-        "<leader>do",
+        "<F6>",
         function()
           require("dap").step_over()
         end,
-        desc = "Step Over",
       },
       {
-        "<leader>da",
+        "<F7>",
         function()
-          if vim.fn.filereadable(".vscode/launch.json") then
-            local dap_vscode = require("dap.ext.vscode")
-            dap_vscode.load_launchjs(nil, {
-              ["pwa-node"] = js_based_languages,
-              ["chrome"] = js_based_languages,
-              ["pwa-chrome"] = js_based_languages,
-            })
-          end
-          require("dap").continue()
+          require("dap").step_into()
         end,
-        desc = "Run with Args",
+      },
+      {
+        "<F8>",
+        function()
+          require("dap").step_out()
+        end,
       },
     },
     dependencies = {
