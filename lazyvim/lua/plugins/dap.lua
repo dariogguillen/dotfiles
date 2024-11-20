@@ -81,6 +81,7 @@ return {
       {
         "<F5>",
         function()
+          require("neo-tree.command").execute({ action = "close" })
           require("dap").continue()
         end,
       },

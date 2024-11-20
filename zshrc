@@ -27,7 +27,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Display Pokemon-colorscripts
 # Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
-pokemon-colorscripts --no-title -r 1
+pokemon-colorscripts --no-title -rn charizard,squirtle,pikachu,bulbasaur,charmander,snorlax,butterfree,pidgeot,abra,gengar,lapras,gyarados,dragonite,mewtwo,mew
 
 # fastfetch. Will be disabled if above colorscript was chosen to install
 #fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc

@@ -8,8 +8,8 @@ config.enable_wayland = false
 
 -- This is where you actually apply your config choices
 
-config.font = wezterm.font("Fira Code")
-config.font_size = 10
+config.font = wezterm.font("JetBrains Mono")
+config.font_size = 9
 
 config.enable_tab_bar = false
 

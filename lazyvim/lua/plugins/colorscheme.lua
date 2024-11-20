@@ -1,59 +1,23 @@
 return {
   {
-    "AlexvZyl/nordic.nvim",
+    "EdenEast/nightfox.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("nordic").setup({
-        -- This callback can be used to override the colors used in the base palette.
-        on_palette = function(palette) end,
-        -- This callback can be used to override the colors used in the extended palette.
-        after_palette = function(palette) end,
-        -- This callback can be used to override highlights before they are applied.
-        on_highlight = function(highlights, palette) end,
-        -- Enable bold keywords.
-        bold_keywords = true,
-        -- Enable italic comments.
-        italic_comments = true,
-        -- Enable editor background transparency.
-        transparent = {
-          -- Enable transparent background.
-          bg = true,
-          -- Enable transparent background for floating windows.
-          float = false,
-        },
-        -- Enable brighter float border.
-        bright_border = false,
-        -- Reduce the overall amount of blue in the theme (diverges from base Nord).
-        reduced_blue = false,
-        -- Swap the dark background with the normal one.
-        swap_backgrounds = false,
-        -- Cursorline options.  Also includes visual/selection.
-        cursorline = {
-          -- Bold font in cursorline.
-          bold = false,
-          -- Bold cursorline number.
-          bold_number = true,
-          -- Available styles: 'dark', 'light'.
-          theme = "dark",
-          -- Blending the cursorline bg with the buffer bg.
-          blend = 0.85,
-        },
-        noice = {
-          -- Available styles: `classic`, `flat`.
-          style = "classic",
-        },
-        telescope = {
-          -- Available styles: `classic`, `flat`.
-          style = "flat",
-        },
-        leap = {
-          -- Dims the backdrop when using leap.
-          dim_backdrop = true,
-        },
-        ts_context = {
-          -- Enables dark background for treesitter-context window
-          dark_background = true,
+      require("nightfox").setup({
+        options = {
+          -- Compiled file's destination location
+          compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+          compile_file_suffix = "_compiled", -- Compiled file suffix
+          transparent = false, -- Disable setting background
+          terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+          dim_inactive = true, -- Non focused panes set to alternative background
+          module_default = true, -- Default enable value for modules
+          styles = { -- Style to be applied to different syntax groups
+            comments = "italic",
+            keywords = "bold",
+            types = "italic,bold",
+          },
         },
       })
     end,
@@ -61,7 +25,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "nordic",
+      colorscheme = "nordfox",
     },
   },
 }
