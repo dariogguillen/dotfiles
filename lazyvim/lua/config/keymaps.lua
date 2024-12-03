@@ -31,3 +31,10 @@ keymap.set("n", "N", "Nzzzv")
 
 -- source config
 keymap.set("n", "<leader>so", "<cmd>source %<CR>", { desc = "Reload configuration" })
+
+-- buffers
+-- Replace default lazyvim next/prev buffer keymaps
+keymap.del("n", "<S-h>")
+keymap.del("n", "<S-l>")
+keymap.set("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+keymap.set("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
