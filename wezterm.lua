@@ -9,7 +9,7 @@ config.enable_wayland = false
 -- This is where you actually apply your config choices
 
 config.font = wezterm.font("JetBrains Mono")
-config.font_size = 9
+config.font_size = 10
 
 config.enable_tab_bar = false
 
@@ -26,7 +26,7 @@ config.window_padding = {
 config.default_cursor_style = "BlinkingBlock"
 config.cursor_blink_rate = 500
 
-config.window_background_opacity = 0.4
+config.window_background_opacity = 0.9
 
 -- and finally, return the configuration to wezterm
 return config
