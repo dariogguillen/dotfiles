@@ -345,7 +345,7 @@ set $ws10 "10: "
 #workspace $ws4 output HDMI-0
 #workspace $ws5 output HDMI-0
 # monitors
-set $Display eDP-1
+set $Display eDP1
 # set $Mon1 DP-1-1
 set $Mon1 HDMI-1-0
 # set $Mon2 DP-1-3
