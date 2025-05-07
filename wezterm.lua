@@ -9,7 +9,7 @@ config.enable_wayland = false
 -- This is where you actually apply your config choices
 
 config.font = wezterm.font("JetBrains Mono")
-config.font_size = 10
+config.font_size = 9.5
 
 config.enable_tab_bar = false
 
@@ -17,10 +17,10 @@ config.enable_tab_bar = false
 config.color_scheme = "nordfox"
 
 config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
+	left = 1,
+	right = 1,
+	top = 1,
+	bottom = 1,
 }
 
 config.default_cursor_style = "BlinkingBlock"
