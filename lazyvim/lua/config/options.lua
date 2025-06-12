@@ -16,3 +16,5 @@ local prefix = vim.env.XDG_CONFIG_HOME or vim.fn.expand("~/.config")
 opt.swapfile = false
 opt.undofile = true
 opt.undodir = { prefix .. "/nvim/.undo//" }
+
+vim.g.lazyvim_prettier_needs_config = true

@@ -4,7 +4,7 @@ folder=$(pwd)
 
 # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
-# yay -S luarocks rustup composer julia python-pip rust-analyzer telegram-desktop picom powerline-fonts awesome-terminal-fonts powerline-fonts-git powerline-i3-git ttf-devicons ttf-material-design-icons-git ttf-material-design-icons-desktop-git ttf-material-design-icons-extended ttf-material-design-icons-webfont ttf-material-design-iconic-font ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common ttf-nerd-fonts-symbols-mono unicode-emoji unicode-character-database ttf-fira-code xclip tmux python-pynvim spotify-launcher chromium jdk21-openjdk jdk17-openjdk jdk11-openjdk java-runtime-common lazygit lazydocker vim nvim nvidia nvidia-lts nvidia-utils nvidia-prime nvidia-settings virtualgl lib32-virtualgl vulkan-tools vulkan-intel vulkan-html-docs vulkan-extra-tools vulkan-utility-libraries vulkan-validation-layers vulkan-mesa-layers vulkan-extra-layers lib32-vulkan-validation-layers lib32-vulkan-icd-loader lib32-vulkan-mesa-layers intel-ucode xf86-video-intel mesa mesa-demos mesa-utils lib32-mesa-demos lib32-vulkan-mesa-layers lib32-mesa-utils lib32-mesa eza alacritty wezterm brave-bin docker docker-compose zsh scala sbt fzf ruby kubectl kubectx tmuxinator pokemon-colorscripts insomnia-bin
+# yay -S openjdk11-doc openjdk17-doc openjdk11-src openjdk8-doc openjdk21-src openjdk8-src openjdk-src openjdk17-src openjdk21-doc openjdk-doc coursier-bin transmission-gtk docker-buildx luarocks rustup composer julia python-pip rust-analyzer telegram-desktop picom powerline-fonts awesome-terminal-fonts powerline-fonts-git powerline-i3-git ttf-devicons ttf-material-design-icons-git ttf-material-design-icons-desktop-git ttf-material-design-icons-extended ttf-material-design-icons-webfont ttf-material-design-iconic-font ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common ttf-nerd-fonts-symbols-mono unicode-emoji unicode-character-database ttf-fira-code xclip tmux python-pynvim spotify-launcher chromium jdk21-openjdk jdk17-openjdk jdk11-openjdk java-runtime-common lazygit lazydocker vim nvim nvidia nvidia-lts nvidia-utils nvidia-prime nvidia-settings virtualgl lib32-virtualgl vulkan-tools vulkan-intel vulkan-html-docs vulkan-extra-tools vulkan-utility-libraries vulkan-validation-layers vulkan-mesa-layers vulkan-extra-layers lib32-vulkan-validation-layers lib32-vulkan-icd-loader lib32-vulkan-mesa-layers intel-ucode xf86-video-intel mesa mesa-demos mesa-utils lib32-mesa-demos lib32-vulkan-mesa-layers lib32-mesa-utils lib32-mesa eza alacritty wezterm brave-bin docker docker-compose zsh scala sbt fzf ruby kubectl kubectx tmuxinator pokemon-colorscripts insomnia-bin
 
 #sudo archlinux-java set java-17-openjdk
 
@@ -61,3 +61,6 @@ folder=$(pwd)
 # git config --global core.editor vim
 # git config --global init.defaultBranch main
 # git config --global pull.rebase true
+
+# Coursier scala set up
+# cs setup
