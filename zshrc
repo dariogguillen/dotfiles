@@ -1,7 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/home/dariogg/.local/bin:$PATH
-export TERM=screen-256color
 export EDITOR=nvim
 export HISTCONTROL=ignoreboth
 export ZSH="$HOME/.oh-my-zsh"
