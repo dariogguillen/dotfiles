@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a personal dotfiles repository containing configuration files for a Linux desktop environment setup. The repository includes configurations for terminal, editor, window managers, and development tools.
+This is a personal dotfiles repository for an **Omarchy** system (an opinionated, Hyprland-based Arch Linux distribution). It contains configurations for the terminal, editor, window manager, shell, and development tools.
+
+Most desktop configs follow Omarchy's override model: the real files live under `~/.config/` — where they source Omarchy's defaults from `~/.local/share/omarchy/` — and are symlinked back into this repo via `init.sh` so they stay version-controlled. When editing anything under `~/.config/hypr`, `~/.config/waybar`, the terminals, etc., use the **`omarchy` skill**. Never edit files in `~/.local/share/omarchy/` (Omarchy's source; overwritten on update).
 
 ## Key Configuration Components
 
@@ -14,12 +16,14 @@ This is a personal dotfiles repository containing configuration files for a Linu
 - Language support includes: Scala, Java, Python, Rust, TypeScript, Docker, Terraform, and more
 - Custom plugins in `lazyvim/lua/plugins/`
 - Key features: Metals for Scala development, DAP debugging, LSP configurations
+- `~/.config/nvim` is symlinked to `lazyvim/`
+- Omarchy integration: theme hot-reload driven by the git-ignored `lua/plugins/theme.lua` symlink (→ `~/.config/omarchy/current/theme/neovim.lua`), plus transparency, remote clipboard (OSC 52), and news/scroll-animation tweaks copied from Omarchy's starter
 
 ### Shell Environment
-- Zsh configuration: `zshrc`
-- Uses Oh My Zsh with spaceship theme
-- Key aliases: `n` (nvim), `g` (gemini), `c` (claude), `ls`/`ll` (eza with icons)
-- Includes FZF, kubectl, and development tool integrations
+- Zsh configuration: `zshrc` (symlinked to `~/.zshrc`); zsh is the default shell
+- Uses Oh My Zsh with spaceship theme; plugins/theme are cloned by `init.sh`
+- Key aliases: `n` (nvim), `c` (claude), `ls`/`ll`/`lt` (eza with icons), `update` (yay)
+- Optional-tool hooks (fzf, kubectl, direnv, ruby gems, bloop) are guarded with `command -v` so a fresh machine loads cleanly; `TERM` is left to the terminal/tmux, not forced
 
 ### Terminal Multiplexer
 - Tmux configuration: `tmux.conf`
@@ -27,17 +31,19 @@ This is a personal dotfiles repository containing configuration files for a Linu
 - Vim-like key bindings and tmux-nvim integration
 - Plugin manager (TPM) with sensible defaults
 
-### Window Managers
-- Hyprland configuration: `hyprland.conf` (Wayland compositor)
-- i3 configuration: `i3/config` (X11 window manager)
-- Multi-monitor setup support
+### Window Manager (Hyprland via Omarchy)
+- Config: `hypr/` — modular Omarchy override files (`bindings.conf`, `monitors.conf`, `input.conf`, `looknfeel.conf`, `hyprland.conf`, etc.), symlinked to `~/.config/hypr/`
+- These files layer on top of Omarchy's defaults (sourced from `~/.local/share/omarchy/default/hypr/`); do not edit the defaults
+- Customizations: vim-style window nav (`SUPER+hjkl` focus, `+CTRL` move, `+SHIFT` resize; lock relocated to `SUPER+CTRL+ESC`), docked multi-monitor layout with per-monitor workspace pinning
+- After changes: `hyprctl reload` then `hyprctl configerrors`
+- `i3/config` remains as a legacy X11 setup, unused under Omarchy/Wayland
 
 ## Development Environment Setup
 
 ### Installation Script
-- Run `./init.sh` to set up the environment
-- Installs development tools via yay package manager (Arch Linux)
-- Sets up symlinks for configuration files
+- Run `./init.sh` to set up the environment (the symlink/clone lines are commented — uncomment what you need per machine)
+- Installs tools via `yay`/`pacman`; on Omarchy prefer `omarchy pkg add <pkg>` / `omarchy pkg aur add <pkg>`
+- Symlinks configs into `~/.config` (replacing Omarchy's stock `nvim`/`hypr` dirs) and clones the zsh/tmux plugins
 - Configures Git, Docker, and language environments
 
 ### Language Support
@@ -69,9 +75,10 @@ This is a personal dotfiles repository containing configuration files for a Linu
 - `tmux-floax` - Float terminal plugin (Ctrl+a + p for floating pane)
 - Vim-tmux navigation with Ctrl+hjkl
 
-### Package Management (Arch Linux)
-- `update` - Update system packages with yay
-- Standard pacman/yay commands for package installation
+### Package Management (Omarchy / Arch)
+- `update` - Update system packages with yay; or `omarchy update` for a full system update
+- `omarchy pkg add <pkgs>` / `omarchy pkg aur add <pkgs>` - install packages
+- Standard `pacman`/`yay` commands also work
 
 ### File Navigation
 - `ls` - List files with icons (eza)
@@ -92,8 +99,8 @@ This is a personal dotfiles repository containing configuration files for a Linu
 - Tmux and shell configurations support plugin ecosystems
 
 ### Multi-Environment Support
-- Configurations work across different window managers (Hyprland/i3)
-- Terminal emulator flexibility (Alacritty, WezTerm supported)
+- Primary desktop is Hyprland via Omarchy (Wayland); `i3/` is a legacy X11 setup
+- Terminal emulator flexibility (Kitty is the Omarchy default; Alacritty, WezTerm also configured)
 - Development environment works with multiple language ecosystems
 
 ### Key Integrations
