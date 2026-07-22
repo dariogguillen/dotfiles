@@ -63,6 +63,7 @@ folder=$(pwd)
  #ln -sf ~/.config/omarchy/current/theme/neovim.lua $folder/lazyvim/lua/plugins/theme.lua
  # hypr: Omarchy override files (defaults are sourced from ~/.local/share).
  #rm -rf ~/.config/hypr && ln -sf $folder/hypr ~/.config/hypr
+ #rm -rf ~/.config/waybar && ln -sf $folder/waybar ~/.config/waybar
  #ln -sf $folder/tmuxinator ~/.config/tmuxinator
  #ln -sf $folder/zshrc ~/.zshrc
  #ln -sf $folder/tmux.conf ~/.tmux.conf
