@@ -72,7 +72,6 @@ command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
 export PATH="$PATH:/home/dariogg/.local/share/coursier/bin"
 
-alias claude="/home/dariogg/.claude/local/claude"
 
 autoload -U compinit
 [[ -d $HOME/.bloop/zsh ]] && fpath=($HOME/.bloop/zsh $fpath)
