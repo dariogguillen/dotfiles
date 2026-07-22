@@ -97,3 +97,7 @@ folder=$(pwd)
 #
 # npm i -g neovim typescript tree-sitter tree-sitter-cli
 # gem install neovim
+
+# Optional: inline doc rendering for snacks.image in Neovim
+# npm i -g @mermaid-js/mermaid-cli        # mmdc, for Mermaid diagrams
+# omarchy pkg add tectonic                # for LaTeX math
