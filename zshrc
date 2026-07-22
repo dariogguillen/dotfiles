@@ -28,7 +28,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Display Pokemon-colorscripts
 # Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
-pokemon-colorscripts --no-title -rn charizard,squirtle,pikachu,bulbasaur,charmander,snorlax,butterfree,pidgeot,abra,gengar,lapras,gyarados,dragonite,mewtwo,mew
+pokemon-colorscripts --no-title -r 1
 
 # fastfetch. Will be disabled if above colorscript was chosen to install
 #fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
@@ -37,6 +37,8 @@ pokemon-colorscripts --no-title -rn charizard,squirtle,pikachu,bulbasaur,charman
 alias update="yay -Syu --devel --timeupdate"
 alias txn="tmuxinator new"
 alias txs="tmuxinator start"
+alias n=nvim
+alias c=claude
 
 alias ls='eza -a --icons'
 alias ll='eza -al --icons'
@@ -66,4 +68,16 @@ autoload -U compinit && compinit
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+eval "$(direnv hook zsh)"
+
+export PATH="$PATH:/home/dariogg/.local/share/coursier/bin"
+
+alias claude="/home/dariogg/.claude/local/claude"
+
+autoload -U compinit
+fpath=($HOME/.bloop/zsh $fpath)
+compinit
+
+export IDEA_JDK=/usr/lib/jvm/jre-jetbrains
 

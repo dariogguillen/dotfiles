@@ -42,16 +42,40 @@ return {
         desc = "Show NeoTree",
       },
     },
+    init = function()
+      local group = vim.api.nvim_create_augroup("NeoTreeAutoClose", { clear = true })
+      vim.api.nvim_create_autocmd("BufEnter", {
+        group = group,
+        callback = function()
+          local layout = vim.fn.winlayout()
+          if layout[1] == "leaf" and vim.bo[vim.api.nvim_win_get_buf(layout[2])].filetype == "neo-tree" then
+            vim.cmd("quit")
+          end
+        end,
+      })
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "PersistenceSavePre",
+        group = group,
+        callback = function()
+          require("neo-tree.command").execute({ action = "close" })
+        end,
+      })
+    end,
     opts = {
+      git_status = {
+        group_empty_dirs = true,
+        follow_current_file = { enabled = true },
+      },
       filesystem = {
         filtered_items = {
           hide_dotfiles = false,
           hide_gitignored = false,
+          hide_by_name = {},
         },
         follow_current_file = {
           leave_dirs_open = true,
         },
-        group_empty_dirs = true,
+        group_empty_dirs = false,
       },
     },
   },

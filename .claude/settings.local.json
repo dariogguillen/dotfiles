@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(lspci:*)",
+      "Bash(lsmod:*)",
+      "Bash(cat:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/home/dariogg/.config/plasma-workspace",
+      "/boot/loader/entries"
+    ]
+  }
+}

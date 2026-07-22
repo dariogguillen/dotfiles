@@ -3,28 +3,43 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  ft = { "scala", "sbt", "java" },
+  ft = { "scala", "sbt" },
   opts = function()
     local metals_config = require("metals").bare_config()
 
     metals_config.init_options.statusBarProvider = "off"
 
     metals_config.settings = {
-      verboseCompilation = true,
-      showImplicitArguments = true,
-      showImplicitConversionsAndClasses = true,
-      showInferredType = true,
-      superMethodLensesEnabled = true,
+      showImplicitArguments = false,
+      showImplicitConversionsAndClasses = false,
+      showInferredType = false,
+      superMethodLensesEnabled = false,
       excludedPackages = {
         "akka.actor.typed.javadsl",
         "org.apache.pekko.actor.typed.javadsl",
         "com.github.swagger.akka.javadsl",
       },
       testUserInterface = "Test Explorer",
+      bloopSbtAlreadyInstalled = true,
+      bloopJvmProperties = {
+        "-Xss4m",
+        "-XX:MaxInlineLevel=20",
+        "-Xms512M",
+        "-Xmx3G",
+        "-XX:+UseG1GC",
+        "-XX:MaxMetaspaceSize=512M",
+      },
+      fallbackScalaVersion = "2.13.16",
+      serverProperties = {
+        "-Xmx8G",
+        "-Xms4G",
+        "-XX:+UseG1GC",
+      },
     }
 
+    metals_config.find_root_dir_max_project_nesting = 3
+
     metals_config.on_attach = function(client, bufnr)
-      -- your on_attach function
       require("metals").setup_dap()
     end
 

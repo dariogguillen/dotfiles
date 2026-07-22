@@ -4,11 +4,11 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.enable_wayland = false
+config.enable_wayland = true
 
 -- This is where you actually apply your config choices
 
-config.font = wezterm.font("JetBrains Mono")
+config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 9.5
 
 config.enable_tab_bar = false
@@ -26,7 +26,8 @@ config.window_padding = {
 config.default_cursor_style = "BlinkingBlock"
 config.cursor_blink_rate = 500
 
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.97
+config.kde_window_background_blur = true
 
 -- and finally, return the configuration to wezterm
 return config
