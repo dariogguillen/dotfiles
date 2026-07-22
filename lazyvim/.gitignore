@@ -6,3 +6,10 @@ debug
 foo.*
 *.log
 data
+
+# Machine-specific: symlink managed by Omarchy (points at the active theme).
+# Created by init.sh, repointed on `omarchy-theme-*`.
+/lua/plugins/theme.lua
+
+# Undo history used to land here before undodir was moved to XDG state.
+.undo/

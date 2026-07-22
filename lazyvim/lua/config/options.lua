@@ -12,9 +12,15 @@ opt.guicursor = {
   "r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100",
 }
 
-local prefix = vim.env.XDG_CONFIG_HOME or vim.fn.expand("~/.config")
 opt.swapfile = false
 opt.undofile = true
-opt.undodir = { prefix .. "/nvim/.undo//" }
+-- Keep undo history out of the config dir (which is symlinked into the dotfiles
+-- repo); write it under XDG state instead so it never pollutes version control.
+opt.undodir = { vim.fn.stdpath("state") .. "/undo//" }
+
+opt.relativenumber = true
 
 vim.g.lazyvim_prettier_needs_config = true
+
+-- Omarchy: emit OSC 52 yanks so copies reach the host over tmux/SSH.
+require("config.remote_clipboard").setup()

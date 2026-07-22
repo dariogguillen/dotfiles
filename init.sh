@@ -53,25 +53,28 @@ folder=$(pwd)
 # eliminar folder para evitar errores
 
 # config files
- ln -sf $folder/alacritty ~/.config/alacritty
+ #ln -sf $folder/alacritty ~/.config/alacritty
 #ln -sf $folder/i3/config ~/.config/i3/config
 # ln -sf $folder/dunst ~/.config/dunst
 #ln -sf $folder/ranger ~/.config/ranger
- ln -sf $folder/lazyvim ~/.config/nvim
- ln -sf $folder/tmuxinator ~/.config/tmuxinator
- ln -sf $folder/zshrc ~/.zshrc
- ln -sf $folder/tmux.conf ~/.tmux.conf
- ln -sf $folder/tmux-status.conf ~/.tmux-status.conf
- ln -sf $folder/wezterm.lua ~/.wezterm.lua
- ln -sf $folder/wezterm-nordfox.toml ~/.wezterm-nordfox.toml
+ # nvim: replace Omarchy's stock config dir with a symlink to this repo, then
+ # recreate the Omarchy-managed theme symlink (git-ignored, per-machine).
+ #rm -rf ~/.config/nvim && ln -sf $folder/lazyvim ~/.config/nvim
+ #ln -sf ~/.config/omarchy/current/theme/neovim.lua $folder/lazyvim/lua/plugins/theme.lua
+ #ln -sf $folder/tmuxinator ~/.config/tmuxinator
+ #ln -sf $folder/zshrc ~/.zshrc
+ #ln -sf $folder/tmux.conf ~/.tmux.conf
+ #ln -sf $folder/tmux-status.conf ~/.tmux-status.conf
+ #ln -sf $folder/wezterm.lua ~/.wezterm.lua
+ #ln -sf $folder/wezterm-nordfox.toml ~/.wezterm-nordfox.toml
 
-rm -rf ~/Documents && ln -sf /media/data/Documents ~/
-rm -rf ~/Downloads && ln -sf /media/data/Downloads ~/
-rm -rf ~/Music && ln -sf /media/data/Music ~/
-rm -rf ~/Pictures && ln -sf /media/data/Pictures ~/
-rm -rf ~/Public && ln -sf /media/data/Public ~/
-rm -rf ~/Templates && ln -sf /media/data/Templates ~/
-rm -rf ~/Videos && ln -sf /media/data/Videos ~/
+#rm -rf ~/Documents && ln -sf /media/data/Documents ~/
+#rm -rf ~/Downloads && ln -sf /media/data/Downloads ~/
+#rm -rf ~/Music && ln -sf /media/data/Music ~/
+#rm -rf ~/Pictures && ln -sf /media/data/Pictures ~/
+#rm -rf ~/Public && ln -sf /media/data/Public ~/
+#rm -rf ~/Templates && ln -sf /media/data/Templates ~/
+#rm -rf ~/Videos && ln -sf /media/data/Videos ~/
 
 # sudo ln -sf $folder/10-monitor.conf /usr/share/X11/xorg.conf.d/10-monitor.conf
 # sudo ln -sf $folder/pacman.conf /etc/pacman.conf
@@ -86,7 +89,7 @@ rm -rf ~/Videos && ln -sf /media/data/Videos ~/
 # cs setup
 # cs install bloop --only-prebuilt=true
 #
- rustup default stable
+ #rustup default stable
 #
 # npm i -g neovim typescript tree-sitter tree-sitter-cli
 # gem install neovim
