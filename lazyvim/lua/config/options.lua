@@ -22,5 +22,10 @@ opt.relativenumber = true
 
 vim.g.lazyvim_prettier_needs_config = true
 
+-- Disable unused language providers (silences their :checkhealth warnings).
+-- node/python3 are left enabled since plugins in this setup use them.
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- Omarchy: emit OSC 52 yanks so copies reach the host over tmux/SSH.
 require("config.remote_clipboard").setup()
