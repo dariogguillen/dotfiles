@@ -5,7 +5,9 @@
       "Bash(lsmod:*)",
       "Bash(cat:*)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(git -C ~/.config/nvim remote -v)",
+      "Bash(git -C ~/.config/nvim log --oneline -3)"
     ],
     "deny": [],
     "ask": [],
