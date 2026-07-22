@@ -61,6 +61,8 @@ folder=$(pwd)
  # recreate the Omarchy-managed theme symlink (git-ignored, per-machine).
  #rm -rf ~/.config/nvim && ln -sf $folder/lazyvim ~/.config/nvim
  #ln -sf ~/.config/omarchy/current/theme/neovim.lua $folder/lazyvim/lua/plugins/theme.lua
+ # hypr: Omarchy override files (defaults are sourced from ~/.local/share).
+ #rm -rf ~/.config/hypr && ln -sf $folder/hypr ~/.config/hypr
  #ln -sf $folder/tmuxinator ~/.config/tmuxinator
  #ln -sf $folder/zshrc ~/.zshrc
  #ln -sf $folder/tmux.conf ~/.tmux.conf
