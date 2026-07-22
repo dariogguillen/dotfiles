@@ -64,6 +64,7 @@ folder=$(pwd)
  # hypr: Omarchy override files (defaults are sourced from ~/.local/share).
  #rm -rf ~/.config/hypr && ln -sf $folder/hypr ~/.config/hypr
  #rm -rf ~/.config/waybar && ln -sf $folder/waybar ~/.config/waybar
+ #rm -rf ~/.config/kitty && ln -sf $folder/kitty ~/.config/kitty
  #ln -sf $folder/tmuxinator ~/.config/tmuxinator
  #ln -sf $folder/zshrc ~/.zshrc
  #ln -sf $folder/tmux.conf ~/.tmux.conf
