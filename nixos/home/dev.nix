@@ -28,7 +28,9 @@
     scala-cli   # scripts/proyectos rápidos de Scala
 
     # ── Node ──
-    nodejs_22
+    # nodejs_24 trae npm 11.16 (nodejs_22 traía npm 10.9, insuficiente para
+    # proyectos que piden npm>=11.7). En NixOS npm va atado a la versión de node.
+    nodejs_24
     pnpm
     yarn
 
