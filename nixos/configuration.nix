@@ -23,10 +23,10 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # Mostrar solo las últimas 10 generaciones en el menú de arranque (el resto
-  # sigue existiendo hasta que el GC las borre). Esto limpia esas "muchas
-  # entradas" que viste al encender.
-  boot.loader.systemd-boot.configurationLimit = 10;
+  # Mostrar solo las últimas 5 generaciones en el menú de arranque (el resto
+  # sigue existiendo en disco hasta que el GC las borre por antigüedad). Esto
+  # limpia esas "muchas entradas" que viste al encender.
+  boot.loader.systemd-boot.configurationLimit = 5;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
