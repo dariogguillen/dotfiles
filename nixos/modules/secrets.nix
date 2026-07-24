@@ -4,10 +4,6 @@
 # esta máquina, con su clave privada age en /var/lib/sops-nix/key.txt, puede
 # descifrarlos. Al arrancar, NixOS los descifra a /run/secrets/... (tmpfs en RAM).
 #
-# ── ETAPA 1 (actual): solo herramientas ──
-# Aún NO declaramos secretos ni defaultSopsFile (eso rompería el build hasta que
-# exista secrets.yaml). Primero generamos la clave y creamos el archivo cifrado;
-# luego, en la etapa 2, activamos sops.defaultSopsFile y sops.secrets.
 { pkgs, ... }:
 
 {
@@ -19,6 +15,17 @@
   ];
 
   # Ruta de la clave PRIVADA que descifra en el arranque (fuera de git).
-  # La generaremos a mano en la etapa 2; aquí solo fijamos dónde vivirá.
-  sops.age.keyFile = "/var/lib/sops-nix/key.txt";
+  # La ponemos en ~/.config/sops/age/ (la ruta por defecto del comando 'sops'),
+  # así editas secretos SIN sudo y root la lee al arrancar. mode 600, tu usuario.
+  sops.age.keyFile = "/home/dariogg/.config/sops/age/keys.txt";
+
+  # Archivo cifrado por defecto del que salen los secretos.
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+
+  # ── Secretos declarados ──
+  # Cada uno se descifra al arrancar a /run/secrets/<nombre> (tmpfs, en RAM).
+  # owner = "dariogg" -> lo puedes leer sin sudo (por defecto sería solo root).
+  sops.secrets.ejemplo = {
+    owner = "dariogg";
+  };
 }

@@ -1,0 +1,12 @@
+# Reglas de sops: qué se cifra y con qué clave(s).
+# Este archivo SÍ va a git (no contiene nada secreto, solo la clave PÚBLICA).
+keys:
+  # Clave pública age de la ThinkPad P15 (dariogg). Ancla '&' reutilizable abajo.
+  - &p15 age1vd2rc86vj5uwr02pgap0fxjx7uc9h399eq36jxtm2rtwjvwycuhspy0l6f
+
+creation_rules:
+  # Cualquier .yaml dentro de secrets/ se cifra automáticamente para esta clave.
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *p15
