@@ -31,11 +31,10 @@ ln -sfn "$THEMES/$name" "$CURRENT"
 echo "$name" > "$HOME/.config/current-theme-name"
 
 # 2) Recargar cada app para que tome los colores nuevos
-hyprctl reload >/dev/null 2>&1            # bordes de Hyprland
-makoctl reload >/dev/null 2>&1            # notificaciones
-pkill -USR1 kitty 2>/dev/null            # kitty recarga su config (tema incluido)
-for p in $(pgrep waybar); do kill "$p" 2>/dev/null; done   # waybar: reiniciar
-setsid waybar >/dev/null 2>&1 < /dev/null & disown
+hyprctl reload >/dev/null 2>&1                    # bordes de Hyprland
+makoctl reload >/dev/null 2>&1                    # notificaciones
+pkill -USR1 kitty 2>/dev/null                     # kitty recarga su config (tema incluido)
+systemctl --user restart waybar >/dev/null 2>&1   # waybar (servicio systemd) relee el CSS
 
 # 3) Wallpaper del tema (si el tema trae uno)
 if [ -f "$CURRENT/wallpaper.jpg" ]; then

@@ -20,6 +20,43 @@
   # como save_dir). El .keep asegura que exista aunque esté vacía.
   home.file."Pictures/Screenshots/.keep".text = "";
 
+  # ── waybar y mako como servicios de usuario de systemd ──────────────────────
+  # Ventaja sobre 'exec-once': si el proceso muere (crash, tras dormir/despertar),
+  # systemd lo reinicia solo. Atados a graphical-session.target -> arrancan y
+  # paran con la sesión de Hyprland (uwsm). Ya NO se lanzan desde autostart.conf.
+  systemd.user.services.waybar = {
+    Unit = {
+      Description = "Waybar (barra superior)";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.waybar}/bin/waybar";
+      # Recarga en caliente (SIGUSR2) sin matar el proceso.
+      ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
+      Restart = "on-failure";
+      RestartSec = 1;
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
+  };
+
+  systemd.user.services.mako = {
+    Unit = {
+      Description = "mako (notificaciones)";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      # Activado por D-Bus: mako toma el nombre del servicio de notificaciones.
+      Type = "dbus";
+      BusName = "org.freedesktop.Notifications";
+      ExecStart = "${pkgs.mako}/bin/mako";
+      ExecReload = "${pkgs.mako}/bin/makoctl reload";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
+  };
+
   # swappy (editor de capturas): dónde guarda al pulsar el botón/atajo de guardar.
   xdg.configFile."swappy/config".text = ''
     [Default]
