@@ -16,9 +16,8 @@
     swappy             # editor de anotación de capturas (Ctrl+Print)
   ];
 
-  # hyprshot guarda aquí (si no, usaría ~/Pictures a secas). Propaga por uwsm;
-  # requiere re-login para aplicar. La carpeta se crea abajo con un .keep.
-  home.sessionVariables.HYPRSHOT_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
+  # Carpeta de capturas (hyprshot la recibe con -o en los binds; swappy la usa
+  # como save_dir). El .keep asegura que exista aunque esté vacía.
   home.file."Pictures/Screenshots/.keep".text = "";
 
   # swappy (editor de capturas): dónde guarda al pulsar el botón/atajo de guardar.
