@@ -6,7 +6,12 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true; # compatibilidad con apps X11 (ej. algunas de dev)
+    withUWSM = true;        # lanza Hyprland como sesión gestionada por systemd
   };
+
+  # uwsm: envuelve el compositor en una sesión systemd (graphical-session.target),
+  # así se propagan bien las variables de entorno (environment.d / sessionVariables).
+  programs.uwsm.enable = true;
 
   # Portales XDG: file pickers, screen-share, etc.
   xdg.portal = {
