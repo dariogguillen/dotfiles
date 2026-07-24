@@ -15,16 +15,19 @@
   ];
 
   # btop (monitor de sistema, al click en CPU/mem/temp de waybar).
-  # color_theme "Default" + sin fondo propio => usa los colores del terminal
-  # (kitty), que ya siguen el tema global. Así btop adopta el tema automáticamente.
+  # Usa el tema "global" -> ~/.config/btop/themes/global.theme, que es un symlink
+  # estable a current-theme/btop.theme. Al cambiar de tema, el siguiente btop
+  # que abras toma los colores nuevos.
   programs.btop = {
     enable = true;
     settings = {
-      color_theme = "Default";
-      theme_background = false;
+      color_theme = "global";
+      theme_background = true;
       vim_keys = true;
     };
   };
+  xdg.configFile."btop/themes/global.theme".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/current-theme/btop.theme";
 
   # Symlinks editables + versionados.
   xdg.configFile."waybar".source =
