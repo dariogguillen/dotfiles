@@ -117,7 +117,7 @@
   "battery": {
     "format": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format-plugged": "󰂅 {capacity}%",
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "format-full": "󰂅 {capacity}%",
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%\nClick: perfil de energía",
