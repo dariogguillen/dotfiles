@@ -16,6 +16,10 @@
     nixfmt               # formateador Nix (RFC style)
     google-java-format   # formateo de Java (ver lua/plugins/java.lua)
 
+    # LSP de Java (jdtls). El extra de Java de LazyVim lo toma del PATH con
+    # vim.fn.exepath("jdtls"); las partes de Mason se saltan (Mason off).
+    jdt-language-server
+
     # Treesitter compila sus parsers con gcc (ya en dev.nix); su CLI:
     tree-sitter
 
