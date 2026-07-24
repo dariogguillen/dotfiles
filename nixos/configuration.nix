@@ -16,11 +16,17 @@
       ./modules/greetd.nix
       ./modules/files.nix
       ./modules/power.nix
+      ./modules/maintenance.nix
+      ./modules/fingerprint.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # Mostrar solo las últimas 10 generaciones en el menú de arranque (el resto
+  # sigue existiendo hasta que el GC las borre). Esto limpia esas "muchas
+  # entradas" que viste al encender.
+  boot.loader.systemd-boot.configurationLimit = 10;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;

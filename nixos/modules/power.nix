@@ -41,4 +41,27 @@
     SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="${pkgs.systemd}/bin/systemctl --no-block start power-profile-ac.service"
     SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="${pkgs.systemd}/bin/systemctl --no-block start power-profile-battery.service"
   '';
+
+  # ─── Suspensión e hibernación ──────────────────────────────────────────────
+  # Partición swap (64GB > 62GB de RAM), así que la hibernación es viable: el
+  # kernel vuelca la RAM aquí y la restaura al encender.
+  boot.resumeDevice = "/dev/disk/by-uuid/703058ae-6be6-4b9c-89fc-c6c6a821d2b8";
+
+  # 'suspend-then-hibernate' = suspende (RAM, arranque instantáneo) y, si sigues
+  # sin usarla un rato, pasa a hibernar (apagado real, cero batería, conserva la
+  # sesión). Lo mejor de ambos: rápido al volver pronto, seguro si la dejas horas.
+  systemd.sleep.settings.Sleep.HibernateDelaySec = "30min";
+
+  # Comportamiento al cerrar la tapa según el escenario:
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend-then-hibernate";              # con batería
+    HandleLidSwitchExternalPower = "suspend-then-hibernate"; # con cargador
+    HandleLidSwitchDocked = "ignore";                        # con monitor/dock: no dormir
+  };
+
+  # ─── Control térmico del i9-10980HK ────────────────────────────────────────
+  # thermald monitorea la temperatura y ajusta el CPU antes de que el hardware
+  # tenga que estrangularse de golpe (throttling brusco). Importa al compilar
+  # Scala/Java, que calienta bastante en este chip.
+  services.thermald.enable = true;
 }
