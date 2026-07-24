@@ -10,10 +10,21 @@
     hypridle           # acciones por inactividad (atenuar, bloquear, dpms, suspender)
     cliphist           # historial de portapapeles
     pavucontrol        # mezclador de audio (GUI)
-    btop               # monitor de sistema (al click en CPU/mem de waybar)
     networkmanagerapplet # nm-connection-editor (al click en red)
     blueman            # gestor bluetooth (al click en el icono BT)
   ];
+
+  # btop (monitor de sistema, al click en CPU/mem/temp de waybar).
+  # color_theme "Default" + sin fondo propio => usa los colores del terminal
+  # (kitty), que ya siguen el tema global. Así btop adopta el tema automáticamente.
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "Default";
+      theme_background = false;
+      vim_keys = true;
+    };
+  };
 
   # Symlinks editables + versionados.
   xdg.configFile."waybar".source =
