@@ -4,3 +4,7 @@
 tags/
 nvim/sessions/
 
+
+# Nix build symlinks
+result
+result-*

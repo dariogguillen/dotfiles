@@ -1,0 +1,78 @@
+/* Waybar — tema Nord.
+   Paleta: nord0 #2e3440 ... nord6 #eceff4, frost #88c0d0/#81a1c1/#5e81ac. */
+
+@define-color background #2e3440;
+@define-color foreground #eceff4;
+@define-color muted      #4c566a;
+@define-color accent     #88c0d0;
+@define-color warning    #ebcb8b;
+@define-color critical   #bf616a;
+
+* {
+  background-color: @background;
+  color: @foreground;
+
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'FiraCode Nerd Font';
+  font-size: 12px;
+}
+
+.modules-left  { margin-left: 8px; }
+.modules-right { margin-right: 8px; }
+
+#workspaces button {
+  all: initial;
+  color: @foreground;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+}
+
+#workspaces button.active {
+  color: @accent;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#cpu,
+#memory,
+#temperature,
+#disk,
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#clock,
+#mpris {
+  margin: 0 7.5px;
+}
+
+#temperature.critical,
+#battery.critical {
+  color: @critical;
+}
+
+#battery.warning {
+  color: @warning;
+}
+
+#mpris.paused {
+  opacity: 0.6;
+}
+
+#tray {
+  margin-right: 12px;
+}
+
+tooltip {
+  background-color: @background;
+  border: 1px solid @muted;
+}
+
+tooltip label {
+  color: @foreground;
+}
