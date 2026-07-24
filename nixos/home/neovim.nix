@@ -27,6 +27,11 @@
     # Provee el binario 'js-debug' en el PATH (ver lua/plugins/dap.lua).
     vscode-js-debug
 
+    # Frontend React/TypeScript:
+    vtsls                        # LSP de TS/JS (el que usa el extra lang.typescript)
+    vscode-langservers-extracted # eslint, json, html, css language servers
+    prettierd                    # formateo rápido (conform) para JS/TS/web
+
     # Metals (Scala) y scalafmt ya vienen de home/dev.nix.
   ];
 }
