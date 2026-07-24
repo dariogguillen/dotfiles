@@ -14,6 +14,12 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # sops-nix: gestión de secretos cifrados (age/GPG) integrados en NixOS.
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # OUTPUTS = lo que este flake produce. Recibe las inputs ya resueltas.
@@ -36,6 +42,9 @@
         modules = [
           # Tu configuración principal del sistema.
           ./configuration.nix
+
+          # Módulo de sops-nix: habilita las opciones 'sops.*' del sistema.
+          inputs.sops-nix.nixosModules.sops
 
           # Enchufamos Home-Manager como módulo del sistema...
           home-manager.nixosModules.home-manager

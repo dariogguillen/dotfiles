@@ -19,6 +19,7 @@
       ./modules/maintenance.nix
       ./modules/fingerprint.nix
       ./modules/snapshots.nix
+      ./modules/secrets.nix
     ];
 
   # Bootloader.
