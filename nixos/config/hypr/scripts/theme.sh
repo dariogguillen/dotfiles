@@ -1,15 +1,27 @@
 #!/usr/bin/env bash
 # Selector de tema global (estilo Omarchy).
 #   theme.sh <nombre>   -> aplica ese tema
-#   theme.sh            -> abre wofi para elegir
+#   theme.sh            -> abre wofi (compacto, con punto del color de acento)
 set -u
 THEMES="$HOME/.config/themes"
 CURRENT="$HOME/.config/current-theme"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
 
+# Construye el menú: "<punto color acento>  nombre" por cada tema.
+menu() {
+  for t in $(ls -1 "$THEMES" 2>/dev/null); do
+    [ -d "$THEMES/$t" ] || continue
+    acc=$(grep -oiE 'accent[[:space:]]+#[0-9a-f]{6}' "$THEMES/$t/waybar.css" 2>/dev/null \
+      | grep -oiE '#[0-9a-f]{6}' | head -1)
+    [ -z "$acc" ] && acc="#ffffff"
+    printf '<span foreground="%s">●</span>  %s\n' "$acc" "$t"
+  done
+}
+
 name="${1:-}"
 if [ -z "$name" ]; then
-  name=$(ls -1 "$THEMES" 2>/dev/null | wofi --dmenu --prompt "Tema") || exit 0
+  sel=$(menu | wofi --dmenu --allow-markup --prompt "Tema" --width 300 --lines 6) || exit 0
+  name=$(printf '%s' "$sel" | awk '{print $NF}')
 fi
 [ -z "$name" ] && exit 0
 [ -d "$THEMES/$name" ] || { notify-send "Tema" "No existe: $name"; exit 1; }
@@ -22,8 +34,7 @@ echo "$name" > "$HOME/.config/current-theme-name"
 hyprctl reload >/dev/null 2>&1            # bordes de Hyprland
 makoctl reload >/dev/null 2>&1            # notificaciones
 pkill -USR1 kitty 2>/dev/null            # kitty recarga su config (tema incluido)
-# waybar: reiniciar para re-leer el CSS importado
-for p in $(pgrep waybar); do kill "$p" 2>/dev/null; done
+for p in $(pgrep waybar); do kill "$p" 2>/dev/null; done   # waybar: reiniciar
 setsid waybar >/dev/null 2>&1 < /dev/null & disown
 
 # 3) Wallpaper del tema (si el tema trae uno)
