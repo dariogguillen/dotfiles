@@ -1,0 +1,6 @@
+@define-color background #191724;
+@define-color foreground #e0def4;
+@define-color muted      #6e6a86;
+@define-color accent     #ebbcba;
+@define-color warning    #f6c177;
+@define-color critical   #eb6f92;

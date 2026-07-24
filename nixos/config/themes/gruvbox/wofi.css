@@ -1,0 +1,10 @@
+window { background-color: #282828; border: 2px solid #fabd2f; border-radius: 10px; font-family: 'FiraCode Nerd Font'; font-size: 14px; }
+#input { margin: 8px; padding: 8px; border: none; border-radius: 6px; background-color: #3c3836; color: #ebdbb2; }
+#input:focus { border: 1px solid #fabd2f; }
+#outer-box { margin: 6px; }
+#inner-box { margin: 6px; }
+#scroll { margin: 0; }
+#text { color: #ebdbb2; padding: 2px 6px; }
+#entry { padding: 4px; border-radius: 6px; }
+#entry:selected { background-color: #504945; }
+#text:selected { color: #ebdbb2; }

@@ -1,12 +1,6 @@
-/* Waybar — tema Nord.
-   Paleta: nord0 #2e3440 ... nord6 #eceff4, frost #88c0d0/#81a1c1/#5e81ac. */
-
-@define-color background #2e3440;
-@define-color foreground #eceff4;
-@define-color muted      #4c566a;
-@define-color accent     #88c0d0;
-@define-color warning    #ebcb8b;
-@define-color critical   #bf616a;
+/* Waybar — los colores vienen del tema activo (@define-color …).
+   El symlink ~/.config/current-theme lo cambia scripts/theme.sh. */
+@import url("file:///home/dariogg/.config/current-theme/waybar.css");
 
 * {
   background-color: @background;
