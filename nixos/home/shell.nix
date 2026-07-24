@@ -105,8 +105,7 @@
     yq-go
     tree
     htop
-    tmux
-    tmuxinator
+    tmuxinator   # tmux lo provee programs.tmux (home/tmux.nix)
     gh
     lazygit
     unzip

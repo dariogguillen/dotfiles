@@ -12,6 +12,7 @@
     ./dev.nix
     ./files.nix
     ./neovim.nix
+    ./tmux.nix
   ];
 
   # Datos básicos del home.
