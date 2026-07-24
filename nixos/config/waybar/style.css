@@ -25,17 +25,23 @@
 #workspaces button {
   all: initial;
   color: @foreground;
-  padding: 0 6px;
-  margin: 0 1.5px;
+  padding: 0 8px;
+  margin: 0 2px;
   min-width: 9px;
+  border-radius: 6px;
+  opacity: 0.7;
 }
 
+/* Workspace activo: resaltado tipo píldora */
 #workspaces button.active {
-  color: @accent;
+  color: #2e3440;
+  background-color: @accent;
+  font-weight: bold;
+  opacity: 1;
 }
 
 #workspaces button.empty {
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 #cpu,
