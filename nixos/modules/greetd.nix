@@ -10,7 +10,7 @@
       #  --remember        recuerda el último usuario
       #  --remember-session recuerda la última sesión elegida
       #  --sessions        de dónde leer las sesiones (Hyprland lo registra ahí)
-      command = "${lib.getExe pkgs.greetd.tuigreet} --time --remember --remember-session "
+      command = "${lib.getExe pkgs.tuigreet} --time --remember --remember-session "
         + "--sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
       user = "greeter";
     };

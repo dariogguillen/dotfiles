@@ -27,5 +27,5 @@ vim.g.lazyvim_prettier_needs_config = true
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
--- Omarchy: emit OSC 52 yanks so copies reach the host over tmux/SSH.
+-- Emit OSC 52 yanks so copies reach the host over tmux/SSH.
 require("config.remote_clipboard").setup()

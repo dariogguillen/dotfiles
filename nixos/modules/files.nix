@@ -4,7 +4,7 @@
 {
   programs.thunar = {
     enable = true;
-    plugins = with pkgs.xfce; [
+    plugins = with pkgs; [
       thunar-volman          # montaje automático de USB/unidades
       thunar-archive-plugin  # comprimir/extraer desde el menú
     ];

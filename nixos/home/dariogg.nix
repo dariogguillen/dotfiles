@@ -11,6 +11,7 @@
     ./shell.nix
     ./dev.nix
     ./files.nix
+    ./neovim.nix
   ];
 
   # Datos básicos del home.

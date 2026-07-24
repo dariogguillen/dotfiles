@@ -82,18 +82,18 @@
     enableZshIntegration = true;
   };
 
-  # git con delta (diffs bonitos).
+  # git con delta (diffs bonitos). API nueva: programs.git.settings + programs.delta.
   programs.git = {
     enable = true;
-    userName = "Dario Guillen";
-    userEmail = "guillendario@gmail.com";
-    delta.enable = true;
-    extraConfig = {
+    settings = {
+      user.name = "Dario Guillen";
+      user.email = "guillendario@gmail.com";
       init.defaultBranch = "main";
       pull.rebase = true;
       push.autoSetupRemote = true;
     };
   };
+  programs.delta.enable = true;
 
   # Utilidades base de terminal.
   home.packages = with pkgs; [
