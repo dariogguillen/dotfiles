@@ -15,6 +15,7 @@
       ./modules/dev.nix
       ./modules/greetd.nix
       ./modules/files.nix
+      ./modules/power.nix
     ];
 
   # Bootloader.

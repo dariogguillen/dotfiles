@@ -120,8 +120,9 @@
     "format-plugged": " {capacity}%",
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "format-full": "󰂅 {capacity}%",
-    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
-    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%\nClick: perfil de energía",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%\nClick: perfil de energía",
+    "on-click": "~/.config/hypr/scripts/power-profile.sh",
     "interval": 5,
     "states": { "warning": 20, "critical": 10 }
   },
