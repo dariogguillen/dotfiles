@@ -24,24 +24,28 @@
 
 #workspaces button {
   all: initial;
+  /* all:initial borra la fuente -> la re-declaramos aquí */
+  font-family: 'FiraCode Nerd Font';
+  font-size: 12px;
   color: @foreground;
   padding: 0 8px;
-  margin: 0 2px;
+  margin: 0 1px;
   min-width: 9px;
-  border-radius: 6px;
-  opacity: 0.7;
+  opacity: 0.6;
+  /* borde transparente para que el activo no desplace el resto */
+  border-bottom: 2px solid transparent;
 }
 
-/* Workspace activo: resaltado tipo píldora */
+/* Workspace activo: subrayado cian + texto acento */
 #workspaces button.active {
-  color: #2e3440;
-  background-color: @accent;
+  color: @accent;
   font-weight: bold;
   opacity: 1;
+  border-bottom: 2px solid @accent;
 }
 
 #workspaces button.empty {
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 #cpu,
