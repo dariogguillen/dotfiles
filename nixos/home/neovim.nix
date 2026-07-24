@@ -32,6 +32,30 @@
     vscode-langservers-extracted # eslint, json, html, css language servers
     prettierd                    # formateo rápido (conform) para JS/TS/web
 
+    # ── DevOps (extras: lang.docker, lang.yaml + override bash) ──
+    dockerfile-language-server         # dockerls
+    docker-compose-language-service   # docker_compose_language_service
+    hadolint                          # linter de Dockerfile
+    yaml-language-server              # yamlls (k8s/CI)
+    bash-language-server              # bashls (ver lua/plugins/bash.lua)
+    shfmt                             # formateo de shell
+
+    # ── Python (extra: lang.python) ──
+    pyright                     # LSP
+    ruff                        # lint + format
+    python3Packages.debugpy     # binario debugpy-adapter (debug de Python)
+
+    # ── Docs y config (extras: lang.markdown, lang.toml) ──
+    marksman                    # LSP de Markdown
+    markdownlint-cli2           # lint de Markdown
+    markdown-toc                # tabla de contenidos
+    taplo                       # LSP/format de TOML
+
+    # ── Rust (extra: lang.rust) ──
+    rust-analyzer               # LSP
+    cargo                       # toolchain (build/test)
+    rustc
+
     # Metals (Scala) y scalafmt ya vienen de home/dev.nix.
   ];
 }
