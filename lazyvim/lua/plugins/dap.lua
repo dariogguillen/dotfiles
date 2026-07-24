@@ -106,13 +106,8 @@ return {
       },
     },
     dependencies = {
-      -- Install the vscode-js-debug adapter
-      {
-        "microsoft/vscode-js-debug",
-        -- After install, build it and rename the dist directory to out
-        build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
-        version = "1.*",
-      },
+      -- NixOS: vscode-js-debug lo provee Nix (home/neovim.nix -> binario 'js-debug').
+      -- No se compila desde fuente (el build con playwright falla en NixOS).
       {
         "mxsdev/nvim-dap-vscode-js",
         config = function()
@@ -121,11 +116,9 @@ return {
             -- Path of node executable. Defaults to $NODE_PATH, and then "node"
             -- node_path = "node",
 
-            -- Path to vscode-js-debug installation.
-            debugger_path = vim.fn.resolve(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
-
-            -- Command to use to launch the debug server. Takes precedence over "node_path" and "debugger_path"
-            -- debugger_cmd = { "js-debug-adapter" },
+            -- NixOS: usar el binario provisto por Nix (toma precedencia sobre
+            -- node_path/debugger_path).
+            debugger_cmd = { "js-debug" },
 
             -- which adapters to register in nvim-dap
             adapters = {
@@ -147,10 +140,6 @@ return {
             -- log_console_level = vim.log.levels.ERROR,
           })
         end,
-      },
-      {
-        "Joakker/lua-json5",
-        build = "./install.sh",
       },
     },
   },

@@ -19,6 +19,10 @@
     # Treesitter compila sus parsers con gcc (ya en dev.nix); su CLI:
     tree-sitter
 
+    # Adaptador de debug JS/TS (reemplaza el build-desde-fuente que falla en NixOS).
+    # Provee el binario 'js-debug' en el PATH (ver lua/plugins/dap.lua).
+    vscode-js-debug
+
     # Metals (Scala) y scalafmt ya vienen de home/dev.nix.
   ];
 }
