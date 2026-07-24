@@ -34,7 +34,9 @@
       ExecStart = "${pkgs.waybar}/bin/waybar";
       # Recarga en caliente (SIGUSR2) sin matar el proceso.
       ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
-      Restart = "on-failure";
+      # 'always': revive aunque muera "limpio" (SIGTERM/killall), no solo en crash.
+      # 'systemctl --user stop waybar' sigue funcionando para pararlo a propósito.
+      Restart = "always";
       RestartSec = 1;
     };
     Install.WantedBy = [ "graphical-session.target" ];
@@ -52,7 +54,8 @@
       BusName = "org.freedesktop.Notifications";
       ExecStart = "${pkgs.mako}/bin/mako";
       ExecReload = "${pkgs.mako}/bin/makoctl reload";
-      Restart = "on-failure";
+      Restart = "always";
+      RestartSec = 1;
     };
     Install.WantedBy = [ "graphical-session.target" ];
   };
