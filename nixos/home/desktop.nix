@@ -12,7 +12,23 @@
     pavucontrol        # mezclador de audio (GUI)
     networkmanagerapplet # nm-connection-editor (al click en red)
     blueman            # gestor bluetooth (al click en el icono BT)
+    hyprshot           # capturas (región/ventana/monitor) -> archivo + portapapeles
+    swappy             # editor de anotación de capturas (Ctrl+Print)
   ];
+
+  # hyprshot guarda aquí (si no, usaría ~/Pictures a secas). Propaga por uwsm;
+  # requiere re-login para aplicar. La carpeta se crea abajo con un .keep.
+  home.sessionVariables.HYPRSHOT_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
+  home.file."Pictures/Screenshots/.keep".text = "";
+
+  # swappy (editor de capturas): dónde guarda al pulsar el botón/atajo de guardar.
+  xdg.configFile."swappy/config".text = ''
+    [Default]
+    save_dir=${config.home.homeDirectory}/Pictures/Screenshots
+    save_filename_format=captura_%Y%m%d_%H%M%S.png
+    show_panel=true
+    early_exit=false
+  '';
 
   # btop (monitor de sistema, al click en CPU/mem/temp de waybar).
   # Usa el tema "global" -> ~/.config/btop/themes/global.theme, que es un symlink
