@@ -2,19 +2,18 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Java 21 por defecto; las otras versiones quedan accesibles por ruta
+  # Java 21 por defecto; las otras versiones accesibles por $JDK8/$JDK11/$JDK17
   # (útil para sbt '-java-home', Metals, IntelliJ o un .envrc por proyecto).
   #
-  # Se exportan en el initContent de zsh (que SIEMPRE se sourcea) en vez de en
-  # home.sessionVariables, porque estas últimas dependen de environment.d/systemd
-  # y tu sesión de Hyprland no es systemd-managed (se lanza directo desde SDDM).
-  programs.zsh.initContent = lib.mkOrder 550 ''
-    export JAVA_HOME="${pkgs.jdk21.home}"
-    export JDK8="${pkgs.jdk8.home}"
-    export JDK11="${pkgs.jdk11.home}"
-    export JDK17="${pkgs.jdk17.home}"
-    export JDK21="${pkgs.jdk21.home}"
-  '';
+  # Con uwsm la sesión es systemd-managed, así que environment.d propaga estas
+  # variables a TODAS las apps (terminales y GUI). Requiere re-login para aplicar.
+  home.sessionVariables = {
+    JAVA_HOME = "${pkgs.jdk21.home}";
+    JDK8  = "${pkgs.jdk8.home}";
+    JDK11 = "${pkgs.jdk11.home}";
+    JDK17 = "${pkgs.jdk17.home}";
+    JDK21 = "${pkgs.jdk21.home}";
+  };
 
   home.packages = with pkgs; [
     # ── Java (por defecto 21) ──
