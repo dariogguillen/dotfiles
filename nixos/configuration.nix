@@ -18,6 +18,7 @@
       ./modules/power.nix
       ./modules/maintenance.nix
       ./modules/fingerprint.nix
+      ./modules/snapshots.nix
     ];
 
   # Bootloader.
