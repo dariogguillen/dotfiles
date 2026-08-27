@@ -49,5 +49,6 @@ return {
         header = headers[math.random(#headers)],
       },
     },
+    image = { enabled = false },
   },
 }

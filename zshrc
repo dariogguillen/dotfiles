@@ -3,6 +3,21 @@
 export PATH=/home/dariogg/.local/bin:$PATH
 export EDITOR=nvim
 export HISTCONTROL=ignoreboth
+
+# systemd-logind never starts a session for the WSL user here, so
+# /run/user/<uid> (what $XDG_RUNTIME_DIR points at) is never created.
+# Fall back to a writable dir apps can actually use for sockets.
+if [ -n "$WSL_DISTRO_NAME" ] && [ ! -d "/run/user/$(id -u)" ]; then
+    export XDG_RUNTIME_DIR="/tmp/xdg-runtime-$(id -u)"
+    mkdir -p "$XDG_RUNTIME_DIR"
+    chmod 700 "$XDG_RUNTIME_DIR"
+fi
+
+# WSLg's Wayland socket lives outside $XDG_RUNTIME_DIR for the same reason.
+# Point at the real socket directly (Wayland supports absolute paths).
+if [ -n "$WSL_DISTRO_NAME" ] && [ -S /mnt/wslg/runtime-dir/wayland-0 ]; then
+    export WAYLAND_DISPLAY=/mnt/wslg/runtime-dir/wayland-0
+fi
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="spaceship"
