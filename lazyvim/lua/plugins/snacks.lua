@@ -42,13 +42,27 @@ local headers = {
 math.randomseed(os.time())
 
 return {
-  "folke/snacks.nvim",
-  opts = {
-    dashboard = {
-      preset = {
-        header = headers[math.random(#headers)],
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      news = {
+        lazyvim = false,
+        neovim = false,
       },
     },
-    image = { enabled = false },
+  },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        preset = {
+          header = headers[math.random(#headers)],
+        },
+      },
+      image = { enabled = false },
+      scroll = {
+        enabled = false, -- Disable scrolling animations
+      },
+    },
   },
 }

@@ -48,7 +48,7 @@ command -v pokemon-colorscripts >/dev/null && pokemon-colorscripts --no-title -r
 #fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
 
 # Set-up icons for files/folders in terminal
-alias update="yay -Syu --devel --timeupdate"
+alias update="yay -Syu --devel"
 alias txn="tmuxinator new"
 alias txs="tmuxinator start"
 alias n=nvim
@@ -94,3 +94,10 @@ compinit
 
 export IDEA_JDK=/usr/lib/jvm/jre-jetbrains
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
