@@ -1,0 +1,4 @@
+# Base markdownlint config for Neovim (passed via --config in lua/plugins/markdown.lua).
+# A project's own .markdownlint* file still takes precedence.
+MD013: false # line length: prose paragraphs are soft-wrapped
+MD060: false # table column style: leave table formatting to prettier

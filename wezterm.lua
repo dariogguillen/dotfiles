@@ -8,8 +8,8 @@ config.enable_wayland = true
 
 -- This is where you actually apply your config choices
 
-config.font = wezterm.font("JetBrainsMono Nerd Font")
-config.font_size = 9.5
+config.font = wezterm.font("Fira Code")
+config.font_size = 7.9
 
 config.enable_tab_bar = false
 
@@ -26,8 +26,8 @@ config.window_padding = {
 config.default_cursor_style = "BlinkingBlock"
 config.cursor_blink_rate = 500
 
-config.window_background_opacity = 0.97
-config.kde_window_background_blur = true
+config.window_background_opacity = 0.8
+config.wayland_window_background_blur = true
 
 -- and finally, return the configuration to wezterm
 return config

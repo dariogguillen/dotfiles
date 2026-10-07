@@ -20,6 +20,10 @@ opt.undodir = { vim.fn.stdpath("state") .. "/undo//" }
 
 opt.relativenumber = true
 
+-- Spell-check both English and Spanish (LazyVim enables spell for markdown/text).
+-- The es dictionary lives in stdpath("data")/site/spell; nvim offers to download it if missing.
+opt.spelllang = { "en", "es" }
+
 vim.g.lazyvim_prettier_needs_config = true
 
 -- Disable unused language providers (silences their :checkhealth warnings).
