@@ -26,7 +26,7 @@ config.window_padding = {
 config.default_cursor_style = "BlinkingBlock"
 config.cursor_blink_rate = 500
 
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.85
 config.wayland_window_background_blur = true
 
 -- and finally, return the configuration to wezterm

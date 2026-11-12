@@ -124,11 +124,8 @@ persistent_logging = false
 print_events = false
 render_timer = false
 
-[env]
-TERM = "screen-256color"
-
 [font]
-size = 9
+size = 7.5
 
 [font.bold]
 style = "Regular"
@@ -678,8 +675,8 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 [window]
 decorations = "Buttonless"
 dynamic_padding = false
-opacity = 0.9
-startup_mode = "Maximized"
+opacity = 0.8
+blur = true
 
 [window.dimensions]
 columns = 0

@@ -1,0 +1,34 @@
+# Breeze window-specific overrides: hide the title bar on terminals but keep
+# KWin's frame so the windows can still be resized with the mouse.
+
+[Windeco Exception 0]
+BorderSize=0
+Enabled=true
+ExceptionPattern=com.mitchellh.ghostty
+ExceptionType=0
+HideTitleBar=true
+Mask=0
+
+[Windeco Exception 1]
+BorderSize=0
+Enabled=true
+ExceptionPattern=Alacritty
+ExceptionType=0
+HideTitleBar=true
+Mask=0
+
+[Windeco Exception 2]
+BorderSize=0
+Enabled=true
+ExceptionPattern=org.wezfurlong.wezterm
+ExceptionType=0
+HideTitleBar=true
+Mask=0
+
+[Windeco Exception 3]
+BorderSize=0
+Enabled=true
+ExceptionPattern=kitty
+ExceptionType=0
+HideTitleBar=true
+Mask=0

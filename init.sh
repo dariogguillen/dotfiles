@@ -54,6 +54,8 @@ folder=$(pwd)
 
 # config files
  #ln -sf $folder/alacritty ~/.config/alacritty
+ #ln -sf $folder/ghostty ~/.config/ghostty
+ #ln -sf $folder/kde/breezerc ~/.config/breezerc
 #ln -sf $folder/i3/config ~/.config/i3/config
 # ln -sf $folder/dunst ~/.config/dunst
 #ln -sf $folder/ranger ~/.config/ranger

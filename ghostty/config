@@ -1,0 +1,35 @@
+# Ghostty config — mirrors alacritty/alacritty.toml
+# Docs: `ghostty +show-config --default --docs`
+
+# Theme (built into Ghostty)
+theme = Nordfox
+
+# Font
+font-family = Fira Code
+font-size = 7.5
+font-style-bold = Regular
+
+# Window
+# Let KWin draw the frame (resizable edges); the title bar is hidden via a
+# Breeze window-specific override in ~/.config/breezerc (class com.mitchellh.ghostty)
+window-decoration = server
+window-padding-x = 0
+window-padding-y = 3
+window-padding-balance = false
+background-opacity = 0.9
+# On KDE Wayland this may need Better Blur's force-blur (class: com.mitchellh.ghostty)
+background-blur = true
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+# Keep the block cursor at the shell prompt (shell integration switches it to a bar)
+shell-integration-features = no-cursor
+
+# Mouse / selection
+mouse-hide-while-typing = true
+copy-on-select = clipboard
+confirm-close-surface = false
+
+# Cursor trail animation (shader, relative to this config's directory)
+custom-shader = shaders/cursor_warp.glsl
